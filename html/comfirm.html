@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../sea_demo/css/animate.css"/>
+    <link rel="stylesheet" href="../css/ldialog.css"/>
+</head>
+<style>
+    * {
+        font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+    }
+    h1,h2,h3,h4,h5,h6 {margin: 0; padding: 0;}
+
+    [class^=c-] {
+        height: 30px;
+        width: 150px;
+        border: 1px solid lightgray;
+        background: #049cdb;
+    }
+</style>
+<body>
+<div class="container">
+    <p>123123</p>
+    <div class="c-1">123</div>
+    <div class="c-2">234</div>
+    <code>
+        var function() {
+            console.log(12);
+        }
+    </code>
+</div>
+
+<!--<div id="custompopover" class="popover left">-->
+    <!--<div class="arrow"></div>-->
+    <!--<h3 class="popover-title">Example</h3>-->
+    <!--<div class="popover-content">-->
+    <!--</div>-->
+<!--</div>-->
+
+<div class="l-dialog animated fadeIn" style="display: none;">
+    <div class="l-dialog-box animated fadeInDown">
+        <div class="l-dialog-title">
+            <h4 class="l-dialog-t">这是title</h4>
+            <i class="l-dialog-c"></i>
+        </div>
+        <div class="l-dialog-content tc">
+            <span class="l-tip-info">
+                <span class="l-tip-info-img l-success"></span>
+                <span class="l-tip-info-fonts">
+                    这里是一段提示信息的话,这里是一段提示信息的话
+                    <!--这里是一段提示信息的话,这里是一段提示信息的话-->
+                    <!--这里是一段提示信息的话,这里是一段提示信息的话-->
+                </span>
+            </span>
+        </div>
+        <div class="l-dialog-footer">
+            <div class="btn btn-default">取消</div>
+            <div class="btn btn-success">确定</div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/ldialog.js"></script>
+<script>
+    $(function() {
+//        $('.dialog').not($('.dialog-box')).on('click', function() {
+//            console.log(123);
+//            event.stopPropagation();
+//        });
+
+//        $(".dialog").on('click', function(e){
+//            var _target = $(e.target);
+//            if (_target.closest(".dialog-box").length == 0) {
+//                $(".dialog").off();
+//
+//            }
+//        });
+
+//        $('.l-dialog').click(function() {
+//            $('.l-dialog').removeClass('fadeIn').addClass('fadeOut');
+//            $('.l-dialog-box').removeClass('fadeInDown').addClass('fadeOutUp');
+//        });
+//
+//        $('.l-dialog-box').on('click' ,function(event) {
+//            event.stopPropagation();
+//        });
+
+
+        $('.l-dialog-close').click(function() {
+            $('.l-dialog').removeClass('fadeIn').addClass('fadeOut');
+            $('.l-dialog-box').removeClass('fadeInDown').addClass('fadeOutUp');
+        });
+
+
+        $('.right-grad-edit').on('click', function() {
+            if($('.select-alter-p-i').hasClass('on')) {
+                $('.select-alter-p-i').removeClass('on');
+
+            } else {
+                $('.select-alter-p-i').addClass('on');
+                $(document).not($('.select-alter-p-i')).one('click', function() {
+                    $('.select-alter-p-i').removeClass('on');
+                });
+            }
+            event.stopPropagation();
+        });
+
+
+//        三个参数： appHtml, config, type
+//        appHtml: 必填，字符串数据格式，用来显示弹窗的内容
+//        config: 选填，对象数据格式，用来配置基本信息
+//        type: 选填，对象或字符串，用来配置title和按钮组
+
+        $('.c-1').on('click', function() {
+            var dialog = new LDialog("test2", {footer: false}, {btn: {sure: "btn-info"}});
+            dialog.init();
+        });
+
+        $('.c-2').on('click', function() {
+            con = {
+                onSure: function(v) {
+                    alert(v);
+                }
+            };
+
+            var dialog2 = new LDialog("test", con, "input");
+            dialog2.init();
+        });
+    });
+</script>
+</html>
