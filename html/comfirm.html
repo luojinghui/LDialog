@@ -15,8 +15,14 @@
     [class^=c-] {
         height: 30px;
         width: 150px;
-        border: 1px solid lightgray;
+        border: 1px solid #fff;
         background: #049cdb;
+        display: inline-block;
+        border-radius: 6px;
+        text-align: center;
+        color: #fff;
+        line-height: 27px;
+        cursor: default;
     }
 </style>
 <body>
@@ -24,11 +30,7 @@
     <p>123123</p>
     <div class="c-1">123</div>
     <div class="c-2">234</div>
-    <code>
-        var function() {
-            console.log(12);
-        }
-    </code>
+    <div class="c-3">345</div>
 </div>
 
 <!--<div id="custompopover" class="popover left">-->
@@ -38,28 +40,28 @@
     <!--</div>-->
 <!--</div>-->
 
-<div class="l-dialog animated fadeIn" style="display: none;">
-    <div class="l-dialog-box animated fadeInDown">
-        <div class="l-dialog-title">
-            <h4 class="l-dialog-t">这是title</h4>
-            <i class="l-dialog-c"></i>
-        </div>
-        <div class="l-dialog-content tc">
-            <span class="l-tip-info">
-                <span class="l-tip-info-img l-success"></span>
-                <span class="l-tip-info-fonts">
-                    这里是一段提示信息的话,这里是一段提示信息的话
+<!--<div class="l-dialog animated fadeIn" style="display: none;">-->
+    <!--<div class="l-dialog-box animated fadeInDown">-->
+        <!--<div class="l-dialog-title">-->
+            <!--<h4 class="l-dialog-t">这是title</h4>-->
+            <!--<i class="l-dialog-c"></i>-->
+        <!--</div>-->
+        <!--<div class="l-dialog-content tc">-->
+            <!--<span class="l-tip-info">-->
+                <!--<span class="l-tip-info-img l-success"></span>-->
+                <!--<span class="l-tip-info-fonts">-->
                     <!--这里是一段提示信息的话,这里是一段提示信息的话-->
-                    <!--这里是一段提示信息的话,这里是一段提示信息的话-->
-                </span>
-            </span>
-        </div>
-        <div class="l-dialog-footer">
-            <div class="btn btn-default">取消</div>
-            <div class="btn btn-success">确定</div>
-        </div>
-    </div>
-</div>
+                    <!--&lt;!&ndash;这里是一段提示信息的话,这里是一段提示信息的话&ndash;&gt;-->
+                    <!--&lt;!&ndash;这里是一段提示信息的话,这里是一段提示信息的话&ndash;&gt;-->
+                <!--</span>-->
+            <!--</span>-->
+        <!--</div>-->
+        <!--<div class="l-dialog-footer">-->
+            <!--<div class="btn btn-default">取消</div>-->
+            <!--<div class="btn btn-success">确定</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 </body>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/ldialog.js"></script>
@@ -127,6 +129,20 @@
 
             var dialog2 = new LDialog("test", con, "input");
             dialog2.init();
+        });
+
+        $('.c-3').on('click', function() {
+            con = {
+                onCancel: function() {
+                    alert("退出啦");
+                },
+                onClose: function() {
+                    alert("close");
+                }
+            };
+
+            var dialog3 = new LDialog("test-content", con, "success");
+            dialog3.init();
         });
     });
 </script>
