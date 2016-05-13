@@ -1,0 +1,183 @@
+@font-face {
+    font-family: 'icomoon2';
+    src:    url('fonts/icomoon2.eot?i4wjt8');
+    src:    url('fonts/icomoon2.eot?i4wjt8#iefix') format('embedded-opentype'),
+        url('fonts/icomoon2.ttf?i4wjt8') format('truetype'),
+        url('fonts/icomoon2.woff?i4wjt8') format('woff'),
+        url('fonts/icomoon2.svg?i4wjt8#icomoon2') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon"], [class*=" icon"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon2' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.iconcaution:before {
+    content: "\2757";
+}
+.iconheart:before {
+    content: "\1f49b";
+}
+.iconclock:before {
+    content: "\1f553";
+}
+.iconhappy:before {
+    content: "\1f60a";
+}
+.iconsad:before {
+    content: "\1f61e";
+}
+.iconclock2:before {
+    content: "\1f554";
+}
+.iconforward:before {
+    content: "\279c";
+}
+.iconsearch:before {
+    content: "\1f50d";
+}
+.iconcancel:before {
+    content: "\1f6ab";
+}
+.iconcross2:before {
+    content: "\2297";
+}
+.iconplay:before {
+    content: "\23e9";
+}
+.iconarrow-left3:before {
+    content: "\2b05";
+}
+.iconarrow-up3:before {
+    content: "\2b06";
+}
+.iconarrow-down3:before {
+    content: "\2b07";
+}
+.iconarrow-right:before {
+    content: "\2794";
+}
+.iconheart2:before {
+    content: "\1f49a";
+}
+.iconforbidden:before {
+    content: "\2298";
+}
+.iconpill:before {
+    content: "\1f48a";
+}
+.iconbell:before {
+    content: "\1f47c";
+}
+.iconlock:before {
+    content: "\1f512";
+}
+.iconunlock:before {
+    content: "\1f513";
+}
+.iconclock3:before {
+    content: "\1f557";
+}
+.iconheart3:before {
+    content: "\1f49c";
+}
+.iconcircle-plus:before {
+    content: "\25ce";
+}
+.iconcircle-check:before {
+    content: "\e042";
+}
+.iconcircle-cross:before {
+    content: "\e043";
+}
+.iconpower:before {
+    content: "\e086";
+}
+.iconarrow-left:before {
+    content: "\e094";
+}
+.iconarrow-right2:before {
+    content: "\e095";
+}
+.iconarrow-up:before {
+    content: "\e096";
+}
+.iconarrow-down:before {
+    content: "\e097";
+}
+.iconban:before {
+    content: "\e107";
+}
+.iconplus:before {
+    content: "\e114";
+}
+.iconminus:before {
+    content: "\e115";
+}
+.iconcheck:before {
+    content: "\e116";
+}
+.iconcross3:before {
+    content: "\e117";
+}
+.iconcircle-minus:before {
+    content: "\e041";
+}
+.iconsmile:before {
+    content: "\e90e";
+}
+.iconsad2:before {
+    content: "\e90f";
+}
+.iconwink:before {
+    content: "\e910";
+}
+.iconcool:before {
+    content: "\e911";
+}
+.iconbaffled:before {
+    content: "\e909";
+}
+.iconneutral2:before {
+    content: "\e912";
+}
+.iconnotification:before {
+    content: "\e913";
+}
+.iconquestion:before {
+    content: "\e914";
+}
+.iconinfo:before {
+    content: "\e915";
+}
+.iconcancel-circle:before {
+    content: "\e916";
+}
+.iconblocked:before {
+    content: "\e917";
+}
+.iconarrow-up2:before {
+    content: "\e918";
+}
+.iconarrow-right22:before {
+    content: "\e919";
+}
+.iconarrow-down2:before {
+    content: "\e91a";
+}
+.iconarrow-left2:before {
+    content: "\e91b";
+}
+
