@@ -43,13 +43,13 @@
 #### arg2 (对象)
 
 | 参数名        | 数据类型           | 默认值  |   描述  | 备注 |
-|:---------------|:---------------|:-------|:---------:|
-| sureTitle     | String | “确定” | 重写蒙版底部确定按钮显示文字|
-| cancelTitle | String | "取消" | 重写蒙版底部取消按钮显示文字|
-| title | String | null | 定义蒙版标题 | 若arg3参数也定义此参数，以arg2参数定义为准
-| footer | boolean | true | 定义蒙版底部按钮组框架是否显示 |
-| icon | boolean | true | 定义蒙版内容块图标是否显示 |
-| iconClass | String | null | 定义显示图标对应的class|  若arg3参数也定义此参数，以arg2参数定义为准
+|:---------------|:---------------|:-------|:---------:|:----:|
+| sureTitle     | String | “确定” | 重写蒙版底部确定按钮显示文字||
+| cancelTitle | String | "取消" | 重写蒙版底部取消按钮显示文字||
+| title | String | null | 定义蒙版标题 | 若arg3参数也定义此参数，以arg2参数定义为准|
+| footer | boolean | true | 定义蒙版底部按钮组框架是否显示 ||
+| icon | boolean | true | 定义蒙版内容块图标是否显示 ||
+| iconClass | String | null | 定义显示图标对应的class|  若arg3参数也定义此参数，以arg2参数定义为准|
 | minHeight | String | "50px" | 定义蒙版最低高度| |
 | width | String | "550px" | 定义蒙版宽度 | |
 | onSure(data) | function | null | 点击确定按钮的回调函数,可选data参数，获得所有蒙版input输入框的中的值，以数组形式展现| |
