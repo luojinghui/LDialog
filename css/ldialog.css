@@ -1,3 +1,28 @@
+@font-face {
+    font-family: 'icomoon';
+    src:    url('fonts/icomoon.eot?i4wjt8');
+    src:    url('fonts/icomoon.eot?i4wjt8#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?i4wjt8') format('truetype'),
+    url('fonts/icomoon.woff?i4wjt8') format('woff'),
+    url('fonts/icomoon.svg?i4wjt8#icomoon2') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.l-dialog i {
+    font-size: 50px;
+    font-family: 'icomoon' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+[data-icon]:before {
+    content: attr(data-icon);
+}
+
 .l-dialog {
     position: fixed;
     top: 0;
@@ -164,11 +189,11 @@
 
 }
 .l-tip-info-img {
-    height: 52px;
-    width: 52px;
-    display: inline-block;
+    /*height: 52px;*/
+    /*width: 52px;*/
+    /*display: inline-block;*/
     vertical-align: middle;
-    margin-bottom: 10px;
+    /*margin-bottom: 10px;*/
 }
 .l-success {
     background: url("../img/comfirm/lala.png") no-repeat -14px -61px;
@@ -185,8 +210,8 @@
 }
 .l-tip-info-fonts {
     text-align: left;
-    display: inline-block;
-    vertical-align: super;
+    /*display: inline-block;*/
+    vertical-align: middle;
     line-height: 24px;
     margin-left: 10px;
 }
