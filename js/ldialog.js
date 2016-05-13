@@ -77,13 +77,14 @@ LDialog.prototype.init = function() {
     }, initType, this.config);
 
     this.createHtml(initConfig);
+    console.log(initConfig);
     allType = initConfig;
 };
 
 LDialog.prototype.createHtml = function(config) {
     //创建icon和content元素
     var $txt = $("<span>").addClass('l-tip-info-fonts').html(this.appHtml);
-    var $icon = config.iconClass !== ""  || config.cion ? $("<span>").addClass('l-tip-info-img').addClass(config.iconClass) : "";
+    var $icon = (config.iconClass !== ""  && config.icon) ? $("<span>").addClass('l-tip-info-img').addClass(config.iconClass) : "";
     //创建叉叉关闭和标题元素
     var $close = $('<span class="l-dialog-c">').html('×');
     var $title = $('<h4 class="l-dialog-t">').html(config.title);

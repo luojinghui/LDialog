@@ -31,6 +31,7 @@
     <div class="c-1">123</div>
     <div class="c-2">234</div>
     <div class="c-3">345</div>
+    <div class="c-4">567</div>
 </div>
 
 <!--<div id="custompopover" class="popover left">-->
@@ -116,7 +117,7 @@
 //        type: 选填，对象或字符串，用来配置title和按钮组
 
         $('.c-1').on('click', function() {
-            var dialog = new LDialog("test2", {footer: false, title : "123123"}, "input");
+            var dialog = new LDialog("test2");
             dialog.init();
         });
 
@@ -143,6 +144,19 @@
 
             var dialog3 = new LDialog("test-content", con, "success");
             dialog3.init();
+        });
+
+        $('.c-4').on('click', function() {
+            var value = "如果世界漆黑 其实我很美 在爱情里面进退 最多被消费 不管同样的是非 又怎么不对 无所谓 如果像你一样 总有人谄媚 围绕着我的卑微 也许能消退 其实我并不在意 有很多机会 像巨人一样的无畏 放纵我心里的鬼  可是我不配 丑八怪 能否别把灯打开 我要的爱 出没在漆黑一片的舞台 丑八怪 在这暧昧的时代 我的存在 像意外";
+
+            con = {
+                footer: false,
+                icon: true,
+                title: ""
+            };
+
+            var dialog4 = new LDialog(value, con, "custom");
+            dialog4.init();
         });
     });
 </script>
