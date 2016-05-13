@@ -20,7 +20,7 @@ LDialog.prototype.init = function() {
                 sure: "btn-info",
                 cancel: "btn-default"
             },
-            iconClass: "l-success"
+            iconData: ""
         },
         success: {
             title: "成功",
@@ -28,7 +28,7 @@ LDialog.prototype.init = function() {
                 sure: "btn-success",
                 cancel: "btn-default"
             },
-            iconClass: "l-success"
+            iconData: ""
         },
         error: {
             title: "错误",
@@ -36,7 +36,7 @@ LDialog.prototype.init = function() {
                 sure: "btn-error",
                 cancel: "btn-default"
             },
-            iconClass: "l-close"
+            iconData: ""
         },
         confirm: {
             title: "提示",
@@ -44,7 +44,7 @@ LDialog.prototype.init = function() {
                 sure: "btn-warning",
                 cancel: "btn-default"
             },
-            iconClass: "l-question"
+            iconData: ""
         },
         input: {
             title: "输入",
@@ -68,9 +68,14 @@ LDialog.prototype.init = function() {
         title: "", //标题
         footer: true, //按钮组
         icon: true, //图标
-        iconClass: "",
+        //iconClass: "",
+        iconSize: "",
+        iconColor: "",
+        iconData: "",
         minHeight: "50px", //最小高度
         width: "550px",
+        opacity: 0.5,
+        timeOut: -1,
         onSure: $.noop,//点击确定的按钮回调
         onCancel: $.noop,//点击取消的按钮回调
         onClose: $.noop//弹窗关闭的回调,返回触发事件
@@ -84,7 +89,7 @@ LDialog.prototype.init = function() {
 LDialog.prototype.createHtml = function(config) {
     //创建icon和content元素
     var $txt = $("<span>").addClass('l-tip-info-fonts').html(this.appHtml);
-    var $icon = (config.iconClass !== ""  && config.icon) ? $("<span>").addClass('l-tip-info-img').addClass(config.iconClass) : "";
+    var $icon = (config.iconData !== ""  && config.icon) ? $("<i>").addClass('l-tip-info-img').attr('data-icon', config.iconData).css({'color': config.iconColor, 'font-size': config.iconSize}) : "";
     //创建叉叉关闭和标题元素
     var $close = $('<span class="l-dialog-c">').html('×');
     var $title = $('<h4 class="l-dialog-t">').html(config.title);
@@ -97,11 +102,8 @@ LDialog.prototype.createHtml = function(config) {
     var $contentBox = $('<div class="l-dialog-content tc"></div>');
     var $contentBoxIn = $('<span class="l-tip-info"></span>');
     var $headerBox = $('<div class="l-dialog-title"></div>');
-    var $dialogBox = $('<div>').addClass("l-dialog-box animated fadeInDown").css({
-        'width': config.width,
-        'min-height': config.minHeight
-    });
-    var $dialog = $('<div>').addClass("l-dialog animated fadeIn");
+    var $dialogBox = $('<div>').addClass("l-dialog-box animated fadeInDown").css({'width': config.width, 'min-height': config.minHeight});
+    var $dialog = config.opacity === 0.5 ? $('<div>').addClass("l-dialog animated fadeIn") : $('<div>').addClass("l-dialog animated fadeIn").css({"background-color": "rgba(0,0,0," + config.opacity + ")"});
 
     var sendObj = {
         txt: $txt,
@@ -118,7 +120,7 @@ LDialog.prototype.createHtml = function(config) {
         dialog: $dialog
     };
     this.createBom(sendObj);
-    this.addListener(sendObj);
+    this.addListener(sendObj, config);
 };
 
 LDialog.prototype.createBom = function(accObj) {
@@ -163,7 +165,7 @@ LDialog.prototype.createId = function() {
     }
 };
 
-LDialog.prototype.addListener = function(accObj) {
+LDialog.prototype.addListener = function(accObj, config) {
     var dia_id = {id : this.createId};
 
     accObj.close.on('click', dia_id, this.close);
@@ -173,6 +175,19 @@ LDialog.prototype.addListener = function(accObj) {
     accObj.sure.on('click', dia_id , this.sure);
 
     $(window).on('keydown', dia_id, this.enter);
+
+    if(config.timeOut !== -1 && config.timeOut > 0) this.timeOutClose(config, dia_id.id);
+};
+
+LDialog.prototype.timeOutClose = function(config, dia_id) {
+    setTimeout(function() {
+        LDialog.addOrRemoveClass(dia_id);
+
+        setTimeout(function() {
+            $('#' + dia_id).remove();
+        }, 500)
+
+    }, config.timeOut);
 };
 
 //叉叉按钮关闭弹窗
