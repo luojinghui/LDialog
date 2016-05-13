@@ -146,4 +146,6 @@ Version 1.0.0
 
 ### Live Demo 
 
-[传送门](http://luojinghui.github.io/LDialog/html/index.html)
+插件demo：[传送门](http://luojinghui.github.io/LDialog/html/index.html)
+
+字体图标： [传送门](http://luojinghui.github.io/LDialog/font-list/demo.html)
