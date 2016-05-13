@@ -88,7 +88,7 @@ LDialog.prototype.init = function() {
 
 LDialog.prototype.createHtml = function(config) {
     //创建icon和content元素
-    var $txt = $("<span>").addClass('l-tip-info-fonts').html(this.appHtml);
+    var $txt = config.icon ? $("<span>").addClass('l-tip-info-fonts').html(this.appHtml) : $("<span>").addClass('l-tip-info-fonts').html(this.appHtml).css("margin-left", 0);
     var $icon = (config.iconData !== ""  && config.icon) ? $("<i>").addClass('l-tip-info-img').attr('data-icon', config.iconData).css({'color': config.iconColor, 'font-size': config.iconSize}) : "";
     //创建叉叉关闭和标题元素
     var $close = $('<span class="l-dialog-c">').html('×');
