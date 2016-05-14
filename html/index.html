@@ -173,15 +173,28 @@
         });
 
         $('.c-4').on('click', function() {
-            var value = "如果世界漆黑 其实我很美 在爱情里面进退 最多被消费 不管同样的是非 又怎么不对 无所谓 如果像你一样 总有人谄媚 围绕着我的卑微 也许能消退 其实我并不在意 有很多机会 像巨人一样的无畏 放纵我心里的鬼  可是我不配 丑八怪 能否别把灯打开 我要的爱 出没在漆黑一片的舞台 丑八怪 在这暧昧的时代 我的存在 像意外";
+            var value = "如果世界漆黑 其实我很美";
 
             con = {
-                footer: false,
-                icon: false,
-                title: "三秒后消失"
+                footer: true,
+                icon: true,
+                title: "三秒后消失",
+//                timeOut: 3000,
+                iconColor: "red",
+                sureTitle: "我是确认按钮",
+                onSure: function(v) {
+                    alert(v);
+                },
+                onCancel: function() {
+                    alert("我点击了关闭按钮");
+                },
+                onClose: function() {
+                    alert("我点击了clsoe");
+                }
+//                iconSize: "80px"
             };
 
-            var dialog4 = new LDialog(value, con, "error");
+            var dialog4 = new LDialog(value, con, {btn: {sure: "btn-warning"}, iconData:"💛"});
             dialog4.init();
         });
     });
