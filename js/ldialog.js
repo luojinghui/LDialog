@@ -68,7 +68,6 @@ LDialog.prototype.init = function() {
         title: "", //标题
         footer: true, //按钮组
         icon: true, //图标
-        //iconClass: "",
         iconSize: "",
         iconColor: "",
         iconData: "",
@@ -83,7 +82,6 @@ LDialog.prototype.init = function() {
     }, initType, this.config);
 
     this.createHtml(initConfig);
-    console.log(initConfig);
     allType = initConfig;
 };
 
