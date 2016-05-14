@@ -72,6 +72,7 @@ LDialog.prototype.init = function() {
         iconSize: "",
         iconColor: "",
         iconData: "",
+        subtitle: "",
         minHeight: "50px", //最小高度
         width: "550px",
         opacity: 0.5,
@@ -93,6 +94,7 @@ LDialog.prototype.createHtml = function(config) {
     //创建叉叉关闭和标题元素
     var $close = $('<span class="l-dialog-c">').html('×');
     var $title = $('<h4 class="l-dialog-t">').html(config.title);
+    var $subtitle = config.subtitle !== "" ? $('<div class="l-dialog-subtitle">').html(config.subtitle) : "";
     //创建确定和取消按钮元素
     var $sure = config.btn.sure ? $('<div>').addClass("btn").addClass(config.btn.sure).text(config.sureTitle) : $('<div>');
     var $cancel = config.btn.cancel ? $('<div>').addClass("btn").addClass(config.btn.cancel).text(config.cancelTitle) : $('<div>');
@@ -110,6 +112,7 @@ LDialog.prototype.createHtml = function(config) {
         icon: $icon,
         close: $close,
         title: $title,
+        subtitle: $subtitle,
         sure: $sure,
         cancel: $cancel,
         footer: $footer,
@@ -132,6 +135,8 @@ LDialog.prototype.createBom = function(accObj) {
                 accObj.title
             ).append(
                 accObj.close
+            ).append(
+                accObj.subtitle
             )
         ).append(
             accObj.contentBox.append(
