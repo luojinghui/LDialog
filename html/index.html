@@ -141,7 +141,7 @@
 //        type: 选填，对象或字符串，用来配置title和按钮组
 
         $('.c-1').on('click', function() {
-            var dialog = new LDialog("test2");
+            var dialog = new LDialog("test2", {footer: false});
             dialog.init();
         });
 
@@ -158,12 +158,12 @@
 
         $('.c-3').on('click', function() {
             con = {
-                onCancel: function() {
-                    alert("退出啦");
-                },
-                onClose: function() {
-                    alert("close");
-                },
+//                onCancel: function() {
+//                    alert("退出啦");
+//                },
+//                onClose: function() {
+//                    alert("close");
+//                },
                 iconColor: "#56BD9D",
                 iconSize: "80px"
             };
@@ -184,7 +184,7 @@
                 sureTitle: "你敢点？",
                 iconSize: "20px",
                 iconData: "",
-                subtitle: "三秒后消失"
+                subtitle: "title 消失"
             };
 
             var dialog4 = new LDialog(value, con, {btn: {sure: "btn-warning"}, iconData:"💛"});
