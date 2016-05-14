@@ -178,20 +178,11 @@
             con = {
                 footer: true,
                 icon: true,
-                title: "三秒后消失",
-//                timeOut: 3000,
-                iconColor: "red",
-                sureTitle: "我是确认按钮",
-                onSure: function(v) {
-                    alert(v);
-                },
-                onCancel: function() {
-                    alert("我点击了关闭按钮");
-                },
-                onClose: function() {
-                    alert("我点击了clsoe");
-                }
-//                iconSize: "80px"
+                title: "big title 测试标题",
+                iconColor: "#4babab",
+                sureTitle: "你敢点？",
+                iconSize: "20px",
+                iconData: ""
             };
 
             var dialog4 = new LDialog(value, con, {btn: {sure: "btn-warning"}, iconData:"💛"});

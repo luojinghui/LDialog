@@ -65,11 +65,16 @@
 .fadeOutUp {
     animation-duration: .5s;
 }
+.l-dialog-title h4 {
+    height: auto;
+}
 .l-dialog-title {
-    height: 16px;
     padding: 15px;
     border-bottom: 1px solid #e5e5e5;
     position: relative;
+}
+.l-dialog-sbutitle {
+    font-size: 14px;
 }
 .l-dialog-c {
     height: 20px;
