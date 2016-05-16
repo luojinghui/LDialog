@@ -22,6 +22,8 @@
 
 ```
 
+3.   
+
 当在监听事件中需要弹出对话框或蒙版时，开始实例化一个蒙版，并初始化（可同时创建任意数量的蒙版）
 
 ```
@@ -49,7 +51,11 @@
 | title | String | null | 定义蒙版标题 | 若arg3参数也定义此参数，以arg2参数定义为准|
 | footer | boolean | true | 定义蒙版底部按钮组框架是否显示 ||
 | icon | boolean | true | 定义蒙版内容块图标是否显示 ||
-| iconClass | String | null | 定义显示图标对应的class|  若arg3参数也定义此参数，以arg2参数定义为准|
+| iconSize | String | null | 定义内容块左边图标大小 | |
+| iconColor | String | null | 定义内容块左边图标大小 | |
+| iconData | String | null | 定义图标源|  若arg3参数也定义此参数，以arg2参数定义为准|
+| timeOut | Number | -1 | 定义蒙版显示多长时间后消失 | |
+| opacity | Number | 0.5 | 定义蒙版透明度 | |
 | minHeight | String | "50px" | 定义蒙版最低高度| |
 | width | String | "550px" | 定义蒙版宽度 | |
 | onSure(data) | function | null | 点击确定按钮的回调函数,可选data参数，获得所有蒙版input输入框的中的值，以数组形式展现| |
@@ -65,51 +71,51 @@
 具体形式如下：
 
 ```
-var popType = {
-    info: {
-        title: "信息",
-        btn: {
-            sure: "btn-info",
-            cancel: "btn-default"
+    var popType = {
+        info: {
+            title: "信息",
+            btn: {
+                sure: "btn-info",
+                cancel: "btn-default"
+            },
+            iconData: ""
         },
-        iconClass: "l-success"
-    },
-    success: {
-        title: "成功",
-        btn: {
-            sure: "btn-success",
-            cancel: "btn-default"
+        success: {
+            title: "成功",
+            btn: {
+                sure: "btn-success",
+                cancel: "btn-default"
+            },
+            iconData: ""
         },
-        iconClass: "l-success"
-    },
-    error: {
-        title: "错误",
-        btn: {
-            sure: "btn-error",
-            cancel: "btn-default"
+        error: {
+            title: "错误",
+            btn: {
+                sure: "btn-error",
+                cancel: "btn-default"
+            },
+            iconData: ""
         },
-        iconClass: "l-close"
-    },
-    confirm: {
-        title: "提示",
-        btn: {
-            sure: "btn-warning",
-            cancel: "btn-default"
+        confirm: {
+            title: "提示",
+            btn: {
+                sure: "btn-warning",
+                cancel: "btn-default"
+            },
+            iconData: ""
         },
-        iconClass: "l-question"
-    },
-    input: {
-        title: "输入",
-        btn: {
-            sure: "btn-primary",
-            cancel: "btn-default"
+        input: {
+            title: "输入",
+            btn: {
+                sure: "btn-primary",
+                cancel: "btn-default"
+            }
+        },
+        custom: {
+            title: "弹窗",
+            btn: {}
         }
-    },
-    custom: {
-        title: "弹窗",
-        btn: {}
-    }
-};
+    };
 ```
 
 
