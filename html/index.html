@@ -45,28 +45,28 @@
     <!--</div>-->
 <!--</div>-->
 
-<!--<div class="l-dialog animated fadeIn" style="display: none;">-->
-    <!--<div class="l-dialog-box animated fadeInDown">-->
-        <!--<div class="l-dialog-title">-->
-            <!--<h4 class="l-dialog-t">这是title</h4>-->
-            <!--<i class="l-dialog-c"></i>-->
-        <!--</div>-->
-        <!--<div class="l-dialog-content tc">-->
-            <!--<span class="l-tip-info">-->
-                <!--<span class="l-tip-info-img l-success"></span>-->
-                <!--<span class="l-tip-info-fonts">-->
+<div class="l-dialog animated fadeIn" style="display: none;">
+    <div class="l-dialog-box animated bounceInDown">
+        <div class="l-dialog-title">
+            <h4 class="l-dialog-t">这是title</h4>
+            <i class="l-dialog-c"></i>
+        </div>
+        <div class="l-dialog-content tc">
+            <span class="l-tip-info">
+                <span class="l-tip-info-img l-success"></span>
+                <span class="l-tip-info-fonts">
+                    这里是一段提示信息的话,这里是一段提示信息的话
                     <!--这里是一段提示信息的话,这里是一段提示信息的话-->
-                    <!--&lt;!&ndash;这里是一段提示信息的话,这里是一段提示信息的话&ndash;&gt;-->
-                    <!--&lt;!&ndash;这里是一段提示信息的话,这里是一段提示信息的话&ndash;&gt;-->
-                <!--</span>-->
-            <!--</span>-->
-        <!--</div>-->
-        <!--<div class="l-dialog-footer">-->
-            <!--<div class="btn btn-default">取消</div>-->
-            <!--<div class="btn btn-success">确定</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
+                    <!--这里是一段提示信息的话,这里是一段提示信息的话-->
+                </span>
+            </span>
+        </div>
+        <div class="l-dialog-footer">
+            <div class="btn btn-default l-dialog-close">取消</div>
+            <div class="btn btn-success sure">确定</div>
+        </div>
+    </div>
+</div>
 
 <div class="l-dialog animated fadeIn" style="display: none;">
     <div class="l-dialog-box animated fadeInDown">
@@ -121,7 +121,7 @@
 
         $('.l-dialog-close').click(function() {
             $('.l-dialog').removeClass('fadeIn').addClass('fadeOut');
-            $('.l-dialog-box').removeClass('fadeInDown').addClass('fadeOutUp');
+            $('.l-dialog-box').removeClass('fadeInDown').addClass('bounceOutDown');
         });
 
 
@@ -169,7 +169,9 @@
         $('.c-3').on('click', function() {
             con = {
                 iconColor: "#56BD9D",
-                iconSize: "80px"
+                iconSize: "80px",
+                enterAni: "slideInDown",
+                radius: "0px"
             };
 
             var dialog3 = new LDialog("test-content", con, "success");
