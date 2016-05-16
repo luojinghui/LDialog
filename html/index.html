@@ -36,6 +36,7 @@
     <div class="c-4">引入html语言</div>
     <div class="c-5">倒计时关闭蒙版</div>
     <div class="c-6">重写蒙版大小透明度</div>
+    <div class="c-7">隐藏footer和header</div>
 </div>
 
 <!--<div id="custompopover" class="popover left">-->
@@ -171,7 +172,8 @@
                 iconColor: "#56BD9D",
                 iconSize: "80px",
                 enterAni: "slideInDown",
-                radius: "0px"
+                radius: "0px",
+                header: false
             };
 
             var dialog3 = new LDialog("test-content", con, "success");
@@ -201,7 +203,25 @@
             var con = {footer: false, width: "400px", minHeight: "400px", opacity: 0.2};
             var dialog6 = new LDialog(value, con);
             dialog6.init();
-        })
+        });
+
+        $('.c-7').on('click', function() {
+            con = {
+                iconColor: "red",
+                iconSize: "30px",
+                width: "400",
+                enterAni: "slideInDown",
+                radius: "0px",
+                opacity: 0.1,
+                footer: false,
+                header: false,
+                globalClose: true,
+                enterAni: "fadeIn"
+            };
+
+            var dialog3 = new LDialog("test-content", con, "error");
+            dialog3.init();
+        });
     });
 </script>
 </html>
