@@ -74,7 +74,6 @@ LDialog.prototype.init = function() {
         subtitle: "",
         minHeight: "50px", //最小高度
         width: "550px",
-        radius: "5px",
         opacity: 0.5,
         timeOut: -1,
         radius: "5px",
