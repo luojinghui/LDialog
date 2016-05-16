@@ -6,23 +6,19 @@
 支持IE8+，并且css动画采用animate.css动画函数库，能够应用一般的过渡动画。
 
 ###How to use
+*   在头部引入蒙版css文件,同时将fonts字体图标文件放置在css同级目录中。 
+	
+```
+	<link rel="stylesheet" href="../css/animate.css"/>
+	<link rel="stylesheet" href="../css/ldialog.css"/>
+```
 
-1.  首先引入jquery,版本任意：
-
+*  引入jquery以及ldialog.js文件（注意次序）：
 
 ```
 	<script src="../js/jquery.min.js"></script>
-
-```
-
-2.   引入ldialog.js或者ldialog.min.js
-
-```
 	<script src="../js/ldialog.js"></script>
-
 ```
-
-3.   
 
 当在监听事件中需要弹出对话框或蒙版时，开始实例化一个蒙版，并初始化（可同时创建任意数量的蒙版）
 
@@ -148,7 +144,7 @@ btn: {
 
 ###版本
 
-Version 1.0.0
+Version 1.0.1
 
 ### Live Demo 
 
