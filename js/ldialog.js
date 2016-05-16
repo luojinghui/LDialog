@@ -77,14 +77,14 @@ LDialog.prototype.init = function() {
         opacity: 0.5,
         timeOut: -1,
         radius: "5px",
-        enterAni: "",
-        endAni: "",
+        enterAni: "fadeInDown",
         onSure: $.noop,//点击确定的按钮回调
         onCancel: $.noop,//点击取消的按钮回调
         onClose: $.noop//弹窗关闭的回调,返回触发事件
     }, initType, this.config);
 
     this.createHtml(initConfig);
+    console.log(initConfig);
     allType = initConfig;
 };
 
@@ -105,7 +105,7 @@ LDialog.prototype.createHtml = function(config) {
     var $contentBox = $('<div class="l-dialog-content tc"></div>');
     var $contentBoxIn = $('<span class="l-tip-info"></span>');
     var $headerBox = $('<div class="l-dialog-title"></div>');
-    var $dialogBox = config.radius !== "5px" ? $('<div>').addClass("l-dialog-box animated fadeInDown").css({'width': config.width, 'min-height': config.minHeight, 'border-radius': config.radius}) : $('<div>').addClass("l-dialog-box animated fadeInDown").css({'width': config.width, 'min-height': config.minHeight});
+    var $dialogBox = config.radius !== "5px" ? $('<div>').addClass("l-dialog-box animated " + config.enterAni).css({'width': config.width, 'min-height': config.minHeight, 'border-radius': config.radius}) : $('<div>').addClass("l-dialog-box animated " + config.enterAni).css({'width': config.width, 'min-height': config.minHeight});
     var $dialog = config.opacity === 0.5 ? $('<div>').addClass("l-dialog animated fadeIn") : $('<div>').addClass("l-dialog animated fadeIn").css({"background-color": "rgba(0,0,0," + config.opacity + ")"});
 
     var sendObj = {
@@ -191,7 +191,7 @@ LDialog.prototype.timeOutClose = function(config, dia_id) {
 
         setTimeout(function() {
             $('#' + dia_id).remove();
-        }, 500)
+        }, 300)
 
     }, config.timeOut);
 };
@@ -205,7 +205,7 @@ LDialog.prototype.close = function(event) {
     setTimeout(function() {
         $('#' + dia_id).remove();
         allType.onClose();
-    }, 500);
+    }, 300);
 };
 
 //取消按钮关闭弹窗
@@ -217,7 +217,7 @@ LDialog.prototype.cancel = function(event) {
     setTimeout(function() {
         $('#' + dia_id).remove();
         allType.onCancel();
-    }, 500)
+    }, 300)
 };
 
 //确定按钮关闭弹窗
@@ -230,7 +230,7 @@ LDialog.prototype.sure = function(event) {
     setTimeout(function() {
         $('#' + dia_id).remove();
         allType.onSure(input);
-    }, 500)
+    }, 300)
 };
 
 //回车键确认事件
@@ -251,10 +251,10 @@ LDialog.keySure = function(dia_id) {
     setTimeout(function() {
         $('#' + dia_id).remove();
         allType.onSure(input);
-    }, 500)
+    }, 300)
 };
 
 LDialog.addOrRemoveClass = function(dia_id) {
     $('#' + dia_id).removeClass('fadeIn').addClass('fadeOut');
-    $('#' + dia_id).find('.l-dialog-box').removeClass('fadeInDown').addClass('fadeOutUp');
+    $('#' + dia_id).find('.l-dialog-box').removeClass('fadeInDown').addClass('fadeOut');
 };
