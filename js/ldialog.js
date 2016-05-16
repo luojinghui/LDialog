@@ -71,23 +71,24 @@ LDialog.prototype.init = function() {
         icon: true, //图标
         iconSize: "",
         iconColor: "",
-        iconData: "",
+        iconData: "", //图标源
         subtitle: "",
         minHeight: "50px", //最小高度
         width: "550px",
         opacity: 0.5,
-        timeOut: -1,
+        timeOut: -1,  //倒计时关闭
         radius: "5px",
-        enterAni: "fadeInDown",
-        globalClose: false,
-        outline: false,
+        enterAni: "fadeInDown", //进入动画
+        verCenter: false, //是否垂直居中
+        globalClose: false, //全局关闭
+        outline: false, //outline效果
         onSure: $.noop,//点击确定的按钮回调
         onCancel: $.noop,//点击取消的按钮回调
         onClose: $.noop//弹窗关闭的回调,返回触发事件
     }, initType, this.config);
 
     this.createHtml(initConfig);
-    console.log(initConfig);
+    //console.log(initConfig);
     allType = initConfig;
 };
 
@@ -126,11 +127,11 @@ LDialog.prototype.createHtml = function(config) {
         dialogBox: $dialogBox,
         dialog: $dialog
     };
-    this.createBom(sendObj);
+    this.createBom(sendObj, config);
     this.addListener(sendObj, config);
 };
 
-LDialog.prototype.createBom = function(accObj) {
+LDialog.prototype.createBom = function(accObj, config) {
     this.createId = this.createId();
 
     accObj.dialog.attr('id', this.createId).append(
@@ -160,7 +161,20 @@ LDialog.prototype.createBom = function(accObj) {
     );
 
     $('body').append(accObj.dialog);
+
+    LDialog.isVerCenter(config, this.createId);
+
     $('body').blur();
+};
+
+LDialog.isVerCenter = function(config, createId) {
+    if(config.verCenter) {
+        var winHeight = $(window).height();
+        var diaHeight = $("#" + createId).find('.l-dialog-box').height();
+        var verCenter = Math.ceil((winHeight - diaHeight) / 2) - 20;
+
+        $("#" + createId).find('.l-dialog-box').css('margin-top', verCenter);
+    }
 };
 
 //重生popId,防止id重复
