@@ -207,19 +207,22 @@
 
         $('.c-7').on('click', function() {
             con = {
-                iconColor: "red",
+                iconColor: "green",
                 iconSize: "30px",
                 width: "400",
                 enterAni: "slideInDown",
+                iconData: "",
                 radius: "0px",
                 opacity: 0.1,
                 footer: false,
                 header: false,
                 globalClose: true,
-                enterAni: "fadeIn"
+                enterAni: "fadeIn",
+                outline: true
+//                timeOut: 8000
             };
 
-            var dialog3 = new LDialog("test-content", con, "error");
+            var dialog3 = new LDialog("数据添加成功", con, "success");
             dialog3.init();
         });
     });
