@@ -2,4 +2,8 @@
 node_modules
 .ideas
 .idea/
+<<<<<<< HEAD
+=======
+node_modules
+>>>>>>> master
 npm-debug.log

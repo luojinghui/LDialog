@@ -67,7 +67,7 @@
 
 内容左边引用的是字体图标，属性是iconData，插件默认引用了52个常用的字体图标，下面有预览入口，用法如图：
 
-<img src="./img/123.jpg" width="926px" height="456px"/>
+进入查看图片：[传送门](http://luojinghui.github.io/LDialog/img/123.jpg)
 
 #### arg3(对象、字符串)
 
