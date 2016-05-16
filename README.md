@@ -43,15 +43,19 @@
 | 参数名        | 数据类型           | 默认值  |   描述  | 备注 |
 |:---------------|:---------------|:-------|:---------:|:----:|
 | sureTitle     | String | “确定” | 重写蒙版底部确定按钮显示文字||
+| subtitle | String | null | 定义副标题内容 ||
 | cancelTitle | String | "取消" | 重写蒙版底部取消按钮显示文字||
+| globalClose | boolean | false | 定义蒙版是否全局关闭 | 点击蒙版以外区域关闭蒙版|
 | title | String | null | 定义蒙版标题 | 若arg3参数也定义此参数，以arg2参数定义为准|
 | footer | boolean | true | 定义蒙版底部按钮组框架是否显示 ||
+| header | boolean | true | 定义蒙版标题模块是否显示 ||
 | icon | boolean | true | 定义蒙版内容块图标是否显示 ||
 | iconSize | String | null | 定义内容块左边图标大小 | |
 | iconColor | String | null | 定义内容块左边图标大小 | |
 | iconData | String | null | 定义图标源|  若arg3参数也定义此参数，以arg2参数定义为准|
 | timeOut | Number | -1 | 定义蒙版显示多长时间后消失 | |
 | opacity | Number | 0.5 | 定义蒙版透明度 | |
+| outline | boolean | false | 定义是否显示outline效果 | 类似facebook蒙版效果,常用于操作成功的提示信息 |
 | radius | Strig | "5px" | 定义蒙版的圆角 | |
 | enterAni | String | "fadeInDown" | 定义进入动画 | |
 | minHeight | String | "50px" | 定义蒙版最低高度| |
