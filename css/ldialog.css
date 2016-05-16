@@ -194,24 +194,7 @@
 
 }
 .l-tip-info-img {
-    /*height: 52px;*/
-    /*width: 52px;*/
-    /*display: inline-block;*/
     vertical-align: middle;
-    /*margin-bottom: 10px;*/
-}
-.l-success {
-    background: url("../img/comfirm/lala.png") no-repeat -14px -61px;
-}
-.l-warning {
-    background: url("../img/comfirm/lala.png") no-repeat -14px -13px;
-    height: 48px;
-}
-.l-question {
-    background: url("../img/comfirm/lala.png") no-repeat -70px -10px;
-}
-.l-close {
-    background: url("../img/comfirm/lala.png") no-repeat -70px -61px;
 }
 .l-tip-info-fonts {
     text-align: left;
