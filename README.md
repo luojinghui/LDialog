@@ -2,14 +2,12 @@
 
 ###LDialog Plugin 介绍
 
-此插件基于jquery开发，能够适用于一般的弹出对话框，弹出框，确认框，输入框等。
-支持IE8+，并且css动画采用animate.css动画函数库，能够应用一般的过渡动画。
+此插件基于jquery开发，能够适用于一般的弹出对话框，弹出框，确认框等。支持主流浏览器。
 
 ###How to use
-*   在头部引入蒙版css文件,同时将fonts字体图标文件放置在css同级目录中。 
+*   在头部引入蒙版css文件,**同时将fonts字体图标文件放置在css同级目录中。** 
 	
 ```
-	<link rel="stylesheet" href="../css/animate.css"/>
 	<link rel="stylesheet" href="../css/ldialog.css"/>
 ```
 
@@ -20,7 +18,7 @@
 	<script src="../js/ldialog.js"></script>
 ```
 
-当在监听事件中需要弹出对话框或蒙版时，开始实例化一个蒙版，并初始化（可同时创建任意数量的蒙版）
+当在监听事件中需要弹出对话框或蒙版时，开始实例化一个蒙版，并初始化（可同时创建任意数量的蒙版),例如这样：
 
 ```
     var dialog = new LDialog("test2", {footer: false}, {btn: {sure: "btn-info"}});
@@ -33,9 +31,9 @@
 
 #### arg1 (字符串)
 
-| 参数名        | 数据类型           | 默认值  |   描述  |
-|:---------------|:---------------|:-------|:---------:|
-| arg1     | String | null | 重写蒙版显示内容|
+| 参数名        | 数据类型           | 默认值  |   描述  | 备注 | 
+|:---------------|:---------------|:-------|:---------:|:------:|
+| arg1     | String | null | 重写蒙版显示内容| 可以是纯文本，也可以是html代码|
 
 
 #### arg2 (对象)
@@ -53,22 +51,31 @@
 | iconSize | String | null | 定义内容块左边图标大小 | |
 | iconColor | String | null | 定义内容块左边图标大小 | |
 | iconData | String | null | 定义图标源|  若arg3参数也定义此参数，以arg2参数定义为准|
-| timeOut | Number | -1 | 定义蒙版显示多长时间后消失 | |
+| timeOut | Number | -1 | 定义蒙版显示多长时间后消失 | 默认使用-1代表不消失 |
 | opacity | Number | 0.5 | 定义蒙版透明度 | |
 | outline | boolean | false | 定义是否显示outline效果 | 类似facebook蒙版效果,常用于操作成功的提示信息 |
 | radius | Strig | "5px" | 定义蒙版的圆角 | |
 | enterAni | String | "fadeInDown" | 定义进入动画 | 可自定义引入animate.css动画库的动画class，本插件预加载slide与fade动画效果 |
 | minHeight | String | "50px" | 定义蒙版最低高度| |
 | width | String | "550px" | 定义蒙版宽度 | |
+| verCenter | boolean | false | 定义蒙版是否居中显示 | 默认不居中，距顶部40px |
 | onSure(data) | function | null | 点击确定按钮的回调函数,可选data参数，获得所有蒙版input输入框的中的值，以数组形式展现| |
 | onCancel |function | null | 点击取消按钮的回调函数| |
 | onClose | function | null | 点击关闭按钮的回调函数 | |
+
+说明：
+
+内容左边引用的是字体图标，属性是iconData，插件默认引用了52个常用的字体图标，下面有预览入口，用法如图：
+
+<img src="./img/123.jpg" width="526px" height="256px"/>
 
 #### arg3(对象、字符串)
 
 已经预定义了几组类型的蒙版显示效果，分别是：
 
 **info、 success 、error 、 confirm 、 input 、 custom**
+
+当使用时，直接赋值给arg3参数相应的字符串即可。
 
 具体形式如下：
 
@@ -120,10 +127,11 @@
     };
 ```
 
-
 按钮组预定了6组：
 
 **btn-default 、 btn-primary 、 btn-error 、 btn-success 、 btn-info、 btn-warning**
+
+样式可在底部demo页面中查看。
 
 可以自定义按钮class，形式如下：
 
@@ -148,12 +156,14 @@ btn: {
 }
 ```
 
-###版本
-
-Version 1.0.1
-
 ### Live Demo 
 
 插件demo：[传送门](http://luojinghui.github.io/LDialog/html/index.html)
 
 字体图标： [传送门](http://luojinghui.github.io/LDialog/font-demo/demo.html)
+
+###版本
+
+*   Version 1.0.0 ：完成蒙版基础功能。
+*   Version 1.0.1 ：增加蒙版居中、全局关闭、自定义进入动画、outline功能。
+
