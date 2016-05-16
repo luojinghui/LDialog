@@ -67,7 +67,7 @@
 
 内容左边引用的是字体图标，属性是iconData，插件默认引用了52个常用的字体图标，下面有预览入口，用法如图：
 
-<img src="./img/123.jpg" width="526px" height="256px"/>
+<img src="./img/123.jpg" width="926px" height="456px"/>
 
 #### arg3(对象、字符串)
 
