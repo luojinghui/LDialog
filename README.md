@@ -35,7 +35,7 @@
 
 | 参数名        | 数据类型           | 默认值  |   描述  |
 |:---------------|:---------------|:-------|:---------:|
-| arg1     | String | null | 重写蒙版显示内容，可以是html代码|
+| arg1     | String | null | 重写蒙版显示内容|
 
 
 #### arg2 (对象)
@@ -52,6 +52,8 @@
 | iconData | String | null | 定义图标源|  若arg3参数也定义此参数，以arg2参数定义为准|
 | timeOut | Number | -1 | 定义蒙版显示多长时间后消失 | |
 | opacity | Number | 0.5 | 定义蒙版透明度 | |
+| radius | Strig | "5px" | 定义蒙版的圆角 | |
+| enterAni | String | "fadeInDown" | 定义进入动画 | |
 | minHeight | String | "50px" | 定义蒙版最低高度| |
 | width | String | "550px" | 定义蒙版宽度 | |
 | onSure(data) | function | null | 点击确定按钮的回调函数,可选data参数，获得所有蒙版input输入框的中的值，以数组形式展现| |
@@ -62,7 +64,7 @@
 
 已经预定义了几组类型的蒙版显示效果，分别是：
 
-**info、 success 、error 、 confirm 、 input 、 custom**
+** info、 success 、error 、 confirm 、 input 、 custom**
 
 具体形式如下：
 
