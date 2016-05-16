@@ -56,14 +56,17 @@
     -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
     box-shadow: 0 3px 9px rgba(0,0,0,.5);
 
-    animation-duration: 1s;
+    animation-duration: .8s;
     animation-timing-function: ease;
 }
+.fadeIn {
+    animation-duration: .3s;
+}
 .fadeOut {
-    animation-duration: .5s;
+    animation-duration: .3s;
 }
 .fadeOutUp {
-    animation-duration: .5s;
+    animation-duration: .3s;
 }
 .l-dialog-title h4 {
     min-height: 24px;
