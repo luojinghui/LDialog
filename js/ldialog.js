@@ -80,6 +80,7 @@ LDialog.prototype.init = function() {
         radius: "5px",
         enterAni: "fadeInDown",
         globalClose: false,
+        outline: false,
         onSure: $.noop,//点击确定的按钮回调
         onCancel: $.noop,//点击取消的按钮回调
         onClose: $.noop//弹窗关闭的回调,返回触发事件
@@ -107,7 +108,7 @@ LDialog.prototype.createHtml = function(config) {
     var $contentBox = $('<div class="l-dialog-content tc"></div>');
     var $contentBoxIn = $('<span class="l-tip-info"></span>');
     var $headerBox = config.header ? $('<div class="l-dialog-title"></div>') : $('<div>').css('display', 'none');
-    var $dialogBox = config.radius !== "5px" ? $('<div>').addClass("l-dialog-box animated " + config.enterAni).css({'width': config.width, 'min-height': config.minHeight, 'border-radius': config.radius}) : $('<div>').addClass("l-dialog-box animated " + config.enterAni).css({'width': config.width, 'min-height': config.minHeight});
+    var $dialogBox = config.outline ? $('<div>').addClass("l-dialog-box animated " + config.enterAni + ' outline').css({'width': config.width, 'min-height': config.minHeight, 'border-radius': config.radius}) : $('<div>').addClass("l-dialog-box animated " + config.enterAni).css({'width': config.width, 'min-height': config.minHeight, 'border-radius': config.radius});
     var $dialog = config.opacity === 0.5 ? $('<div>').addClass("l-dialog animated fadeIn") : $('<div>').addClass("l-dialog animated fadeIn").css({"background-color": "rgba(0,0,0," + config.opacity + ")"});
 
     var sendObj = {
