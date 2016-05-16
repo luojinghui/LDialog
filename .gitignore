@@ -2,3 +2,4 @@
 node_modules
 .ideas
 .idea/
+npm-debug.log
