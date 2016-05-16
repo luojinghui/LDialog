@@ -67,6 +67,7 @@ LDialog.prototype.init = function() {
         cancelTitle: "取消",
         title: "", //标题
         footer: true, //按钮组
+        header: true,
         icon: true, //图标
         iconSize: "",
         iconColor: "",
@@ -78,6 +79,7 @@ LDialog.prototype.init = function() {
         timeOut: -1,
         radius: "5px",
         enterAni: "fadeInDown",
+        globalClose: false,
         onSure: $.noop,//点击确定的按钮回调
         onCancel: $.noop,//点击取消的按钮回调
         onClose: $.noop//弹窗关闭的回调,返回触发事件
@@ -104,7 +106,7 @@ LDialog.prototype.createHtml = function(config) {
     //创建内容盒子元素
     var $contentBox = $('<div class="l-dialog-content tc"></div>');
     var $contentBoxIn = $('<span class="l-tip-info"></span>');
-    var $headerBox = $('<div class="l-dialog-title"></div>');
+    var $headerBox = config.header ? $('<div class="l-dialog-title"></div>') : $('<div>').css('display', 'none');
     var $dialogBox = config.radius !== "5px" ? $('<div>').addClass("l-dialog-box animated " + config.enterAni).css({'width': config.width, 'min-height': config.minHeight, 'border-radius': config.radius}) : $('<div>').addClass("l-dialog-box animated " + config.enterAni).css({'width': config.width, 'min-height': config.minHeight});
     var $dialog = config.opacity === 0.5 ? $('<div>').addClass("l-dialog animated fadeIn") : $('<div>').addClass("l-dialog animated fadeIn").css({"background-color": "rgba(0,0,0," + config.opacity + ")"});
 
@@ -183,6 +185,23 @@ LDialog.prototype.addListener = function(accObj, config) {
     $(window).on('keydown', dia_id, this.enter);
 
     if(config.timeOut !== -1 && config.timeOut > 0) this.timeOutClose(config, dia_id.id);
+
+    if(config.globalClose) this.globalClose(config, dia_id.id);
+};
+
+LDialog.prototype.globalClose = function(config, dia_id) {
+    $('#' + dia_id).click(function() {
+        $(this).removeClass('fadeIn').addClass('fadeOut');
+        $(this).find('.l-dialog-box').removeClass(allType.enterAni).addClass('fadeOut');
+
+        setTimeout(function() {
+            $('#' + dia_id).remove();
+        }, 300)
+    });
+
+    $('#' + dia_id).find('.l-dialog-box').on('click' ,function(event) {
+        event.stopPropagation();
+    });
 };
 
 LDialog.prototype.timeOutClose = function(config, dia_id) {
@@ -256,5 +275,5 @@ LDialog.keySure = function(dia_id) {
 
 LDialog.addOrRemoveClass = function(dia_id) {
     $('#' + dia_id).removeClass('fadeIn').addClass('fadeOut');
-    $('#' + dia_id).find('.l-dialog-box').removeClass('fadeInDown').addClass('fadeOut');
+    $('#' + dia_id).find('.l-dialog-box').removeClass(allType.enterAni).addClass('fadeOut');
 };
