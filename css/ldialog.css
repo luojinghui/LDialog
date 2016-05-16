@@ -47,26 +47,37 @@
     background-color: #ffffff;
     position: relative;
     overflow: hidden;
-    -webkit-background-clip: padding-box;
     background-clip: padding-box;
     border: 1px solid #999;
     border: 1px solid rgba(0,0,0,.2);
     border-radius: 5px;
     outline: 0;
-    -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
     box-shadow: 0 3px 9px rgba(0,0,0,.5);
 
-    animation-duration: .8s;
-    animation-timing-function: ease;
+    -webkit-animation-duration: .8s;
+
+            animation-duration: .8s;
+    -webkit-animation-timing-function: ease;
+            animation-timing-function: ease;
+}
+.outline {
+    outline: 7px gray solid;
+    outline: 7px rgba(0, 18, 25, 0.16) solid;
+    box-shadow: 0 0px 7px rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0px 7px rgba(0,0,0,.5);
+    -moz-box-shadow: 0 0px 7px rgba(0,0,0,.5);
 }
 .fadeIn {
-    animation-duration: .3s;
+    -webkit-animation-duration: .3s;
+            animation-duration: .3s;
 }
 .fadeOut {
-    animation-duration: .3s;
+    -webkit-animation-duration: .3s;
+            animation-duration: .3s;
 }
 .fadeOutUp {
-    animation-duration: .3s;
+    -webkit-animation-duration: .3s;
+            animation-duration: .3s;
 }
 .l-dialog-title h4 {
     min-height: 24px;
