@@ -57,7 +57,7 @@
 | opacity | Number | 0.5 | 定义蒙版透明度 | |
 | outline | boolean | false | 定义是否显示outline效果 | 类似facebook蒙版效果,常用于操作成功的提示信息 |
 | radius | Strig | "5px" | 定义蒙版的圆角 | |
-| enterAni | String | "fadeInDown" | 定义进入动画 | |
+| enterAni | String | "fadeInDown" | 定义进入动画 | 可自定义引入animate.css动画库的动画class，本插件预加载slide与fade动画效果 |
 | minHeight | String | "50px" | 定义蒙版最低高度| |
 | width | String | "550px" | 定义蒙版宽度 | |
 | onSure(data) | function | null | 点击确定按钮的回调函数,可选data参数，获得所有蒙版input输入框的中的值，以数组形式展现| |
