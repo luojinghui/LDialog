@@ -62,7 +62,7 @@
 
 已经预定义了几组类型的蒙版显示效果，分别是：
 
-** info、 success 、error 、 confirm 、 input 、 custom**
+**info、 success 、error 、 confirm 、 input 、 custom**
 
 具体形式如下：
 
