@@ -14,7 +14,9 @@
 
     [class^=c-] {
         height: 30px;
-        width: 150px;
+        width: auto;
+        padding: 2px 10px;
+        margin-right: 10px;
         border: 1px solid #fff;
         background: #049cdb;
         display: inline-block;
@@ -22,16 +24,18 @@
         text-align: center;
         color: #fff;
         line-height: 27px;
+        font-size: 14px;
         cursor: default;
     }
 </style>
 <body>
 <div class="container">
-    <p>123123</p>
-    <div class="c-1">123</div>
-    <div class="c-2">234</div>
-    <div class="c-3">345</div>
-    <div class="c-4">567</div>
+    <div class="c-1">默认初始化效果</div>
+    <div class="c-2">关闭，确定，取消回调事件</div>
+    <div class="c-3">引入预定义按钮组，重写图标样式</div>
+    <div class="c-4">引入html语言</div>
+    <div class="c-5">倒计时关闭蒙版</div>
+    <div class="c-6">重写蒙版大小透明度</div>
 </div>
 
 <!--<div id="custompopover" class="popover left">-->
@@ -141,7 +145,7 @@
 //        type: 选填，对象或字符串，用来配置title和按钮组
 
         $('.c-1').on('click', function() {
-            var dialog = new LDialog("test2", {footer: false});
+            var dialog = new LDialog("test2");
             dialog.init();
         });
 
@@ -149,6 +153,12 @@
             con = {
                 onSure: function(v) {
                     alert(v);
+                },
+                onCancel: function() {
+                    alert("退出了");
+                },
+                onClose: function() {
+                    alert("关闭了");
                 }
             };
 
@@ -158,12 +168,6 @@
 
         $('.c-3').on('click', function() {
             con = {
-//                onCancel: function() {
-//                    alert("退出啦");
-//                },
-//                onClose: function() {
-//                    alert("close");
-//                },
                 iconColor: "#56BD9D",
                 iconSize: "80px"
             };
@@ -173,23 +177,28 @@
         });
 
         $('.c-4').on('click', function() {
-            var value = "如果世界漆黑 其实我很美";
-
-            con = {
-                footer: true,
-                icon: true,
-//                timeOut: 3000,
-                title: "big title 测试标题",
-                iconColor: "#4babab",
-                sureTitle: "你敢点？",
-                iconSize: "20px",
-                iconData: "",
-                subtitle: "title 消失"
+            var value = "<img style='' src='../img/sea.jpg'><div>在测试引入html语言...</div>";
+            var con = {
+                footer: false,
+                icon: false
             };
-
             var dialog4 = new LDialog(value, con, {btn: {sure: "btn-warning"}, iconData:"💛"});
             dialog4.init();
         });
+
+        $('.c-5').on('click', function() {
+            var value = "蒙版将于三秒后关闭！";
+            var con = {footer: false, timeOut: 3000, subtitle: "三秒后关闭蒙版", title: "失败了"};
+            var dialog5 = new LDialog(value, con, "error");
+            dialog5.init();
+        });
+
+        $('.c-6').on('click', function() {
+            var value = "重写蒙版大小透明度";
+            var con = {footer: false, width: "400px", minHeight: "400px", opacity: 0.2};
+            var dialog6 = new LDialog(value, con);
+            dialog6.init();
+        })
     });
 </script>
 </html>
