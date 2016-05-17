@@ -166,4 +166,5 @@ btn: {
 
 *   Version 1.0.0 ：完成蒙版基础功能。
 *   Version 1.0.1 ：增加蒙版居中、全局关闭、自定义进入动画、outline功能。
+*   Version 1.0.2 ：增加对sea.js的支持。
 
