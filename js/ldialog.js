@@ -82,6 +82,7 @@ LDialog.prototype.init = function() {
         verCenter: false, //是否垂直居中
         globalClose: false, //全局关闭
         outline: false, //outline效果
+        move: true,
         onSure: $.noop,//点击确定的按钮回调
         onCancel: $.noop,//点击取消的按钮回调
         onClose: $.noop//弹窗关闭的回调,返回触发事件
@@ -211,7 +212,7 @@ LDialog.prototype.globalClose = function(config, dia_id) {
 
         setTimeout(function() {
             $('#' + dia_id).remove();
-        }, 300)
+        }, 200)
     });
 
     $('#' + dia_id).find('.l-dialog-box').on('click' ,function(event) {
@@ -225,7 +226,7 @@ LDialog.prototype.timeOutClose = function(config, dia_id) {
 
         setTimeout(function() {
             $('#' + dia_id).remove();
-        }, 300)
+        }, 200)
 
     }, config.timeOut);
 };
@@ -239,7 +240,7 @@ LDialog.prototype.close = function(event) {
     setTimeout(function() {
         $('#' + dia_id).remove();
         allType.onClose();
-    }, 300);
+    }, 200);
 };
 
 //取消按钮关闭弹窗
@@ -251,7 +252,7 @@ LDialog.prototype.cancel = function(event) {
     setTimeout(function() {
         $('#' + dia_id).remove();
         allType.onCancel();
-    }, 300)
+    }, 200)
 };
 
 //确定按钮关闭弹窗
@@ -264,7 +265,7 @@ LDialog.prototype.sure = function(event) {
     setTimeout(function() {
         $('#' + dia_id).remove();
         allType.onSure(input);
-    }, 300)
+    }, 200)
 };
 
 //回车键确认事件
@@ -285,7 +286,7 @@ LDialog.keySure = function(dia_id) {
     setTimeout(function() {
         $('#' + dia_id).remove();
         allType.onSure(input);
-    }, 300)
+    }, 200)
 };
 
 LDialog.addOrRemoveClass = function(dia_id) {
