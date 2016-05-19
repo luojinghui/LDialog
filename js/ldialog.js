@@ -67,22 +67,24 @@ LDialog.prototype.init = function() {
         cancelTitle: "取消",
         title: "", //标题
         footer: true, //按钮组
-        header: true,
+        header: true,  //是否显示头部
         icon: true, //图标
-        iconSize: "",
-        iconColor: "",
+        iconSize: "",   //字体大小
+        iconColor: "",   //字体图标颜色
         iconData: "", //图标源
-        subtitle: "",
+        subtitle: "",   //副标题
         minHeight: "50px", //最小高度
         width: "550px",
-        opacity: 0.5,
+        opacity: 0.5,   //蒙版透明度
         timeOut: -1,  //倒计时关闭
-        radius: "5px",
-        enterAni: "fadeInDown", //进入动画
+        radius: "5px",   //表示蒙版圆角
+        enterAni: "fadeIn", //进入动画
         verCenter: false, //是否垂直居中
         globalClose: false, //全局关闭
         outline: false, //outline效果
-        move: true,
+        move: true,   //用来表示是否可以拖拽
+        moveType: 1,  //1代表经典拖拽，2代表黑框拖拽
+        moveOut: false, //是否能够拖拽出显示区域
         onSure: $.noop,//点击确定的按钮回调
         onCancel: $.noop,//点击取消的按钮回调
         onClose: $.noop//弹窗关闭的回调,返回触发事件
@@ -99,7 +101,7 @@ LDialog.prototype.createHtml = function(config) {
     var $icon = (config.iconData !== ""  && config.icon) ? $("<i>").addClass('l-tip-info-img').attr('data-icon', config.iconData).css({'color': config.iconColor, 'font-size': config.iconSize}) : "";
     //创建叉叉关闭和标题元素
     var $close = $('<span class="l-dialog-c">').html('×');
-    var $title = $('<h4 class="l-dialog-t">').html(config.title);
+    var $title = $('<div class="l-dialog-title">').html(config.title);
     var $subtitle = config.subtitle !== "" ? $('<div class="l-dialog-subtitle">').html(config.subtitle) : "";
     //创建确定和取消按钮元素
     var $sure = config.btn.sure ? $('<div>').addClass("btn").addClass(config.btn.sure).text(config.sureTitle) : $('<div>');
@@ -109,7 +111,7 @@ LDialog.prototype.createHtml = function(config) {
     //创建内容盒子元素
     var $contentBox = $('<div class="l-dialog-content tc"></div>');
     var $contentBoxIn = $('<span class="l-tip-info"></span>');
-    var $headerBox = config.header ? $('<div class="l-dialog-title"></div>') : $('<div>').css('display', 'none');
+    var $headerBox = config.header ? $('<div class="l-dialog-title-box" data-move="'+ config.move +'"></div>') : $('<div>').css('display', 'none');
     var $dialogBox = config.outline ? $('<div>').addClass("l-dialog-box animated " + config.enterAni + ' outline').css({'width': config.width, 'min-height': config.minHeight, 'border-radius': config.radius}) : $('<div>').addClass("l-dialog-box animated " + config.enterAni).css({'width': config.width, 'min-height': config.minHeight, 'border-radius': config.radius});
     var $dialog = config.opacity === 0.5 ? $('<div>').addClass("l-dialog animated fadeIn") : $('<div>').addClass("l-dialog animated fadeIn").css({"background-color": "rgba(0,0,0," + config.opacity + ")"});
 
@@ -169,13 +171,41 @@ LDialog.prototype.createBom = function(accObj, config) {
 };
 
 LDialog.isVerCenter = function(config, createId) {
+    var winHeight = $(window).height();
+    var diaHeight = $("#" + createId).find('.l-dialog-box').height();
+    var verTop = Math.ceil((winHeight - diaHeight) / 2) - 10;
+    var winWidth = $(window).width();
+    var diaWidth = $("#" + createId).find('.l-dialog-box').width();
+    var verLeft = Math.ceil((winWidth - diaWidth) / 2);
+
     if(config.verCenter) {
+        $("#" + createId).find('.l-dialog-box').css({
+            top: verTop,
+            left: verLeft
+        });
+        LDialog.calCoordinate(createId);
+    } else {
+        $("#" + createId).find('.l-dialog-box').css({
+            top: '40px',
+            left: verLeft
+        });
+    }
+};
+
+LDialog.calCoordinate = function(createId) {
+    $(window).resize(function(){
         var winHeight = $(window).height();
         var diaHeight = $("#" + createId).find('.l-dialog-box').height();
-        var verCenter = Math.ceil((winHeight - diaHeight) / 2) - 20;
+        var verTop = Math.ceil((winHeight - diaHeight) / 2) - 10;
+        var winWidth = $(window).width();
+        var diaWidth = $("#" + createId).find('.l-dialog-box').width();
+        var verLeft = Math.ceil((winWidth - diaWidth) / 2);
 
-        $("#" + createId).find('.l-dialog-box').css('margin-top', verCenter);
-    }
+        $("#" + createId).find('.l-dialog-box').css({
+            top: verTop,
+            left: verLeft
+        });
+    });
 };
 
 //重生popId,防止id重复
@@ -203,6 +233,62 @@ LDialog.prototype.addListener = function(accObj, config) {
     if(config.timeOut !== -1 && config.timeOut > 0) this.timeOutClose(config, dia_id.id);
 
     if(config.globalClose) this.globalClose(config, dia_id.id);
+
+    if(config.move) LDialog.moveLDialog(config, dia_id.id);
+};
+
+LDialog.moveLDialog = function(config, dia_id) {
+    var isMove = false;
+    var boxX, boxY;
+    var cloneL, cloneT;
+
+    $('#' + dia_id).find('.l-dialog-title').mousedown(function(e) {
+        isMove = true;
+        $(this).css('cursor', 'move');
+
+        e.preventDefault();
+        boxX = e.offsetX;
+        boxY = e.offsetY;
+
+        var cW = $(this).parent().parent().outerWidth() - 5;
+        var cH = $(this).parent().parent().outerHeight() - 5;
+        var offX = e.pageX;
+        var offY = e.pageY;
+        var setOffX = offX - boxX - 1;
+        var setOffY = offY - boxY - 1;
+
+        $('body').append('<div id="l-dialog-clone-box"  class="l-dialog-clone-box" style="width:' + cW + 'px; height:' + cH + 'px; left:' + setOffX + 'px; top: '+ setOffY + 'px;visibility: hidden"></div>');
+
+    }).mouseover(function() {
+        $(this).css('cursor', 'default');
+    });
+
+    $(document).mousemove(function(e) {
+        if(isMove) {
+            var e = e || window.event;
+            var oX = e.clientX - boxX;
+            var oY = e.clientY - boxY;
+
+            oX < 0 && (oX = 0);
+            oY < 0 && (oY = 0);
+
+            oX > ($(window).width() - $(".l-dialog-clone-box").outerWidth()) && (oX = $(window).width() - $(".l-dialog-clone-box").outerWidth());
+            oY > ($(window).height() - $(".l-dialog-clone-box").outerHeight()) && (oY = $(window).height() - $(".l-dialog-clone-box").outerHeight());
+
+            $(".l-dialog-box").css({"left":oX + "px", "top": oY + "px"});
+
+            cloneL = oX;
+            cloneT = oY;
+
+        }
+    }).mouseup(function() {
+        $(this).css('cursor', 'default');
+
+        $(".l-dialog-clone-box").remove();
+        $('#' + dia_id).find('.l-dialog-box').css({"left":cloneL + "px", "top": cloneT + "px"});
+
+        isMove = false;
+    });
 };
 
 LDialog.prototype.globalClose = function(config, dia_id) {
