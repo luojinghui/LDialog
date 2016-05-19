@@ -23,8 +23,8 @@ module.exports = function(grunt) {
         //   mangle: true
         },
         files: {
-            src: ['js/ldialog.js'],
-            dest: 'js/ldialog.min.js',
+            src: ['js/sea-ldialog/ldialog.js'],
+            dest: 'js/sea-ldialog/ldialog.min.js',
             sourceMap: true
         }
     },

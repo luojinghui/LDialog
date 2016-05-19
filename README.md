@@ -39,7 +39,7 @@
 #### arg2 (对象)
 
 | 参数名        | 数据类型           | 默认值  |   描述  | 备注 |
-|:---------------|:---------------|:-------|:---------:|:----:|
+|:---------------|:---------------|:-------|:---------:|:----|
 | sureTitle     | String | “确定” | 重写蒙版底部确定按钮显示文字||
 | subtitle | String | null | 定义副标题内容 ||
 | cancelTitle | String | "取消" | 重写蒙版底部取消按钮显示文字||
@@ -59,6 +59,9 @@
 | minHeight | String | "50px" | 定义蒙版最低高度| |
 | width | String | "550px" | 定义蒙版宽度 | |
 | verCenter | boolean | false | 定义蒙版是否居中显示 | 默认不居中，距顶部40px |
+| move | boolean | true | 定义蒙版是否支持拖拽 | |
+| moveType | Number | 1 | 定义蒙版拖拽方式，可选1或者2 | 1代表经典方式，2代表黑框方式|
+| moveOut | boolean | false | 定义蒙版是否可以拖拽出显示区域 | 默认不可以|
 | onSure(data) | function | null | 点击确定按钮的回调函数,可选data参数，获得所有蒙版input输入框的中的值，以数组形式展现| |
 | onCancel |function | null | 点击取消按钮的回调函数| |
 | onClose | function | null | 点击关闭按钮的回调函数 | |
@@ -166,4 +169,6 @@ btn: {
 
 *   Version 1.0.0 ：完成蒙版基础功能。
 *   Version 1.0.1 ：增加蒙版居中、全局关闭、自定义进入动画、outline功能。
+*   Version 1.0.2 ：增加对sea.js的支持。
+*   Version 1.0.3 ：增加蒙版实时居中，增加蒙版多种拖拽方式的功能。
 

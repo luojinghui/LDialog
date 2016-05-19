@@ -26,6 +26,19 @@
         font-size: 14px;
         cursor: default;
     }
+    .box {
+        position: absolute;
+        display: block;
+        top: 50px;
+        left: 50px;
+        background: #fff;
+    }
+    .box .box-t {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
 </style>
 <body>
 <div class="container">
@@ -47,6 +60,11 @@
     <div class="btn btn-warning">btn-warning</div>
 </div>
 
+<div class="box" style="width: 200px; height: 200px; border: 1px solid gray;">
+    <div class="box-t" style="width: 100%; height: 30px;border-bottom: 1px solid gray">title</div>
+    <div class="box-content" style="height: 170px; width: 100%;">123123</div>
+</div>
+
 <!--三角形-->
 <!--<div id="custompopover" class="popover left">-->
     <!--<div class="arrow"></div>-->
@@ -55,60 +73,155 @@
     <!--</div>-->
 <!--</div>-->
 
-<div class="l-dialog animated fadeIn" style="display: none;">
-    <div class="l-dialog-box animated bounceInDown">
-        <div class="l-dialog-title">
-            <h4 class="l-dialog-t">这是title</h4>
-            <i class="l-dialog-c"></i>
-        </div>
-        <div class="l-dialog-content tc">
-            <span class="l-tip-info">
-                <span class="l-tip-info-img l-success"></span>
-                <span class="l-tip-info-fonts">
-                    这里是一段提示信息的话,这里是一段提示信息的话
-                    <!--这里是一段提示信息的话,这里是一段提示信息的话-->
-                    <!--这里是一段提示信息的话,这里是一段提示信息的话-->
-                </span>
-            </span>
-        </div>
-        <div class="l-dialog-footer">
-            <div class="btn btn-default l-dialog-close">取消</div>
-            <div class="btn btn-success sure">确定</div>
-        </div>
-    </div>
-</div>
-
-<div class="l-dialog animated fadeIn" style="display: none;">
-    <div class="l-dialog-box animated fadeInDown">
-        <div class="l-dialog-title">
-            <h4 class="l-dialog-t">这是title</h4>
-            <i class="l-dialog-c"></i>
-        </div>
-        <div class="l-dialog-content tc">
-            <span class="l-tip-info">
+<!--<div class="l-dialog animated fadeIn" style="display: block;">-->
+    <!--<div class="l-dialog-box animated bounceInDown">-->
+        <!--<div class="l-dialog-title-box">-->
+            <!--&lt;!&ndash;<h4 class="l-dialog-t">这是title</h4>&ndash;&gt;-->
+            <!--<div class="l-dialog-title">234</div>-->
+            <!--<em class="l-dialog-c">×</em>-->
+        <!--</div>-->
+        <!--<div class="l-dialog-content tc">-->
+            <!--<span class="l-tip-info">-->
                 <!--<span class="l-tip-info-img l-success"></span>-->
-                <i class="l-tip-info-img" data-icon="💛"></i>
-                <span class="l-tip-info-fonts">
-                    这里是一段提示信息的话,这里是一段提示信息的话
+                <!--<span class="l-tip-info-fonts">-->
                     <!--这里是一段提示信息的话,这里是一段提示信息的话-->
+                    <!--&lt;!&ndash;这里是一段提示信息的话,这里是一段提示信息的话&ndash;&gt;-->
+                    <!--&lt;!&ndash;这里是一段提示信息的话,这里是一段提示信息的话&ndash;&gt;-->
+                <!--</span>-->
+            <!--</span>-->
+        <!--</div>-->
+        <!--<div class="l-dialog-footer">-->
+            <!--<div class="btn btn-default l-dialog-close">取消</div>-->
+            <!--<div class="btn btn-success sure">确定</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="l-dialog animated fadeIn" style="display: none;">-->
+    <!--<div class="l-dialog-box animated fadeInDown">-->
+        <!--<div class="l-dialog-title">-->
+            <!--<h4 class="l-dialog-t">这是title</h4>-->
+            <!--<i class="l-dialog-c"></i>-->
+        <!--</div>-->
+        <!--<div class="l-dialog-content tc">-->
+            <!--<span class="l-tip-info">-->
+                <!--&lt;!&ndash;<span class="l-tip-info-img l-success"></span>&ndash;&gt;-->
+                <!--<i class="l-tip-info-img" data-icon="💛"></i>-->
+                <!--<span class="l-tip-info-fonts">-->
                     <!--这里是一段提示信息的话,这里是一段提示信息的话-->
-                </span>
-            </span>
-        </div>
-        <div class="l-dialog-footer">
-            <div class="btn btn-default">取消</div>
-            <div class="btn btn-success">确定</div>
-        </div>
-    </div>
-</div>
+                    <!--&lt;!&ndash;这里是一段提示信息的话,这里是一段提示信息的话&ndash;&gt;-->
+                    <!--&lt;!&ndash;这里是一段提示信息的话,这里是一段提示信息的话&ndash;&gt;-->
+                <!--</span>-->
+            <!--</span>-->
+        <!--</div>-->
+        <!--<div class="l-dialog-footer">-->
+            <!--<div class="btn btn-default">取消</div>-->
+            <!--<div class="btn btn-success">确定</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 </body>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/ldialog.js"></script>
 <script>
     $(function() {
+//        var isMove = false;
+//        var boxX, boxY;
+//        var cloneL, cloneT;
+//
+//        $('.l-dialog-title').mousedown(function(e) {
+//            isMove = true;
+//            $(this).css('cursor', 'move');
+//
+//            e.preventDefault();
+//            boxX = e.offsetX;
+//            boxY = e.offsetY;
+//
+//            var cW = $(this).parent().parent().outerWidth() - 5;
+//            var cH = $(this).parent().parent().outerHeight() - 5;
+//            var offX = e.pageX;
+//            var offY = e.pageY;
+//            var setOffX = offX - boxX - 1;
+//            var setOffY = offY - boxY - 1;
+//
+//            $('body').append('<div id="l-dialog-clone-box"  class="l-dialog-clone-box" style="width:' + cW + 'px; height:' + cH + 'px; left:' + setOffX + 'px; top: '+ setOffY + 'px;"></div>');
+//
+//        }).mouseover(function() {
+//            $(this).css('cursor', 'default');
+//        });
+//
+//        $(document).mousemove(function(e) {
+//            if(isMove) {
+////                var e = e || window.event;
+//                var oX = e.clientX - boxX;
+//                var oY = e.clientY - boxY;
+//
+//                oX < 0 && (oX = 0);
+//                oY < 0 && (oY = 0);
+//
+//                oX > ($(window).width() - $(".l-dialog-box").outerWidth()) && (oX = $(window).width() - $(".l-dialog-box").outerWidth());
+//                oY > ($(window).height() - $(".l-dialog-box").outerHeight()) && (oY = $(window).height() - $(".l-dialog-box").outerHeight());
+//
+//                $(".l-dialog-clone-box").css({"left":oX + "px", "top": oY + "px"});
+//
+//                cloneL = oX;
+//                cloneT = oY;
+//
+//            }
+//        }).mouseup(function() {
+//            $(this).css('cursor', 'default');
+//
+//            $(".l-dialog-clone-box").remove();
+//            $('.l-dialog-box').animate({"left":cloneL + "px", "top": cloneT + "px"}, 400);
+//
+//            isMove = false;
+//        });
+
+
+
+//        var clipboard = new Clipboard('.copy-btn');
+//
+//        $(document).ready(function() {
+//            $('a.copy-btn').click(function() {
+//                if(identify() == 'Safari') {
+//                    $('.copy-tip-message').text('Press ⌘-C to copy');
+//                }
+//                else {
+//                    $('.copy-tip-container').css( {
+//                        'width': '56px',
+//                        'margin-left': '27px'
+//                    });
+//                    $('.copy-tip').css('margin-left', '-7px');
+//                    $('.copy-tip-message').text('Copied!');
+//                }
+//                $(this).next().show();
+//            }).mouseout(function() {
+//                $(this).next().hide();
+//            });
+//
+//            $('a.copy-btn').mouseover(function(e) {
+//                $('a.copy-btn').style('color', '#015ba7');
+//            });
+//        });
+
+
+//
+//        $('.box-t').mousemove(function() {
+//            console.log("鼠标在移动");
+//        });
+//
+//        $('.box-t').mouseup(function() {
+//            console.log("鼠标松开了");
+//        });
+
+
 //        $('.l-dialog').click(function() {
 //            $('.l-dialog').removeClass('fadeIn').addClass('fadeOut');
 //            $('.l-dialog-box').removeClass('fadeInDown').addClass('fadeOutUp');
+//        });
+
+//        $('.l-dialog-c').click(function() {
+//            $('.l-dialog').remove();
 //        });
 //
 //        $('.l-dialog-box').on('click' ,function(event) {
@@ -149,17 +262,21 @@
         $('.c-2').on('click', function() {
             con = {
                 onSure: function(v) {
-                    alert(v);
+                    var dia = new LDialog("content", {enterAni: "zoomIn", onSure: function() {
+                        console.log(v);
+                    }}, "success");
+                    dia.init();
                 },
-                onCancel: function() {
-                    alert("退出了");
-                },
-                onClose: function() {
-                    alert("关闭了");
-                }
+//                onCancel: function() {
+//                    alert("退出了");
+//                },
+//                onClose: function() {
+//                    alert("关闭了");
+//                },
+                enterAni: ""
             };
 
-            var dialog2 = new LDialog("test", con, "input");
+            var dialog2 = new LDialog("test", con, "error");
             dialog2.init();
         });
 
@@ -169,7 +286,9 @@
                 iconSize: "80px",
                 enterAni: "slideInDown",
                 radius: "0px",
-                header: false
+                header: true,
+                footer: false,
+                verCenter: true
             };
 
             var dialog3 = new LDialog("test-content", con, "success");
@@ -190,14 +309,14 @@
 
         $('.c-5').on('click', function() {
             var value = "蒙版将于三秒后关闭！";
-            var con = {footer: false, timeOut: 3000, subtitle: "三秒后关闭蒙版", title: "失败了"};
+            var con = {footer: false, timeOut: -1, subtitle: "三秒后关闭蒙版", title: "失败了"};
             var dialog5 = new LDialog(value, con, "error");
             dialog5.init();
         });
 
         $('.c-6').on('click', function() {
             var value = "重写蒙版大小透明度";
-            var con = {footer: false, width: "400px", minHeight: "400px", opacity: 0.2};
+            var con = {footer: false, width: "400px", minHeight: "200px", opacity: 0.2, verCenter: true};
             var dialog6 = new LDialog(value, con);
             dialog6.init();
         });
@@ -214,7 +333,7 @@
                 footer: false,
                 header: false,
                 globalClose: true,
-                enterAni: "fadeIn",
+                enterAni: "slideInDown",
                 outline: true,
                 verCenter: true
 //                timeOut: 8000

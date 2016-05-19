@@ -37,14 +37,13 @@
     -webkit-overflow-scrolling: touch;
 }
 .l-dialog-box {
-    position: relative;
+    position: absolute;
     width: 550px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 40px;
+    /*margin-top: 40px;*/
     color: #535e66;
     background-color: #ffffff;
-    position: relative;
     overflow: hidden;
     background-clip: padding-box;
     border: 1px solid #999;
@@ -56,6 +55,16 @@
             animation-duration: .8s;
     -webkit-animation-timing-function: ease;
             animation-timing-function: ease;
+}
+#l-dialog-clone-box {
+    position:absolute;
+    border:3px solid #666;
+    border:3px solid rgba(0,0,0,.5);
+    cursor:move;
+    z-index: 19940424;
+    background-color:#fff;
+    background-color:rgba(255,255,255,.3);
+    filter:alpha(opacity=50);
 }
 .outline {
     outline: 7px gray solid;
@@ -76,30 +85,32 @@
     -webkit-animation-duration: .3s;
             animation-duration: .3s;
 }
-.l-dialog-title h4 {
+.l-dialog-title {
     min-height: 24px;
 }
 .l-dialog-title {
-    padding: 13px 15px;
+    padding: 13px 40px 13px 15px;
     border-bottom: 1px solid #e5e5e5;
     position: relative;
+    background-color: #f3f3f3;
 }
 .l-dialog-subtitle {
     font-size: 14px;
 }
 .l-dialog-c {
-    height: 20px;
+    height: 29px;
     width: 20px;
     position: absolute;
-    right: 10px;
+    right: 13px;
     top: 10px;
     cursor: pointer;
     font-size: 25px;
     font-weight: 400;
-    line-height: 1;
+    line-height: 23px;
     color: #636363;
     opacity: 0.2;
-    /*text-shadow: 0 1px 0 #fff;*/
+    /* text-shadow: 0 1px 0 #fff; */
+    text-align: center;
 }
 .l-dialog-c:hover {
     opacity: 0.5;
@@ -902,4 +913,70 @@
 .bounceInDown {
     -webkit-animation-name: bounceInDown;
     animation-name: bounceInDown;
+}
+
+@-webkit-keyframes zoomIn {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.zoomIn {
+    -webkit-animation-name: zoomIn;
+    animation-name: zoomIn;
+}
+
+@-webkit-keyframes zoomOut {
+    from {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3);
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes zoomOut {
+    from {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3);
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.zoomOut {
+    -webkit-animation-name: zoomOut;
+    animation-name: zoomOut;
 }
