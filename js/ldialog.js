@@ -91,7 +91,6 @@ LDialog.prototype.init = function() {
     }, initType, this.config);
 
     this.createHtml(initConfig);
-    //console.log(initConfig);
     allType = initConfig;
 };
 
@@ -140,11 +139,11 @@ LDialog.prototype.createBom = function(accObj, config) {
     accObj.dialog.attr('id', this.createId).append(
         accObj.dialogBox.append(
             accObj.headerBox.append(
-                accObj.title
+                accObj.title.append(
+                    accObj.subtitle
+                )
             ).append(
                 accObj.close
-            ).append(
-                accObj.subtitle
             )
         ).append(
             accObj.contentBox.append(
@@ -257,7 +256,12 @@ LDialog.moveLDialog = function(config, dia_id) {
         var setOffX = offX - boxX - 1;
         var setOffY = offY - boxY - 1;
 
-        $('body').append('<div id="l-dialog-clone-box"  class="l-dialog-clone-box" style="width:' + cW + 'px; height:' + cH + 'px; left:' + setOffX + 'px; top: '+ setOffY + 'px;visibility: hidden"></div>');
+        if(config.moveType === 1) {
+            $('body').append('<div id="l-dialog-clone-box"  class="l-dialog-clone-box" style="width:' + cW + 'px; height:' + cH + 'px; left:' + setOffX + 'px; top: '+ setOffY + 'px;visibility: hidden"></div>');
+        } else {
+            $('body').append('<div id="l-dialog-clone-box"  class="l-dialog-clone-box" style="width:' + cW + 'px; height:' + cH + 'px; left:' + setOffX + 'px; top: '+ setOffY + 'px;"></div>');
+        }
+
 
     }).mouseover(function() {
         $(this).css('cursor', 'default');
@@ -269,17 +273,23 @@ LDialog.moveLDialog = function(config, dia_id) {
             var oX = e.clientX - boxX;
             var oY = e.clientY - boxY;
 
-            oX < 0 && (oX = 0);
-            oY < 0 && (oY = 0);
+            //是否可以拖拽出显示区域
+            if(!config.moveOut) {
+                oX < 0 && (oX = 0);
+                oY < 0 && (oY = 0);
+                oX > ($(window).width() - $(".l-dialog-clone-box").outerWidth()) && (oX = $(window).width() - $(".l-dialog-clone-box").outerWidth());
+                oY > ($(window).height() - $(".l-dialog-clone-box").outerHeight()) && (oY = $(window).height() - $(".l-dialog-clone-box").outerHeight());
+            }
 
-            oX > ($(window).width() - $(".l-dialog-clone-box").outerWidth()) && (oX = $(window).width() - $(".l-dialog-clone-box").outerWidth());
-            oY > ($(window).height() - $(".l-dialog-clone-box").outerHeight()) && (oY = $(window).height() - $(".l-dialog-clone-box").outerHeight());
-
-            $(".l-dialog-box").css({"left":oX + "px", "top": oY + "px"});
+            //是否是经典拖拽
+            if(config.moveType === 1) {
+                $(".l-dialog-box").css({"left":oX + "px", "top": oY + "px"});
+            } else {
+                $(".l-dialog-clone-box").css({"left":oX + "px", "top": oY + "px"});
+            }
 
             cloneL = oX;
             cloneT = oY;
-
         }
     }).mouseup(function() {
         $(this).css('cursor', 'default');
