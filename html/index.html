@@ -309,7 +309,7 @@
 
         $('.c-5').on('click', function() {
             var value = "蒙版将于三秒后关闭！";
-            var con = {footer: false, timeOut: 3000, subtitle: "三秒后关闭蒙版", title: "失败了"};
+            var con = {footer: false, timeOut: -1, subtitle: "三秒后关闭蒙版", title: "失败了"};
             var dialog5 = new LDialog(value, con, "error");
             dialog5.init();
         });
