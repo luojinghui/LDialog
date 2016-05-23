@@ -248,10 +248,10 @@
 }
 .form-line [type=text], .form-line [type=password], .form-line [type=date] , .form-line [type=tel], .form-line textarea {
     height: 30px;
-    width: -webkit-calc(100% - 140px);
-    width: -moz-calc(100% - 140px);
-    width: calc(100% - 140px);
-    padding-left: 10px;
+    width: -webkit-calc(100% - 115px);
+    width: -moz-calc(100% - 115px);
+    width: calc(100% - 115px);
+    padding-left: 5px;
     font-size: 14px;
     vertical-align: middle;
     border: 1px solid #E5E5E5;
@@ -276,7 +276,7 @@
     zoom: 1;
     *display: inline;
     text-align: right;
-    width: 100px;
+    width: 80px;
 }
 .form-line .l-radio-box {
     display: inline-block;
