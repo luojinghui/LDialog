@@ -42,6 +42,7 @@
 </style>
 <body>
 <div class="container">
+    <div class="c-8">text input</div>
     <div class="c-1">默认初始化效果</div>
     <div class="c-2">关闭，确定，取消回调事件</div>
     <div class="c-3">引入预定义按钮组，重写图标样式</div>
@@ -60,10 +61,10 @@
     <div class="btn btn-warning">btn-warning</div>
 </div>
 
-<div class="box" style="width: 200px; height: 200px; border: 1px solid gray;">
-    <div class="box-t" style="width: 100%; height: 30px;border-bottom: 1px solid gray">title</div>
-    <div class="box-content" style="height: 170px; width: 100%;">123123</div>
-</div>
+<!--<div class="box" style="width: 200px; height: 200px; border: 1px solid gray;">-->
+    <!--<div class="box-t" style="width: 100%; height: 30px;border-bottom: 1px solid gray">title</div>-->
+    <!--<div class="box-content" style="height: 170px; width: 100%;">123123</div>-->
+<!--</div>-->
 
 <!--三角形-->
 <!--<div id="custompopover" class="popover left">-->
@@ -73,29 +74,100 @@
     <!--</div>-->
 <!--</div>-->
 
-<!--<div class="l-dialog animated fadeIn" style="display: block;">-->
-    <!--<div class="l-dialog-box animated bounceInDown">-->
-        <!--<div class="l-dialog-title-box">-->
-            <!--&lt;!&ndash;<h4 class="l-dialog-t">这是title</h4>&ndash;&gt;-->
-            <!--<div class="l-dialog-title">234</div>-->
-            <!--<em class="l-dialog-c">×</em>-->
-        <!--</div>-->
-        <!--<div class="l-dialog-content tc">-->
-            <!--<span class="l-tip-info">-->
-                <!--<span class="l-tip-info-img l-success"></span>-->
-                <!--<span class="l-tip-info-fonts">-->
-                    <!--这里是一段提示信息的话,这里是一段提示信息的话-->
-                    <!--&lt;!&ndash;这里是一段提示信息的话,这里是一段提示信息的话&ndash;&gt;-->
-                    <!--&lt;!&ndash;这里是一段提示信息的话,这里是一段提示信息的话&ndash;&gt;-->
-                <!--</span>-->
-            <!--</span>-->
-        <!--</div>-->
-        <!--<div class="l-dialog-footer">-->
-            <!--<div class="btn btn-default l-dialog-close">取消</div>-->
-            <!--<div class="btn btn-success sure">确定</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
+<div class="l-dialog animated fadeIn" style="display: block;">
+    <div class="l-dialog-box animated bounceInDown" style="top: 50px; left: 400px;width: 400px">
+        <div class="l-dialog-title-box">
+            <!--<h4 class="l-dialog-t">这是title</h4>-->
+            <div class="l-dialog-title">输入框组</div>
+            <em class="l-dialog-c">×</em>
+        </div>
+        <div class="l-dialog-content tc">
+            <span class="l-tip-info" style="display: none;">
+                <span class="l-tip-info-img l-success"></span>
+                <span class="l-tip-info-fonts">
+                    这里是一段提示信息的话,这里是一段提示信息的话
+                </span>
+            </span>
+            <div class="l-form-box">
+                <div class="form-line">
+                    <span class="left-form-info">用户名</span>
+                    <input type="text" placeholder="23423" value=""/>
+                </div>
+
+                <div class="form-line">
+                    <span class="left-form-info">密码</span>
+                    <input type="password" placeholder="密码" value=""/>
+                </div>
+
+                <div class="form-line">
+                    <span class="left-form-info">输入什么</span>
+                    <textarea ></textarea>
+                </div>
+
+                <div class="form-line">
+                    <span class="left-form-info">请选择</span>
+                    <div class="l-radio-box">
+                        <label>
+                            <input type="radio" name="bb"/>
+                            <span>羽毛球</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="bb"/>
+                            <span>篮球</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="bb"/>
+                            <span>台球</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-line">
+                    <span class="left-form-info">请选择</span>
+                    <div class="l-radio-box">
+                        <label>
+                            <input type="checkbox" name="aa"/>
+                            <span>台球</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="aa"/>
+                            <span>篮球</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-line">
+                    <span class="left-form-info">下拉框</span>
+                    <select>
+                        <option value="">123</option>
+                        <option value="">234</option>
+                        <option value="">345</option>
+                    </select>
+
+                    <select>
+                        <option value="">123</option>
+                        <option value="">234</option>
+                        <option value="">345</option>
+                    </select>
+
+                    <select>
+                        <option value="">123</option>
+                        <option value="">234</option>
+                        <option value="">345</option>
+                    </select>
+                </div>
+
+                <div class="form-line">
+                    <input type="text" class="l-center-input" placeholder="输入值"/>
+                </div>
+            </div>
+        </div>
+        <div class="l-dialog-footer" style="display: block;">
+            <div class="btn btn-default l-dialog-close">取消</div>
+            <div class="btn btn-success sure">确定</div>
+        </div>
+    </div>
+</div>
 
 <!--<div class="l-dialog animated fadeIn" style="display: none;">-->
     <!--<div class="l-dialog-box animated fadeInDown">-->
@@ -120,62 +192,87 @@
         <!--</div>-->
     <!--</div>-->
 <!--</div>-->
+
+<div class="aaaa" style="cursor: pointer;">
+    aaaaaaaaaaaaaaa
+</div>
 </body>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/ldialog.js"></script>
 <script>
     $(function() {
-//        var isMove = false;
-//        var boxX, boxY;
-//        var cloneL, cloneT;
-//
-//        $('.l-dialog-title').mousedown(function(e) {
-//            isMove = true;
-//            $(this).css('cursor', 'move');
-//
-//            e.preventDefault();
-//            boxX = e.offsetX;
-//            boxY = e.offsetY;
-//
-//            var cW = $(this).parent().parent().outerWidth() - 5;
-//            var cH = $(this).parent().parent().outerHeight() - 5;
-//            var offX = e.pageX;
-//            var offY = e.pageY;
-//            var setOffX = offX - boxX - 1;
-//            var setOffY = offY - boxY - 1;
-//
-//            $('body').append('<div id="l-dialog-clone-box"  class="l-dialog-clone-box" style="width:' + cW + 'px; height:' + cH + 'px; left:' + setOffX + 'px; top: '+ setOffY + 'px;"></div>');
-//
-//        }).mouseover(function() {
-//            $(this).css('cursor', 'default');
-//        });
-//
-//        $(document).mousemove(function(e) {
-//            if(isMove) {
-////                var e = e || window.event;
-//                var oX = e.clientX - boxX;
-//                var oY = e.clientY - boxY;
-//
-//                oX < 0 && (oX = 0);
-//                oY < 0 && (oY = 0);
-//
-//                oX > ($(window).width() - $(".l-dialog-box").outerWidth()) && (oX = $(window).width() - $(".l-dialog-box").outerWidth());
-//                oY > ($(window).height() - $(".l-dialog-box").outerHeight()) && (oY = $(window).height() - $(".l-dialog-box").outerHeight());
-//
-//                $(".l-dialog-clone-box").css({"left":oX + "px", "top": oY + "px"});
-//
-//                cloneL = oX;
-//                cloneT = oY;
-//
-//            }
-//        }).mouseup(function() {
-//            $(this).css('cursor', 'default');
-//
-//            $(".l-dialog-clone-box").remove();
-//            $('.l-dialog-box').animate({"left":cloneL + "px", "top": cloneT + "px"}, 400);
-//
-//            isMove = false;
-//        });
+        
+        $('.aaaa').on('click', function() {
+            $.ajax({
+                type: "POST",
+                url: "se.html",
+                data: "html",
+                success: function(msg){
+                    var dia = new LDialog(msg, {});
+                    dia.init();
+                }
+            });
+        });
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        var isMove = false;
+        var boxX, boxY;
+        var cloneL, cloneT;
+
+        $('.l-dialog-title').mousedown(function(e) {
+            isMove = true;
+            $(this).css('cursor', 'move');
+
+            e.preventDefault();
+            boxX = e.offsetX;
+            boxY = e.offsetY;
+
+            var cW = $(this).parent().parent().outerWidth() - 5;
+            var cH = $(this).parent().parent().outerHeight() - 5;
+            var offX = e.pageX;
+            var offY = e.pageY;
+            var setOffX = offX - boxX - 1;
+            var setOffY = offY - boxY - 1;
+
+            $('body').append('<div id="l-dialog-clone-box"  class="l-dialog-clone-box" style="width:' + cW + 'px; height:' + cH + 'px; left:' + setOffX + 'px; top: '+ setOffY + 'px;"></div>');
+
+        }).mouseover(function() {
+            $(this).css('cursor', 'default');
+        });
+
+        $(document).mousemove(function(e) {
+            if(isMove) {
+//                var e = e || window.event;
+                var oX = e.clientX - boxX;
+                var oY = e.clientY - boxY;
+
+                oX < 0 && (oX = 0);
+                oY < 0 && (oY = 0);
+
+                oX > ($(window).width() - $(".l-dialog-box").outerWidth()) && (oX = $(window).width() - $(".l-dialog-box").outerWidth());
+                oY > ($(window).height() - $(".l-dialog-box").outerHeight()) && (oY = $(window).height() - $(".l-dialog-box").outerHeight());
+
+                $(".l-dialog-clone-box").css({"left":oX + "px", "top": oY + "px"});
+
+                cloneL = oX;
+                cloneT = oY;
+
+            }
+        }).mouseup(function() {
+            $(this).css('cursor', 'default');
+
+            $(".l-dialog-clone-box").remove();
+            $('.l-dialog-box').animate({"left":cloneL + "px", "top": cloneT + "px"}, 400);
+
+            isMove = false;
+        });
 
 
 
@@ -220,10 +317,10 @@
 //            $('.l-dialog-box').removeClass('fadeInDown').addClass('fadeOutUp');
 //        });
 
-//        $('.l-dialog-c').click(function() {
-//            $('.l-dialog').remove();
-//        });
-//
+        $('.l-dialog-c').click(function() {
+            $('.l-dialog').remove();
+        });
+
 //        $('.l-dialog-box').on('click' ,function(event) {
 //            event.stopPropagation();
 //        });
@@ -273,7 +370,8 @@
 //                onClose: function() {
 //                    alert("关闭了");
 //                },
-                enterAni: ""
+                enterAni: "",
+                moveType: 2
             };
 
             var dialog2 = new LDialog("test", con, "error");
@@ -296,10 +394,12 @@
         });
 
         $('.c-4').on('click', function() {
-            var value = "<img style='' src='../img/sea.jpg'><div>在测试引入html语言...</div>";
+            var value = "<img style='' src='../img/sea.jpg'>";
             var con = {
                 footer: false,
                 icon: false,
+                header: true,
+                globalClose: true,
                 radius: "0px",
                 enterAni: "bounceInDown"
             };
@@ -342,6 +442,30 @@
             var dialog3 = new LDialog("数据添加成功", con, "success");
             dialog3.init();
         });
+
+        $('.c-8').on('click', function() {
+            $.ajax({
+                type: "POST",
+                url: "se.html",
+                data: "html",
+                success: function(msg){
+                    con = {
+                        globalClose: true,
+                        width: "300px",
+                        radius: 0,
+//                        iconData: "",
+                        iconSize: "40px",
+                        iconColor: "green",
+                        footer: true
+                    };
+
+                    var value = "简单点说话的方式简单点,递进的情绪请省略,你又不是个演员,别设计那些情节,没意见我只想看看你怎么圆,该配合你演出的我演视而不见,在逼一个最爱你的人即兴表演,什么时候我们开始收起了底线,顺应时代的改变看那些拙劣的表演";
+//            var value = "asdfasdfasdfsdf";
+                    var dia = new LDialog("<div class='form-line'><input type='text'  class='l-center-input'/></div>", con, "input");
+                    dia.init();
+                }
+            });
+        })
     });
 </script>
 </html>
