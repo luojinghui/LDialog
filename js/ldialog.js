@@ -63,40 +63,50 @@ LDialog.prototype.init = function() {
 
     var initConfig = $.extend(true, {
         btn: {},
-        sureTitle: "确定",
         cancelTitle: "取消",
-        title: "", //标题
+        enterAni: "fadeIn", //进入动画
         footer: true, //按钮组
+        globalClose: false, //全局关闭
         header: true,  //是否显示头部
         icon: true, //图标
-        iconSize: "",   //字体大小
         iconColor: "",   //字体图标颜色
         iconData: "", //图标源
-        subtitle: "",   //副标题
+        iconSize: "",   //字体大小
         minHeight: "50px", //最小高度
-        width: "550px",
-        opacity: 0.5,   //蒙版透明度
-        timeOut: -1,  //倒计时关闭
-        radius: "5px",   //表示蒙版圆角
-        enterAni: "fadeIn", //进入动画
-        verCenter: false, //是否垂直居中
-        globalClose: false, //全局关闭
-        outline: false, //outline效果
         move: true,   //用来表示是否可以拖拽
         moveType: 1,  //1代表经典拖拽，2代表黑框拖拽
         moveOut: false, //是否能够拖拽出显示区域
         onSure: $.noop,//点击确定的按钮回调
         onCancel: $.noop,//点击取消的按钮回调
-        onClose: $.noop//弹窗关闭的回调,返回触发事件
+        onClose: $.noop,//弹窗关闭的回调,返回触发事件
+        opacity: 0.3,   //蒙版透明度
+        outline: false, //outline效果
+        radius: "5px",   //表示蒙版圆角
+        subtitle: "",   //副标题
+        sureTitle: "确定",
+        timeOut: -1,  //倒计时关闭
+        title: "", //标题
+        verCenter: false, //是否垂直居中
+        width: "550px"
+
+        //input: [{
+        //    formType: "text",
+        //    value: "",
+        //    placeH: "",
+        //    maxlength: -1
+        //}],
     }, initType, this.config);
 
     this.createHtml(initConfig);
+    console.log(initConfig);
     allType = initConfig;
 };
 
 LDialog.prototype.createHtml = function(config) {
     //创建icon和content元素
-    var $txt = config.icon ? $("<span>").addClass('l-tip-info-fonts').html(this.appHtml) : $("<span>").addClass('l-tip-info-fonts').html(this.appHtml).css("margin-left", 0);
+    var $txt = (config.iconData === "") ? $("<div>").addClass('l-tip-info-fonts').html(this.appHtml).css({
+        display: "block"
+    }) : $("<div>").addClass('l-tip-info-fonts').html(this.appHtml);
     var $icon = (config.iconData !== ""  && config.icon) ? $("<i>").addClass('l-tip-info-img').attr('data-icon', config.iconData).css({'color': config.iconColor, 'font-size': config.iconSize}) : "";
     //创建叉叉关闭和标题元素
     var $close = $('<span class="l-dialog-c">').html('×');
@@ -109,10 +119,10 @@ LDialog.prototype.createHtml = function(config) {
     var $footer = config.footer ? $('<div class="l-dialog-footer">') : $('<div class="l-dialog-footer" style="display: none!important"></div>');
     //创建内容盒子元素
     var $contentBox = $('<div class="l-dialog-content tc"></div>');
-    var $contentBoxIn = $('<span class="l-tip-info"></span>');
+    var $contentBoxIn = $('<div class="l-tip-info"></div>');
     var $headerBox = config.header ? $('<div class="l-dialog-title-box" data-move="'+ config.move +'"></div>') : $('<div>').css('display', 'none');
     var $dialogBox = config.outline ? $('<div>').addClass("l-dialog-box animated " + config.enterAni + ' outline').css({'width': config.width, 'min-height': config.minHeight, 'border-radius': config.radius}) : $('<div>').addClass("l-dialog-box animated " + config.enterAni).css({'width': config.width, 'min-height': config.minHeight, 'border-radius': config.radius});
-    var $dialog = config.opacity === 0.5 ? $('<div>').addClass("l-dialog animated fadeIn") : $('<div>').addClass("l-dialog animated fadeIn").css({"background-color": "rgba(0,0,0," + config.opacity + ")"});
+    var $dialog = config.opacity === 0.3 ? $('<div>').addClass("l-dialog animated fadeIn") : $('<div>').addClass("l-dialog animated fadeIn").css({"background-color": "rgba(0,0,0," + config.opacity + ")"});
 
     var sendObj = {
         txt: $txt,
@@ -166,7 +176,13 @@ LDialog.prototype.createBom = function(accObj, config) {
 
     LDialog.isVerCenter(config, this.createId);
 
+    LDialog.appInput(config, this.createId);
+
     $('body').blur();
+};
+
+LDialog.appInput = function() {
+      
 };
 
 LDialog.isVerCenter = function(config, createId) {
@@ -234,6 +250,7 @@ LDialog.prototype.addListener = function(accObj, config) {
     if(config.globalClose) this.globalClose(config, dia_id.id);
 
     if(config.move) LDialog.moveLDialog(config, dia_id.id);
+
 };
 
 LDialog.moveLDialog = function(config, dia_id) {
