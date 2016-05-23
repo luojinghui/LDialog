@@ -181,8 +181,56 @@ LDialog.prototype.createBom = function(accObj, config) {
     $('body').blur();
 };
 
-LDialog.appInput = function() {
-      
+LDialog.appInput = function(config, id) {
+    var inputArray = config.input;
+    var $inputBox = $('<div class="l-form-box">');
+    var $textarea = $('<textarea>');
+    var $input = $('<input />');
+    
+    if(inputArray !== undefined) {
+        inputArray.forEach(function(v, i) {
+            var inputAI = inputArray[i];
+            
+            switch(inputAI.type) {
+                case "text":
+                    $inputBox = LDialog.createInputDom(inputAI, $inputBox, $input);
+                    break;
+                case "textarea":
+                    $inputBox = LDialog.createInputDom(inputAI, $inputBox, $textarea);
+                    break;
+                default:
+                    $inputBox = LDialog.createInputDom(inputAI, $inputBox, $input);
+                    break;
+            }
+            $textarea = $('<textarea>');
+            $input = $('<input />');
+            $('.l-tip-info-fonts').append($inputBox);
+        });
+    }
+};
+
+LDialog.createInputDom = function(inputAI, $inputBox, $inputType) {
+    var $inputLine = $('<div class="form-line">');
+    var $leftSpan = $('<span class="left-form-info">');
+    var inputType = inputAI.type === null ? inputAI.type : "text";
+
+    $inputType.attr({
+        value: inputAI.value,
+        placeholder: inputAI.placeH,
+        maxlength: inputAI.maxlength
+    });
+    inputAI.type !== "textarea" ? $inputType.attr({type: inputType}) : $inputType;
+    $inputType.width !== null ? $inputType.css("width", inputAI.width) : $inputType;
+    $inputType.height !== null ? $inputType.css("height", inputAI.height) : $inputType;
+    if(inputAI.verCenter) {
+        $inputType.addClass('l-center-input');
+        $inputLine.append($inputType);
+    } else {
+        $leftSpan.html(inputAI.leftInfo);
+        $inputLine.append($leftSpan).append($inputType);
+    }
+    $inputBox.append($inputLine);
+    return $inputBox;
 };
 
 LDialog.isVerCenter = function(config, createId) {
@@ -370,7 +418,7 @@ LDialog.prototype.cancel = function(event) {
 
 //确定按钮关闭弹窗
 LDialog.prototype.sure = function(event) {
-    var input = "test value";
+    var input = LDialog.getAllValue();
     var dia_id = event.data.id;
 
     LDialog.addOrRemoveClass(dia_id);
@@ -405,4 +453,9 @@ LDialog.keySure = function(dia_id) {
 LDialog.addOrRemoveClass = function(dia_id) {
     $('#' + dia_id).removeClass('fadeIn').addClass('fadeOut');
     $('#' + dia_id).find('.l-dialog-box').removeClass(allType.enterAni).addClass('fadeOut');
+};
+
+LDialog.getAllValue = function() {
+    var allForm = $('.form-line');
+    console.log(allForm);
 };
