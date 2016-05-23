@@ -441,7 +441,7 @@ LDialog.prototype.enter = function(event) {
 };
 
 LDialog.keySure = function(dia_id) {
-    var input = "test value";
+    var input = LDialog.getAllValue();
 
     LDialog.addOrRemoveClass(dia_id);
     setTimeout(function() {
@@ -457,5 +457,15 @@ LDialog.addOrRemoveClass = function(dia_id) {
 
 LDialog.getAllValue = function() {
     var allForm = $('.form-line');
-    console.log(allForm);
+    var getAllValue = [];
+
+    [].forEach.call(allForm, function(v, i) {
+        if($(allForm[i]).find('input').size() === 1) {
+            getAllValue.push($(allForm[i]).find('input').val());
+        } else {
+            getAllValue.push($(allForm[i]).find('textarea').val());
+        }
+    });
+    
+    return getAllValue;
 };
