@@ -15,6 +15,7 @@ module.exports = function(grunt) {
         options: {
             stripBanners: true,
             banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+            footer:'\n/*! <%= pkg.name %> 最后修改于： <%= grunt.template.today("yyyy-mm-dd") %> */',//添加footer
             beautify: {
               beautify: false
             },
@@ -22,9 +23,16 @@ module.exports = function(grunt) {
            sourceMap: true
         //   mangle: true
         },
-        files: {
-            src: ['js/sea-ldialog/ldialog.js'],
-            dest: 'js/sea-ldialog/ldialog.min.js',
+        sea: {
+            files: {
+                src: ['js/seajs-version/ldialog.js'],
+                dest: 'js/seajs-version/ldialog.min.js',
+                sourceMap: true
+            }
+        },
+        bulid2: {
+            src: ['js/ldialog.js'],
+            dest: 'js/ldialog.min.js',
             sourceMap: true
         }
     },
