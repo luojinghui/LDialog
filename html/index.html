@@ -49,15 +49,14 @@
     <div class="c-2">关闭，确定，取消回调事件</div>
     <div class="c-3">引入预定义按钮组，重写图标样式</div>
     <div class="c-4">引入html语言</div>
-    <div class="c-5">倒计时关闭蒙版</div>
+    <div class="c-5">倒计时关闭蒙版,重写副标题</div>
     <div class="c-6">重写蒙版大小透明度</div>
     <div class="c-7">隐藏footer和header</div>
     <div class="c-aa aaaa">测试通过请求实例化输入组包含各种input类型</div>
     <div class="c-10">经典拖拽</div>
     <div class="c-11">黑框拖拽</div>
-
-
-    <br/><br/><br/>
+    <br/>
+    <p>如果通过请求重写蒙版内input group，建议采用已有的框架书写，即按钮<span class="c-aa aaaa">测试通过请求实例化输入组包含各种input类型</span>中的框架书写。</p>
     <p>按钮组样式预览</p>
     <div class="btn btn-default">btn-default</div>
     <div class="btn btn-primary">btn-primary</div>
@@ -217,11 +216,7 @@
         });
         
         
-        
-        
-        
-        
-        
+
         
         
         var isMove = false;
@@ -382,8 +377,8 @@
 
         $('.c-3').on('click', function() {
             con = {
-                iconColor: "#56BD9D",
-                iconSize: "80px",
+                iconColor: "rgb(157, 26, 165)",
+                iconSize: "30px",
                 enterAni: "slideInDown",
                 radius: "0px",
                 header: true,
@@ -411,7 +406,7 @@
 
         $('.c-5').on('click', function() {
             var value = "蒙版将于三秒后关闭！";
-            var con = {footer: false, timeOut: -1, subtitle: "三秒后关闭蒙版", title: "失败了"};
+            var con = {footer: false, timeOut: 3000, subtitle: "三秒后关闭蒙版", title: "失败了"};
             var dialog5 = new LDialog(value, con, "error");
             dialog5.init();
         });
@@ -528,7 +523,7 @@
         $('.c-10').on('click', function() {
             var dia = new LDialog("经典拖拽", {footer: false, verCenter: true});
             dia.init();
-        })
+        });
 
         $('.c-11').on('click', function() {
             var dia = new LDialog("黑框拖拽并且可以拖拽出可视区域", {footer: false, verCenter: true, moveType: 2,moveOut: true});
