@@ -28,7 +28,8 @@ LDialog.prototype.init = function() {
                 sure: "btn-success",
                 cancel: "btn-default"
             },
-            iconData: ""
+            iconData: "",
+            iconColor: "#56BD9D"
         },
         error: {
             title: "错误",
@@ -36,7 +37,8 @@ LDialog.prototype.init = function() {
                 sure: "btn-error",
                 cancel: "btn-default"
             },
-            iconData: ""
+            iconData: "",
+            iconColor: "#c9302c"
         },
         confirm: {
             title: "提示",
@@ -319,8 +321,6 @@ LDialog.moveLDialog = function(config, dia_id) {
         } else {
             $('body').append('<div id="l-dialog-clone-box"  class="l-dialog-clone-box" style="width:' + cW + 'px; height:' + cH + 'px; left:' + setOffX + 'px; top: '+ setOffY + 'px;"></div>');
         }
-
-
     }).mouseover(function() {
         $(this).css('cursor', 'default');
     });
