@@ -29,11 +29,11 @@
     bottom: 0;
     left: 0;
     z-index: 1050;
-    overflow: hidden;
+    overflow: auto;
     outline: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.3);
     -webkit-overflow-scrolling: touch;
 }
 .l-dialog-box {
@@ -46,11 +46,12 @@
     background-color: #ffffff;
     overflow: hidden;
     background-clip: padding-box;
-    border: 1px solid #999;
-    border: 1px solid rgba(0,0,0,.2);
+    /*border: 1px solid #999;*/
+    /*border: 1px solid rgba(0,0,0,.2);*/
     border-radius: 5px;
     outline: 0;
-    box-shadow: 0 3px 9px rgba(0,0,0,.5);
+    /*box-shadow: 0 3px 9px rgba(0,0,0,.5);*/
+    box-shadow: 1px 1px 50px rgba(0,0,0,.3);
     -webkit-animation-duration: .8s;
             animation-duration: .8s;
     -webkit-animation-timing-function: ease;
@@ -85,24 +86,30 @@
     -webkit-animation-duration: .3s;
             animation-duration: .3s;
 }
-.l-dialog-title {
-    min-height: 24px;
+.zoomIn {
+    -webkit-animation-duration: .3s;
+            animation-duration: .3s;
 }
 .l-dialog-title {
-    padding: 13px 40px 13px 15px;
+    /*min-height: 24px;*/
+    min-height: 21px;
+}
+.l-dialog-title {
+    padding: 10px 40px 10px 15px;
     border-bottom: 1px solid #e5e5e5;
     position: relative;
     background-color: #f3f3f3;
+    font-size: 14px;
 }
 .l-dialog-subtitle {
-    font-size: 14px;
+    font-size: 12px;
 }
 .l-dialog-c {
     height: 29px;
     width: 20px;
     position: absolute;
     right: 13px;
-    top: 10px;
+    top: 5px;
     cursor: pointer;
     font-size: 25px;
     font-weight: 400;
@@ -118,18 +125,22 @@
 .l-dialog-content {
     min-height: 16px;
     padding: 15px;
+    font-size: 14px;
 }
 .l-dialog-footer {
     height: 34px;
-    padding: 15px;
-    border-top: 1px solid #e5e5e5;
-    text-align: center;
+    padding: 5px 15px 15px;
+    /*border-top: 1px solid #e5e5e5;*/
+    /*text-align: center;*/
+    text-align: right;
 }
 .tc {
     text-align: center;
 }
 .btn {
     display: inline-block;
+    zoom: 1;
+    *display: inline;
     padding: 6px 12px;
     margin-bottom: 0;
     font-size: 14px;
@@ -157,8 +168,8 @@
 }
 .btn-primary {
     color: #fff;
-    background-color: #337ab7;
-    border-color: #2e6da4;
+    border-color: #4898d5;
+    background-color: #2e8ded;
 }
 .btn-error {
     color: #fff;
@@ -207,23 +218,84 @@
 }
 .btn-primary:hover {
     color: #fff;
-    background-color: #286090;
-    border-color: #204d74;
+    background-color: #246FBB;
+    border-color: #246FBB;
 }
 .l-tip-info {
-    min-height: 75px;
-    text-align: left;
-
+    /*min-height: 50px;*/
+    text-align: center;
 }
 .l-tip-info-img {
     vertical-align: middle;
+    margin-right: 10px;
 }
 .l-tip-info-fonts {
     text-align: left;
-    /*display: inline-block;*/
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
     vertical-align: middle;
     line-height: 24px;
+}
+
+/*input组*/
+.l-form-box {
+    text-align: left;
+}
+.form-line {
+    margin: 10px 0 10px;
+    overflow: hidden;
+}
+.form-line [type=text], .form-line [type=password], .form-line [type=date] , .form-line [type=tel], .form-line textarea {
+    height: 30px;
+    width: -webkit-calc(100% - 115px);
+    width: -moz-calc(100% - 115px);
+    width: calc(100% - 115px);
+    padding-left: 5px;
+    font-size: 14px;
+    vertical-align: middle;
+    border: 1px solid #E5E5E5;
+    outline: none;
     margin-left: 10px;
+    border-radius: 2px;
+}
+.form-line textarea {
+    height: 100px;
+    padding-top: 5px;
+    overflow-x:visible;
+    overflow-y:visible;
+    resize: none;
+}
+.form-line [type=text]:focus, .form-line [type=password]:focus, .form-line [type=date]:focus , .form-line [type=tel]:focus, .form-line textarea:focus {
+    border: 1px solid #A2BAC1;
+    -webkit-transition: border 1s ease;
+    transition: border 1s ease;
+}
+.form-line .left-form-info {
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    text-align: right;
+    width: 80px;
+}
+.form-line .l-radio-box {
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    margin-left: 7px;
+}
+.form-line label {
+    padding-right: 10px;
+}
+.form-line label input, .form-line label span {
+    vertical-align: middle;
+}
+.form-line select {
+    margin-left: 10px;
+    outline: none;
+}
+.l-center-input {
+    width: calc(100% - 34px) !important;
 }
 
 
