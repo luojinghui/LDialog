@@ -77,6 +77,7 @@ LDialog.prototype.init = function() {
         moveType: 1,  //1代表经典拖拽，2代表黑框拖拽
         moveOut: false, //是否能够拖拽出显示区域
         onSure: $.noop,//点击确定的按钮回调
+        onSureBefore: $.noop,  //确定之前的回调
         onCancel: $.noop,//点击取消的按钮回调
         onClose: $.noop,//弹窗关闭的回调,返回触发事件
         opacity: 0.3,   //蒙版透明度
@@ -88,17 +89,9 @@ LDialog.prototype.init = function() {
         title: "", //标题
         verCenter: false, //是否垂直居中
         width: "550px"
-
-        //input: [{
-        //    formType: "text",
-        //    value: "",
-        //    placeH: "",
-        //    maxlength: -1
-        //}],
     }, initType, this.config);
 
     this.createHtml(initConfig);
-    console.log(initConfig);
     allType = initConfig;
 };
 
@@ -421,6 +414,7 @@ LDialog.prototype.sure = function(event) {
     var input = LDialog.getAllValue();
     var dia_id = event.data.id;
 
+    allType.onSureBefore();
     LDialog.addOrRemoveClass(dia_id);
 
     setTimeout(function() {
@@ -443,6 +437,7 @@ LDialog.prototype.enter = function(event) {
 LDialog.keySure = function(dia_id) {
     var input = LDialog.getAllValue();
 
+    allType.onSureBefore();
     LDialog.addOrRemoveClass(dia_id);
     setTimeout(function() {
         $('#' + dia_id).remove();
