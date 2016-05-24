@@ -16,6 +16,7 @@
         width: auto;
         padding: 2px 10px;
         margin-right: 10px;
+        margin-bottom: 10px;
         border: 1px solid #fff;
         background: #049cdb;
         display: inline-block;
@@ -43,6 +44,7 @@
 <body>
 <div class="container">
     <div class="c-8">text input</div>
+    <div class="c-9">text prompt</div>
     <div class="c-1">默认初始化效果</div>
     <div class="c-2">关闭，确定，取消回调事件</div>
     <div class="c-3">引入预定义按钮组，重写图标样式</div>
@@ -50,6 +52,10 @@
     <div class="c-5">倒计时关闭蒙版</div>
     <div class="c-6">重写蒙版大小透明度</div>
     <div class="c-7">隐藏footer和header</div>
+    <div class="c-aa aaaa">测试通过请求实例化输入组包含各种input类型</div>
+    <div class="c-10">经典拖拽</div>
+    <div class="c-11">黑框拖拽</div>
+
 
     <br/><br/><br/>
     <p>按钮组样式预览</p>
@@ -192,9 +198,6 @@
     <!--</div>-->
 <!--</div>-->
 
-<div class="aaaa" style="cursor: pointer;">
-    aaaaaaaaaaaaaaa
-</div>
 </body>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/ldialog.js"></script>
@@ -456,6 +459,12 @@
                         iconSize: "40px",
                         iconColor: "green",
                         footer: true,
+                        onSure: function(v) {
+                            console.log(v);
+                        },
+                        onSureBefore: function() {
+
+                        },
                         input: [
                             {
                                 leftInfo: "姓名",
@@ -487,15 +496,43 @@
                                 value: "",
                                 placeH: "input"
                             }
-                        ]
+                        ],
+                        sureTitle: "控制台打印结果"
                     };
 
                     var value = "简单点说话的方式简单点,递进的情绪请省略,你又不是个演员,别设计那些情节,没意见我只想看看你怎么圆,该配合你演出的我演视而不见,在逼一个最爱你的人即兴表演,什么时候我们开始收起了底线,顺应时代的改变看那些拙劣的表演";
-//            var value = "asdfasdfasdfsdf";
                     var dia = new LDialog("", con, "input");
                     dia.init();
                 }
             });
+        });
+
+        $('.c-9').on('click', function() {
+            var con = {
+                onSure: function(v) {
+                    var dia2 = new LDialog("你输入了：" + v[0], {width: "360"} , "success");
+                    dia2.init();
+                },
+                input: [{
+                    verCenter: true,
+                    value: "",
+                    placeH: "input"
+                }],
+                width: "360"
+            };
+
+            var dia = new LDialog("", con , "input");
+            dia.init();
+        });
+
+        $('.c-10').on('click', function() {
+            var dia = new LDialog("经典拖拽", {footer: false, verCenter: true});
+            dia.init();
+        })
+
+        $('.c-11').on('click', function() {
+            var dia = new LDialog("黑框拖拽并且可以拖拽出可视区域", {footer: false, verCenter: true, moveType: 2,moveOut: true});
+            dia.init();
         })
     });
 </script>
