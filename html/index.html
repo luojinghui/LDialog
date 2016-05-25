@@ -55,6 +55,7 @@
     <div class="c-aa aaaa">测试通过请求实例化输入组包含各种input类型</div>
     <div class="c-10">经典拖拽</div>
     <div class="c-11">黑框拖拽</div>
+    <div class="c-12">test no use new to create obj</div>
     <br/>
     <p>如果通过请求重写蒙版内input group，建议采用已有的框架书写，即按钮<span class="c-aa aaaa">测试通过请求实例化输入组包含各种input类型</span>中的框架书写。</p>
     <p>按钮组样式预览</p>
@@ -205,7 +206,7 @@
         
         $('.aaaa').on('click', function() {
             $.ajax({
-                type: "POST",
+                type: "GET",
                 url: "se.html",
                 data: "html",
                 success: function(msg){
@@ -528,7 +529,22 @@
         $('.c-11').on('click', function() {
             var dia = new LDialog("黑框拖拽并且可以拖拽出可视区域", {footer: false, verCenter: true, moveType: 2,moveOut: true});
             dia.init();
-        })
+        });
+
+        $('.c-12').on('click', function() {
+            var con = {
+                input: [{
+                    verCenter: true,
+                    value: "",
+                    placeH: "input"
+                }],
+                width: "360",
+                onSure: function(v) {
+                    alert(v[0]);
+                }
+            };
+            LDialog.prompt(con, "input");
+        });
     });
 </script>
 </html>

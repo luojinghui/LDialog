@@ -97,6 +97,11 @@ LDialog.prototype.init = function() {
     allType = initConfig;
 };
 
+LDialog.prompt = function(config, type) {
+    var dialog = new LDialog("", config, type);
+    dialog.init();
+};
+
 LDialog.prototype.createHtml = function(config) {
     //创建icon和content元素
     var $txt = (config.iconData === "") ? $("<div>").addClass('l-tip-info-fonts').html(this.appHtml).css({
