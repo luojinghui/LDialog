@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    .box {
+        background: black;
+        border: 1px solid black;
+        margin-top: 30px;
+        min-width: 50px;
+        font-size: 14px;
+        top: 39px;
+        padding: 5px 8px;
+        color: #fff;
+        position: relative;
+        text-align: center;
+        border-radius: 4px;
+    }
+    .box:after {
+        content: " ";
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 10px;
+        border-bottom-color: #000;
+        top: -11px;
+        margin-left: 45%;
+        border-top-width: 0;
+    }
+</style>
+<body>
+<span class="box">
+    需求大类
+</span>
+</body>
+</html>
