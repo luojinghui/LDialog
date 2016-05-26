@@ -44,7 +44,6 @@
 <body>
 <div class="container">
     <div class="c-8">text input</div>
-    <div class="c-9">text prompt</div>
     <div class="c-1">默认初始化效果</div>
     <div class="c-2">关闭，确定，取消回调事件</div>
     <div class="c-3">引入预定义按钮组，重写图标样式</div>
@@ -55,7 +54,9 @@
     <div class="c-aa aaaa">测试通过请求实例化输入组包含各种input类型</div>
     <div class="c-10">经典拖拽</div>
     <div class="c-11">黑框拖拽</div>
-    <div class="c-12">test no use new to create obj</div>
+    <div class="c-12">prompt1</div>
+    <div class="c-9">prompt2</div>
+    <div class="c-13">comfirm</div>
     <br/>
     <p>如果通过请求重写蒙版内input group，建议采用已有的框架书写，即按钮<span class="c-aa aaaa">测试通过请求实例化输入组包含各种input类型</span>中的框架书写。</p>
     <p>按钮组样式预览</p>
@@ -535,15 +536,25 @@
             var con = {
                 input: [{
                     verCenter: true,
-                    value: "",
+                    value: "123",
                     placeH: "input"
                 }],
-                width: "360",
-                onSure: function(v) {
-                    alert(v[0]);
-                }
+                width: "360px"
             };
-            LDialog.prompt(con, "input");
+            LDialog.prompt(con, function(v) {
+                var dia = new LDialog("你输入了：" + v[0], {header: false, footer: false, outline: true, radius: 0, width: "300px", verCenter: true, globalClose: true});
+                dia.init();
+            });
+        });
+
+        $('.c-13').on('click', function() {
+            var value = "确定要删除吗？";
+
+            LDialog.comfirm(value, {}, function() {
+                LDialog.msg("删除成功！", {iconData: "", iconColor: "green", }, function() {
+                    LDialog.msg("我退出了。。。");
+                });
+            });
         });
     });
 </script>
