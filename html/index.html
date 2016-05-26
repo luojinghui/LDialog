@@ -40,6 +40,14 @@
         -ms-user-select: none;
         user-select: none;
     }
+    ::-webkit-scrollbar{width: 8px; height: 8px;}
+    ::-webkit-scrollbar-button:vertical{display:none;}
+    ::-webkit-scrollbar-track:vertical{background-color:black;}
+    ::-webkit-scrollbar-track-piece{background-color: #F5F5F5;}
+    ::-webkit-scrollbar-thumb:vertical{margin-right:10px; background-color: #999;}
+    ::-webkit-scrollbar-thumb:vertical:hover{background-color: #666;}
+    ::-webkit-scrollbar-corner:vertical{background-color:#535353;}
+    ::-webkit-scrollbar-resizer:vertical{background-color:#FF6E00;}
 </style>
 <body>
 <div class="container">
@@ -54,9 +62,10 @@
     <div class="c-aa aaaa">测试通过请求实例化输入组包含各种input类型</div>
     <div class="c-10">经典拖拽</div>
     <div class="c-11">黑框拖拽</div>
+    <div class="c-14">tips</div>
     <div class="c-12">prompt1</div>
     <div class="c-9">prompt2</div>
-    <div class="c-13">comfirm</div>
+    <div class="c-13">confirm</div>
     <br/>
     <p>如果通过请求重写蒙版内input group，建议采用已有的框架书写，即按钮<span class="c-aa aaaa">测试通过请求实例化输入组包含各种input类型</span>中的框架书写。</p>
     <p>按钮组样式预览</p>
@@ -67,6 +76,9 @@
     <div class="btn btn-info">btn-info</div>
     <div class="btn btn-warning">btn-warning</div>
 </div>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 <!--<div class="box" style="width: 200px; height: 200px; border: 1px solid gray;">-->
     <!--<div class="box-t" style="width: 100%; height: 30px;border-bottom: 1px solid gray">title</div>-->
@@ -465,33 +477,32 @@
                         input: [
                             {
                                 leftInfo: "姓名",
-                                type: "",
-                                value: "",
                                 placeH: "name",
-                                maxlength: ""
+                                maxlength: "",
+                                notNull: true
                             },
                             {
                                 leftInfo: "密码",
                                 type: "password",
-                                value: "",
-                                placeH: "password"
+                                placeH: "password",
+                                notNull: true
                             },
                             {
                                 leftInfo: "备注",
                                 type: "textarea",
-                                value: "",
-                                placeH: "input"
+                                placeH: "input",
+                                notNull: true
                             },
                             {
                                 verCenter: true,
-                                value: "",
-                                placeH: "input"
+                                placeH: "input",
+                                notNull: true
                             },
                             {
                                 verCenter: true,
                                 type: "textarea",
-                                value: "",
-                                placeH: "input"
+                                placeH: "input",
+                                notNull: true
                             }
                         ],
                         sureTitle: "控制台打印结果"
@@ -513,7 +524,8 @@
                 input: [{
                     verCenter: true,
                     value: "",
-                    placeH: "input"
+                    placeH: "input",
+                    notNull: true,
                 }],
                 width: "360"
             };
@@ -536,25 +548,60 @@
             var con = {
                 input: [{
                     verCenter: true,
-                    value: "123",
-                    placeH: "input"
+                    value: "",
+                    placeH: "input",
+                    notNull: true,
+                    type: "textarea"
                 }],
-                width: "360px"
+                width: "360px",
+                onIsNull: function(position, i) {
+                    position.val("请输入正确的值在第：" + (i+1) + "个输入框");
+                }
             };
             LDialog.prompt(con, function(v) {
-                var dia = new LDialog("你输入了：" + v[0], {header: false, footer: false, outline: true, radius: 0, width: "300px", verCenter: true, globalClose: true});
-                dia.init();
+                if(v[0] !== "") {
+                    var dia = new LDialog("你输入了：" + v[0], {header: false, footer: false, outline: true, radius: 0, width: "300px", verCenter: true, globalClose: true});
+                    dia.init();
+                }
             });
         });
 
         $('.c-13').on('click', function() {
             var value = "确定要删除吗？";
 
-            LDialog.comfirm(value, {}, function() {
+            LDialog.confirm(value, {}, function() {
                 LDialog.msg("删除成功！", {iconData: "", iconColor: "green", }, function() {
                     LDialog.msg("我退出了。。。");
                 });
             });
+        });
+
+        $('.c-14').on('click', function() {
+            con = {
+                iconColor: "green",
+                iconSize: "30px",
+                width: "auto",
+                enterAni: "slideInDown",
+                iconData: "",
+                radius: "0px",
+                opacity: 0.1,
+                footer: false,
+                header: false,
+                globalClose: true,
+                enterAni: "slideInDown",
+                verCenter: true,
+                opacity: 0,
+                shadow: "none",
+//                bg: "rgba(0,0,0,0.6)",
+                bg: "rgba(0,0,0,0.6)",
+                fontColor: "#fff",
+                iconColor: 'rgb(75, 239, 112)',
+                radius: 2
+//                timeOut: 8000
+            };
+
+            var dialog3 = new LDialog("数据添加成功", con, "success");
+            dialog3.init();
         });
     });
 </script>

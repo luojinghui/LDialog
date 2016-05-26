@@ -12,8 +12,57 @@ function LDialog(appHtml ,config, type) {
     this.createId;
 }
 
-LDialog.prototype.init = function() {
-    var popType = {
+Lp = LDialog.prototype;
+
+Lp.init = function() {
+    var popType = this.popType();
+    var def = this.dConfig();
+    var initType = this.type instanceof Object ? this.type : popType[this.type] || {};//格式化输入的参数:弹窗类型
+    var initConfig = $.extend(true, def, initType, this.config);
+
+    this.createHtml(initConfig);
+    allType = initConfig;
+};
+
+Lp.dConfig = function() {
+    return {
+        bg: "",
+        fontColor: "",
+        btn: {},
+        cancelTitle: "取消",
+        enterAni: "fadeIn", //进入动画
+        footer: true, //按钮组
+        globalClose: false, //全局关闭
+        header: true,  //是否显示头部
+        icon: true, //图标
+        iconColor: "",   //字体图标颜色
+        iconData: "", //图标源
+        iconSize: "",   //字体大小
+        minHeight: "50px", //最小高度
+        move: true,   //用来表示是否可以拖拽
+        moveType: 1,  //1代表经典拖拽，2代表黑框拖拽
+        moveOut: false, //是否能够拖拽出显示区域
+        onSure: $.noop,//点击确定的按钮回调
+        onSureBefore: $.noop,  //确定之前的回调
+        onCancel: $.noop,//点击取消的按钮回调
+        onClose: $.noop,//弹窗关闭的回调,返回触发事件
+        onGClose: $.noop, //全局关闭的回调事件
+        onIsNull: $.noop, //input为空时的回调函数
+        opacity: 0.3,   //蒙版透明度
+        outline: false, //outline效果
+        radius: "5px",   //表示蒙版圆角
+        subtitle: "",   //副标题
+        sureTitle: "确定",
+        shadow: "",
+        timeOut: -1,  //倒计时关闭
+        title: "", //标题
+        verCenter: false, //是否垂直居中
+        width: "550px"
+    }
+};
+
+Lp.popType  = function() {
+    return {
         info: {
             title: "信息",
             btn: {
@@ -61,42 +110,6 @@ LDialog.prototype.init = function() {
             btn: {}
         }
     };
-
-    var initType = this.type instanceof Object ? this.type : popType[this.type] || {};//格式化输入的参数:弹窗类型
-
-    var initConfig = $.extend(true, {
-        btn: {},
-        cancelTitle: "取消",
-        enterAni: "fadeIn", //进入动画
-        footer: true, //按钮组
-        globalClose: false, //全局关闭
-        header: true,  //是否显示头部
-        icon: true, //图标
-        iconColor: "",   //字体图标颜色
-        iconData: "", //图标源
-        iconSize: "",   //字体大小
-        minHeight: "50px", //最小高度
-        move: true,   //用来表示是否可以拖拽
-        moveType: 1,  //1代表经典拖拽，2代表黑框拖拽
-        moveOut: false, //是否能够拖拽出显示区域
-        onSure: $.noop,//点击确定的按钮回调
-        onSureBefore: $.noop,  //确定之前的回调
-        onCancel: $.noop,//点击取消的按钮回调
-        onClose: $.noop,//弹窗关闭的回调,返回触发事件
-        onGClose: $.noop, //全局关闭的回调事件
-        opacity: 0.3,   //蒙版透明度
-        outline: false, //outline效果
-        radius: "5px",   //表示蒙版圆角
-        subtitle: "",   //副标题
-        sureTitle: "确定",
-        timeOut: -1,  //倒计时关闭
-        title: "", //标题
-        verCenter: false, //是否垂直居中
-        width: "550px"
-    }, initType, this.config);
-
-    this.createHtml(initConfig);
-    allType = initConfig;
 };
 
 LDialog.prompt = function(config, receive_type, fun) {
@@ -112,7 +125,7 @@ LDialog.prompt = function(config, receive_type, fun) {
     dialog.init();
 };
 
-LDialog.comfirm = function(value, receive_config, fun) {
+LDialog.confirm = function(value, receive_config, fun) {
     var config;
 
     if(receive_config === undefined || $.isFunction(receive_config)) config = {};
@@ -149,14 +162,14 @@ LDialog.msg = function(value, receive_config, fun) {
         outline: true,
         header: false,
         footer: false,
-        timeOut: 3000
+        timeOut: 2500
     }, config);
 
     var dialog = new LDialog(value, config);
     dialog.init();
 };
 
-LDialog.prototype.createHtml = function(config) {
+Lp.createHtml = function(config) {
     //创建icon和content元素
     var $txt = (config.iconData === "") ? $("<div>").addClass('l-tip-info-fonts').html(this.appHtml).css({
         display: "block"
@@ -172,10 +185,10 @@ LDialog.prototype.createHtml = function(config) {
     //创建footer元素，判断是否显示footer
     var $footer = config.footer ? $('<div class="l-dialog-footer">') : $('<div class="l-dialog-footer" style="display: none!important"></div>');
     //创建内容盒子元素
-    var $contentBox = $('<div class="l-dialog-content tc"></div>');
+    var $contentBox = $('<div class="l-dialog-content tc">');
     var $contentBoxIn = $('<div class="l-tip-info"></div>');
-    var $headerBox = config.header ? $('<div class="l-dialog-title-box" data-move="'+ config.move +'"></div>') : $('<div>').css('display', 'none');
-    var $dialogBox = config.outline ? $('<div>').addClass("l-dialog-box animated " + config.enterAni + ' outline').css({'width': config.width, 'min-height': config.minHeight, 'border-radius': config.radius}) : $('<div>').addClass("l-dialog-box animated " + config.enterAni).css({'width': config.width, 'min-height': config.minHeight, 'border-radius': config.radius});
+    var $headerBox = config.header ? $('<div class="l-dialog-title-box" data-move="'+ config.move +'">') : $('<div>').css('display', 'none');
+    var $dialogBox = config.outline ? $('<div>').addClass("l-dialog-box animated " + config.enterAni + ' outline').css({'width': config.width, 'min-height': config.minHeight, 'border-radius': config.radius}) : $('<div>').addClass("l-dialog-box animated " + config.enterAni).css({'width': config.width, 'min-height': config.minHeight, 'border-radius': config.radius,background: config.bg, color: config.fontColor, 'box-shadow': config.shadow});
     var $dialog = config.opacity === 0.3 ? $('<div>').addClass("l-dialog animated fadeIn") : $('<div>').addClass("l-dialog animated fadeIn").css({"background-color": "rgba(0,0,0," + config.opacity + ")"});
 
     var sendObj = {
@@ -197,7 +210,7 @@ LDialog.prototype.createHtml = function(config) {
     this.addListener(sendObj, config);
 };
 
-LDialog.prototype.createBom = function(accObj, config) {
+Lp.createBom = function(accObj, config) {
     this.createId = this.createId();
 
     accObj.dialog.attr('id', this.createId).append(
@@ -228,11 +241,22 @@ LDialog.prototype.createBom = function(accObj, config) {
 
     $('body').append(accObj.dialog);
 
+    LDialog.appInput(config, this.createId);
     LDialog.isVerCenter(config, this.createId);
 
-    LDialog.appInput(config, this.createId);
-
     $('body').blur();
+};
+
+LDialog.d_input = function() {
+    return {
+        verCenter: false,  //是否输入框居中显示
+        value: "", //填写值
+        placeH: "", //默认显示内容
+        maxlength: "", //输入最多长度
+        type: "text", //设置输入类型
+        notNull: false, //设置是否为空
+        leftInfo: ""
+    }
 };
 
 LDialog.appInput = function(config, id) {
@@ -240,20 +264,19 @@ LDialog.appInput = function(config, id) {
     var $inputBox = $('<div class="l-form-box">');
     var $textarea = $('<textarea>');
     var $input = $('<input />');
-    
+
     if(inputArray !== undefined) {
         inputArray.forEach(function(v, i) {
-            var inputAI = inputArray[i];
-            
-            switch(inputAI.type) {
-                case "text":
-                    $inputBox = LDialog.createInputDom(inputAI, $inputBox, $input);
-                    break;
+            var that = LDialog.d_input();
+
+            config.input[i] = $.extend(true, that, config.input[i]);
+
+            switch(config.input[i].type) {
                 case "textarea":
-                    $inputBox = LDialog.createInputDom(inputAI, $inputBox, $textarea);
+                    $inputBox = LDialog.createInputDom(config.input[i], $inputBox, $textarea);
                     break;
                 default:
-                    $inputBox = LDialog.createInputDom(inputAI, $inputBox, $input);
+                    $inputBox = LDialog.createInputDom(config.input[i], $inputBox, $input);
                     break;
             }
             $textarea = $('<textarea>');
@@ -266,14 +289,14 @@ LDialog.appInput = function(config, id) {
 LDialog.createInputDom = function(inputAI, $inputBox, $inputType) {
     var $inputLine = $('<div class="form-line">');
     var $leftSpan = $('<span class="left-form-info">');
-    var inputType = inputAI.type === null ? inputAI.type : "text";
 
     $inputType.attr({
         value: inputAI.value,
         placeholder: inputAI.placeH,
-        maxlength: inputAI.maxlength
+        maxlength: inputAI.maxlength,
+        "data-notnull": inputAI.notNull
     });
-    inputAI.type !== "textarea" ? $inputType.attr({type: inputType}) : $inputType;
+    inputAI.type !== "textarea" ? $inputType.attr({type: inputAI.type}) : $inputType;
     $inputType.width !== null ? $inputType.css("width", inputAI.width) : $inputType;
     $inputType.height !== null ? $inputType.css("height", inputAI.height) : $inputType;
     if(inputAI.verCenter) {
@@ -326,7 +349,7 @@ LDialog.calCoordinate = function(createId) {
 };
 
 //重生popId,防止id重复
-LDialog.prototype.createId = function() {
+Lp.createId = function() {
     var id =  "pop-" + new Date().getTime() + parseInt(Math.random()*100000); //弹窗索引
 
     if($("#" + id).length > 0) {
@@ -336,7 +359,7 @@ LDialog.prototype.createId = function() {
     }
 };
 
-LDialog.prototype.addListener = function(accObj, config) {
+Lp.addListener = function(accObj, config) {
     var dia_id = {id : this.createId};
 
     accObj.close.on('click', dia_id, this.close);
@@ -418,7 +441,7 @@ LDialog.moveLDialog = function(config, dia_id) {
     });
 };
 
-LDialog.prototype.globalClose = function(config, dia_id) {
+Lp.globalClose = function(config, dia_id) {
     $('#' + dia_id).click(function() {
         $(this).removeClass('fadeIn').addClass('fadeOut');
         $(this).find('.l-dialog-box').removeClass(allType.enterAni).addClass('fadeOut');
@@ -434,7 +457,7 @@ LDialog.prototype.globalClose = function(config, dia_id) {
     });
 };
 
-LDialog.prototype.timeOutClose = function(config, dia_id) {
+Lp.timeOutClose = function(config, dia_id) {
     setTimeout(function() {
         LDialog.addOrRemoveClass(dia_id);
 
@@ -446,7 +469,7 @@ LDialog.prototype.timeOutClose = function(config, dia_id) {
 };
 
 //叉叉按钮关闭弹窗
-LDialog.prototype.close = function(event) {
+Lp.close = function(event) {
     var dia_id = event.data.id;
 
     LDialog.addOrRemoveClass(dia_id);
@@ -458,7 +481,7 @@ LDialog.prototype.close = function(event) {
 };
 
 //取消按钮关闭弹窗
-LDialog.prototype.cancel = function(event) {
+Lp.cancel = function(event) {
     var dia_id = event.data.id;
 
     LDialog.addOrRemoveClass(dia_id);
@@ -470,21 +493,23 @@ LDialog.prototype.cancel = function(event) {
 };
 
 //确定按钮关闭弹窗
-LDialog.prototype.sure = function(event) {
-    var input = LDialog.getAllValue();
-    var dia_id = event.data.id;
+Lp.sure = function(event) {
+    if(LDialog.judge_null()) {
+        var input = LDialog.getAllValue();
+        var dia_id = event.data.id;
 
-    allType.onSureBefore();
-    LDialog.addOrRemoveClass(dia_id);
+        allType.onSureBefore();
+        LDialog.addOrRemoveClass(dia_id);
 
-    setTimeout(function() {
-        $('#' + dia_id).remove();
-        allType.onSure(input);
-    }, 200)
+        setTimeout(function() {
+            $('#' + dia_id).remove();
+            allType.onSure(input);
+        }, 200)
+    }
 };
 
 //回车键确认事件
-LDialog.prototype.enter = function(event) {
+Lp.enter = function(event) {
     var dia_id = event.data.id;
 
     if(event.keyCode === 13) {
@@ -523,4 +548,25 @@ LDialog.getAllValue = function() {
     });
     
     return getAllValue;
+};
+
+LDialog.judge_null = function() {
+    if(!allType.input) return true;
+
+    var allInput = $('.form-line input[type=text], .form-line textarea, .form-line input[type=password], .form-line input[type=tel], .form-line input[type=dete], form-line input[type=number]');
+    var flag = true;
+
+    allInput.each(function(i, v) {
+        if(allInput.eq(i).data('notnull')) {
+            if(allInput.eq(i).val() === "" || allInput.eq(i).val() === null) {
+                flag = false;
+                allInput.eq(i).focus();
+
+                allType.onIsNull(allInput.eq(i), i);
+                return false;
+            }
+        }
+    });
+
+    return flag;
 };
