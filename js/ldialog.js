@@ -46,7 +46,8 @@ LDialog.prototype.init = function() {
                 sure: "btn-warning",
                 cancel: "btn-default"
             },
-            iconData: ""
+            iconData: "",
+            iconColor: "#F0AD4E"
         },
         input: {
             title: "输入",
@@ -82,6 +83,7 @@ LDialog.prototype.init = function() {
         onSureBefore: $.noop,  //确定之前的回调
         onCancel: $.noop,//点击取消的按钮回调
         onClose: $.noop,//弹窗关闭的回调,返回触发事件
+        onGClose: $.noop, //全局关闭的回调事件
         opacity: 0.3,   //蒙版透明度
         outline: false, //outline效果
         radius: "5px",   //表示蒙版圆角
@@ -97,8 +99,60 @@ LDialog.prototype.init = function() {
     allType = initConfig;
 };
 
-LDialog.prompt = function(config, type) {
+LDialog.prompt = function(config, receive_type, fun) {
+    type = $.isFunction(receive_type) ? "input" : receive_type;
+    config.onSure = fun === undefined ? receive_type : fun;
+
+    config = $.extend(true, {
+        width: "350px",
+        verCenter: true
+    }, config);
+
     var dialog = new LDialog("", config, type);
+    dialog.init();
+};
+
+LDialog.comfirm = function(value, receive_config, fun) {
+    var config;
+
+    if(receive_config === undefined || $.isFunction(receive_config)) config = {};
+    else config = receive_config;
+
+    if($.isFunction(receive_config)) config.onSure = receive_config;
+    else if($.isFunction(fun)) config.onSure = fun;
+    else config.onSure = $.noop;
+
+    config = $.extend(true, {
+        width: "350px",
+        verCenter: true
+    }, config);
+
+    var dialog = new LDialog(value, config, "confirm");
+    dialog.init();
+};
+
+LDialog.msg = function(value, receive_config, fun) {
+    var config;
+
+    if(receive_config === undefined || $.isFunction(receive_config)) config = {};
+    else config = receive_config;
+
+    if($.isFunction(receive_config)) config.onGClose = receive_config;
+    else if($.isFunction(fun)) config.onGClose = fun;
+    else config.onGClose = $.noop;
+
+    config = $.extend(true, {
+        width: "300px",
+        verCenter: true,
+        globalClose: true,
+        radius: 0,
+        outline: true,
+        header: false,
+        footer: false,
+        timeOut: 3000
+    }, config);
+
+    var dialog = new LDialog(value, config);
     dialog.init();
 };
 
@@ -371,6 +425,7 @@ LDialog.prototype.globalClose = function(config, dia_id) {
 
         setTimeout(function() {
             $('#' + dia_id).remove();
+            config.onGClose();
         }, 200)
     });
 
