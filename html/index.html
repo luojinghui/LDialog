@@ -570,38 +570,14 @@
             var value = "确定要删除吗？";
 
             LDialog.confirm(value, {}, function() {
-                LDialog.msg("删除成功！", {iconData: "", iconColor: "green", }, function() {
+                LDialog.msg("删除成功！", {iconData: "", iconColor: "green"}, function() {
                     LDialog.msg("我退出了。。。");
                 });
             });
         });
 
         $('.c-14').on('click', function() {
-            con = {
-                iconColor: "green",
-                iconSize: "30px",
-                width: "auto",
-                enterAni: "slideInDown",
-                iconData: "",
-                radius: "0px",
-                opacity: 0.1,
-                footer: false,
-                header: false,
-                globalClose: true,
-                enterAni: "slideInDown",
-                verCenter: true,
-                opacity: 0,
-                shadow: "none",
-//                bg: "rgba(0,0,0,0.6)",
-                bg: "rgba(0,0,0,0.6)",
-                fontColor: "#fff",
-                iconColor: 'rgb(75, 239, 112)',
-                radius: 2
-//                timeOut: 8000
-            };
-
-            var dialog3 = new LDialog("数据添加成功", con, "success");
-            dialog3.init();
+            LDialog.tip("数据添加失败！", {iconData: "", iconColor: "rgb(75,239,112)"});
         });
     });
 </script>

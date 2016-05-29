@@ -54,10 +54,13 @@
 | timeOut | Number | -1 | 定义蒙版显示多长时间后消失 | 默认使用-1代表不消失 |
 | opacity | Number | 0.5 | 定义蒙版透明度 | |
 | outline | boolean | false | 定义是否显示outline效果 | 类似facebook蒙版效果,常用于操作成功的提示信息 |
+| shadow | String | "" | 定义蒙版阴影||
 | radius | Strig | "5px" | 定义蒙版的圆角 | |
 | enterAni | String | "fadeInDown" | 定义进入动画 | 可自定义引入animate.css动画库的动画class，本插件预加载slide与fade动画效果 |
 | minHeight | String | "50px" | 定义蒙版最低高度| |
 | width | String | "550px" | 定义蒙版宽度 | |
+| bg | String | "" | 定义蒙版的颜色 ||
+| fontColor | String | "" | 定义蒙版字体颜色 ||
 | verCenter | boolean | false | 定义蒙版是否居中显示 | 默认不居中，距顶部40px |
 | move | boolean | true | 定义蒙版是否支持拖拽 | |
 | moveType | Number | 1 | 定义蒙版拖拽方式，可选1或者2 | 1代表经典方式，2代表黑框方式|
@@ -65,6 +68,9 @@
 | onSure(data) | function | null | 点击确定按钮的回调函数,可选data参数，获得所有蒙版input输入框的中的值，以数组形式展现| |
 | onCancel |function | null | 点击取消按钮的回调函数| |
 | onClose | function | null | 点击关闭按钮的回调函数 | |
+| onSureBefore | function | null | 点击确定按钮前执行的回调函数 ||
+| onIsNull | function | null | input输入框为空时的回调函数||
+
 
 说明：
 
@@ -171,4 +177,5 @@ btn: {
 *   Version 1.0.1 ：增加蒙版居中、全局关闭、自定义进入动画、outline功能。
 *   Version 1.0.2 ：增加对sea.js的支持。
 *   Version 1.0.3 ：增加蒙版实时居中，增加蒙版多种拖拽方式的功能。
+*   Version 1.0.4： 增加了tip，confirm，msg，prompt，的插件方法，能够快速创建蒙版，并执行回调。
 

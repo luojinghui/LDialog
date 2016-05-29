@@ -169,6 +169,41 @@ LDialog.msg = function(value, receive_config, fun) {
     dialog.init();
 };
 
+LDialog.tip = function(value, receive_config, fun) {
+    var config;
+
+    if(receive_config === undefined || $.isFunction(receive_config)) config = {};
+    else config = receive_config;
+
+    if($.isFunction(receive_config)) config.onGClose = receive_config;
+    else if($.isFunction(fun)) config.onGClose = fun;
+    else config.onGClose = $.noop;
+
+    config = $.extend(true, {
+        iconSize: "30px",
+        width: "auto",
+        enterAni: "slideInDown",
+        //iconData: "",
+        radius: "0px",
+        opacity: 0.1,
+        footer: false,
+        header: false,
+        globalClose: true,
+        enterAni: "slideInDown",
+        verCenter: true,
+        opacity: 0,
+        shadow: "none",
+        bg: "rgba(0,0,0,0.6)",
+        fontColor: "#fff",
+        //iconColor: 'rgb(75, 239, 112)',
+        radius: 2,
+        timeOut: 2500
+    }, config);
+
+    var dialog = new LDialog(value, config);
+    dialog.init();
+};
+
 Lp.createHtml = function(config) {
     //创建icon和content元素
     var $txt = (config.iconData === "") ? $("<div>").addClass('l-tip-info-fonts').html(this.appHtml).css({
