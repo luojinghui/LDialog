@@ -37,7 +37,9 @@
     -webkit-overflow-scrolling: touch;
 }
 .l-dialog-box {
-    position: absolute;
+    /*position: absolute;*/
+    position: fixed;
+    z-index: 19940424;
     width: 550px;
     margin-left: auto;
     margin-right: auto;
@@ -249,7 +251,6 @@
 .form-line [type=text], .form-line [type=password], .form-line [type=date] , .form-line [type=tel], .form-line textarea {
     height: 30px;
     width: -webkit-calc(100% - 115px);
-    width: -moz-calc(100% - 115px);
     width: calc(100% - 115px);
     padding-left: 5px;
     font-size: 14px;
@@ -295,8 +296,67 @@
     outline: none;
 }
 .l-center-input {
+    width: -webkit-calc(100% - 34px) !important;
     width: calc(100% - 34px) !important;
 }
+
+
+/*tips */
+.l-tips {
+    background: black;
+    max-width: 150px;
+    font-size: 12px;
+    padding: 10px 15px;
+    color: #fff;
+    position: absolute;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 19940424;
+}
+.l-tips .l-arrow {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+
+}
+.l-arrow-down {
+    border-width: 0 6px 6px 6px;
+    border-bottom-color: #000;
+    top: -6px;
+    
+    left: -webkit-calc(50% - 6px);
+    left: calc(50% - 6px);
+}
+.l-arrow-up {
+    border-width: 6px 6px 0 6px;
+    border-top-color: #000;
+    bottom: -6px;
+
+    left: -webkit-calc(50% - 6px);
+    left: -moz-calc(50% - 6px);
+    left: calc(50% - 6px);
+}
+.l-arrow-right {
+    border-width: 6px 6px 6px 0;
+    border-right-color: #000;
+    left: -6px;
+    top: -webkit-calc(50% - 6px);
+    top: -moz-calc(50% - 6px);
+    top: calc(50% - 6px);
+}
+.l-arrow-left {
+    border-width: 6px 0px 6px 6px;
+    border-left-color: #000;
+
+    top: -webkit-calc(50% - 6px);
+    top: -moz-calc(50% - 6px);
+    top: calc(50% - 6px);
+    right: -6px;
+}
+
 
 
 /*动画*/
