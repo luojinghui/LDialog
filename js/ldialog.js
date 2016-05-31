@@ -22,6 +22,7 @@ Lp.init = function() {
 
     this.createHtml(initConfig);
     allType = initConfig;
+    console.log(this.createId);
 };
 
 Lp.dConfig = function() {
@@ -54,6 +55,7 @@ Lp.dConfig = function() {
         subtitle: "",   //副标题
         sureTitle: "确定",
         shadow: "",
+        mask: false,
         timeOut: -1,  //倒计时关闭
         title: "", //标题
         verCenter: false, //是否垂直居中
@@ -604,4 +606,131 @@ LDialog.judge_null = function() {
     });
 
     return flag;
+};
+
+LDialog.tips = function(value, selector, con) {
+    var initConfig = $.extend(true, LDialog.tipsDC(), con);
+    var tipsId = LDialog.creaTipsId();
+    console.log(initConfig.maxWidth);
+    var $app = $('<div class="l-tips animated fadeIn">').attr('id', tipsId).html(value).css({
+        'max-width': initConfig.maxWidth + "px",
+        'background-color': initConfig.bg,
+        'color': initConfig.color
+    });
+    var $appArrow = $('<i class="l-arrow">');
+    var offsetX = $(selector).offset().left;
+    var offsetY = $(selector).offset().top;
+
+    console.log(initConfig);
+
+    switch (initConfig.posi) {
+        case 1:
+            $appArrow.addClass("l-arrow-up");
+            $appArrow.css({'border-top-color': initConfig.bg});
+            $('body').append($app.append($appArrow));
+            console.log(tipsId);
+
+
+            var x = $(selector).offset().left +  ($(selector).outerWidth() / 2) - ($('#' + tipsId).outerWidth() / 2);
+            var y = $(selector).offset().top - $('#' + tipsId).outerHeight() - 6;
+            $('#' + tipsId).css({
+                top: y,
+                left: x
+            });
+
+            break;
+        case 2:
+            $appArrow.addClass("l-arrow-right");
+            $appArrow.css({'border-right-color': initConfig.bg});
+            $('body').append($app.append($appArrow));
+
+            var x = offsetX + $(selector).outerWidth() + 6;
+            var y = offsetY + (($(selector).outerHeight() - $('#' + tipsId).outerHeight())/ 2);
+            $('#' + tipsId).css({
+                top: y,
+                left: x
+            });
+
+            break;
+        case 3:
+            $appArrow.addClass("l-arrow-down");
+            $appArrow.css({'border-bottom-color': initConfig.bg});
+            $('body').append($app.append($appArrow));
+
+            var x = (offsetX + ($(selector).outerWidth() / 2) - ($('#' + tipsId).outerWidth() / 2));
+            var y = offsetY + $(selector).outerHeight() + 6;
+            $('#' + tipsId).css({
+                top: y,
+                left: x
+            });
+            break;
+        case 4:
+            $appArrow.addClass("l-arrow-left");
+            $appArrow.css({'border-left-color': initConfig.bg});
+            $('body').append($app.append($appArrow));
+
+            var x = offsetX - $('#' + tipsId).outerWidth() - 6;
+            var y = offsetY + (($(selector).outerHeight() - $('#' + tipsId).outerHeight())/ 2);
+            $('#' + tipsId).css({
+                top: y,
+                left: x
+            });
+            break;
+        default :
+            $appArrow.addClass("l-arrow-right");
+            $('body').append($app);
+
+            var x = offsetX + $(selector).outerWidth() + 6;
+            var y = offsetY + (($(selector).outerHeight() - $('#' + tipsId).outerHeight())/ 2);
+            $('#' + tipsId).css({
+                top: y,
+                left: x
+            });
+            break;
+    }
+
+    initConfig.timeOut === -1 ? initConfig : LDialog.timeOutTips(initConfig, tipsId);
+
+    return tipsId;
+};
+
+LDialog.tipsDC = function() {
+    return {
+        posi: 2,
+        bg: "#000",
+        color: "#fff",
+        maxWidth: "150",
+        timeOut: 3000,
+        tipsClose: $.noop
+    }
+};
+
+LDialog.creaTipsId = function() {
+    var id =  "tips-" + new Date().getTime() + parseInt(Math.random()*100000); //弹窗索引
+
+    if($("#" + id).length > 0) {
+        return this.creatPopId();
+    } else {
+        return id;
+    }
+};
+
+LDialog.removeTips = function(index) {
+    $('#' + index).addClass('fadeOut');
+
+    setTimeout(function() {
+        $('#' + index).remove();
+    }, 200)
+};
+
+LDialog.timeOutTips = function(config, index) {
+    console.log(index);
+    setTimeout(function() {
+        $('#' + index).addClass('fadeOut');
+
+        setTimeout(function() {
+            $('#' + index).remove();
+        }, 200)
+
+    }, config.timeOut);
 };
