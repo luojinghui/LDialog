@@ -505,7 +505,26 @@
                                 notNull: true
                             }
                         ],
-                        sureTitle: "控制台打印结果"
+                        sureTitle: "控制台打印结果",
+                        onIsNull: function(posi, i) {
+                            var id;
+
+                            if(i === 0) {
+                                id = LDialog.tips("请输入正确的值,",posi, {posi: 1, bg: "green"});
+                            }
+                            if(i === 1) {
+                                LDialog.removeTips(id);
+                                id = LDialog.tips("请输入正确的值,",posi, {posi: 2, bg: "gray", color: "#fff"});
+                            }
+                            if(i === 2) {
+                                LDialog.removeTips(id);
+                                id = LDialog.tips("请输入正确的值,",posi, {posi: 3, bg: "#fba44d", color: "#fff"});
+                            }
+                            if(i === 3) {
+                                LDialog.removeTips(id);
+                                id = LDialog.tips("不能为空，请重新输入",posi, {posi: 4, bg: "#258ed7", color: "#fff"});
+                            }
+                        }
                     };
 
                     var value = "简单点说话的方式简单点,递进的情绪请省略,你又不是个演员,别设计那些情节,没意见我只想看看你怎么圆,该配合你演出的我演视而不见,在逼一个最爱你的人即兴表演,什么时候我们开始收起了底线,顺应时代的改变看那些拙劣的表演";
@@ -513,6 +532,10 @@
                     dia.init();
                 }
             });
+        });
+
+        $('.btn-primary').click(function() {
+            LDialog.tips("不能为空，请重新输入",".btn-primary", {posi: 2, bg: "#258ed7", color: "#fff"});
         });
 
         $('.c-9').on('click', function() {
@@ -555,7 +578,8 @@
                 }],
                 width: "360px",
                 onIsNull: function(position, i) {
-                    position.val("请输入正确的值在第：" + (i+1) + "个输入框");
+//                    position.val("请输入正确的值在第：" + (i+1) + "个输入框");
+                    LDialog.tips("请输入正确的值,",position, {posi: 2});
                 }
             };
             LDialog.prompt(con, function(v) {
