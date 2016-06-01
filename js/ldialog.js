@@ -22,7 +22,6 @@ Lp.init = function() {
 
     this.createHtml(initConfig);
     allType = initConfig;
-    console.log(this.createId);
 };
 
 Lp.dConfig = function() {
@@ -51,11 +50,10 @@ Lp.dConfig = function() {
         onIsNull: $.noop, //input为空时的回调函数
         opacity: 0.3,   //蒙版透明度
         outline: false, //outline效果
-        radius: "5px",   //表示蒙版圆角
+        radius: "0px",   //表示蒙版圆角
         subtitle: "",   //副标题
         sureTitle: "确定",
         shadow: "",
-        mask: false,
         timeOut: -1,  //倒计时关闭
         title: "", //标题
         verCenter: false, //是否垂直居中
@@ -104,6 +102,13 @@ Lp.popType  = function() {
             title: "输入",
             btn: {
                 sure: "btn-primary",
+                cancel: "btn-default"
+            }
+        },
+        bim: {
+            title: "提示",
+            btn: {
+                sure: "btn-bim",
                 cancel: "btn-default"
             }
         },
@@ -310,6 +315,7 @@ LDialog.appInput = function(config, id) {
 
             switch(config.input[i].type) {
                 case "textarea":
+                    $textarea.text(config.input[i].value);
                     $inputBox = LDialog.createInputDom(config.input[i], $inputBox, $textarea);
                     break;
                 default:
@@ -602,6 +608,13 @@ LDialog.judge_null = function() {
                 allType.onIsNull(allInput.eq(i), i);
                 return false;
             }
+            if(/[\/\\"<>\?\*]/gi.test(allInput.eq(i).val())) {
+                flag = false;
+                allInput.eq(i).focus();
+
+                allType.onIsNull(allInput.eq(i), i);
+                return false;
+            }
         }
     });
 
@@ -611,7 +624,6 @@ LDialog.judge_null = function() {
 LDialog.tips = function(value, selector, con) {
     var initConfig = $.extend(true, LDialog.tipsDC(), con);
     var tipsId = LDialog.creaTipsId();
-    console.log(initConfig.maxWidth);
     var $app = $('<div class="l-tips animated fadeIn">').attr('id', tipsId).html(value).css({
         'max-width': initConfig.maxWidth + "px",
         'background-color': initConfig.bg,
@@ -621,22 +633,15 @@ LDialog.tips = function(value, selector, con) {
     var offsetX = $(selector).offset().left;
     var offsetY = $(selector).offset().top;
 
-    console.log(initConfig);
-
     switch (initConfig.posi) {
         case 1:
             $appArrow.addClass("l-arrow-up");
             $appArrow.css({'border-top-color': initConfig.bg});
             $('body').append($app.append($appArrow));
-            console.log(tipsId);
-
 
             var x = $(selector).offset().left +  ($(selector).outerWidth() / 2) - ($('#' + tipsId).outerWidth() / 2);
             var y = $(selector).offset().top - $('#' + tipsId).outerHeight() - 6;
-            $('#' + tipsId).css({
-                top: y,
-                left: x
-            });
+            $('#' + tipsId).css({top: y, left: x});
 
             break;
         case 2:
@@ -646,10 +651,7 @@ LDialog.tips = function(value, selector, con) {
 
             var x = offsetX + $(selector).outerWidth() + 6;
             var y = offsetY + (($(selector).outerHeight() - $('#' + tipsId).outerHeight())/ 2);
-            $('#' + tipsId).css({
-                top: y,
-                left: x
-            });
+            $('#' + tipsId).css({top: y, left: x});
 
             break;
         case 3:
@@ -659,10 +661,7 @@ LDialog.tips = function(value, selector, con) {
 
             var x = (offsetX + ($(selector).outerWidth() / 2) - ($('#' + tipsId).outerWidth() / 2));
             var y = offsetY + $(selector).outerHeight() + 6;
-            $('#' + tipsId).css({
-                top: y,
-                left: x
-            });
+            $('#' + tipsId).css({top: y, left: x});
             break;
         case 4:
             $appArrow.addClass("l-arrow-left");
@@ -671,10 +670,7 @@ LDialog.tips = function(value, selector, con) {
 
             var x = offsetX - $('#' + tipsId).outerWidth() - 6;
             var y = offsetY + (($(selector).outerHeight() - $('#' + tipsId).outerHeight())/ 2);
-            $('#' + tipsId).css({
-                top: y,
-                left: x
-            });
+            $('#' + tipsId).css({top: y, left: x});
             break;
         default :
             $appArrow.addClass("l-arrow-right");
@@ -682,10 +678,7 @@ LDialog.tips = function(value, selector, con) {
 
             var x = offsetX + $(selector).outerWidth() + 6;
             var y = offsetY + (($(selector).outerHeight() - $('#' + tipsId).outerHeight())/ 2);
-            $('#' + tipsId).css({
-                top: y,
-                left: x
-            });
+            $('#' + tipsId).css({top: y, left: x});
             break;
     }
 
@@ -724,7 +717,6 @@ LDialog.removeTips = function(index) {
 };
 
 LDialog.timeOutTips = function(config, index) {
-    console.log(index);
     setTimeout(function() {
         $('#' + index).addClass('fadeOut');
 
