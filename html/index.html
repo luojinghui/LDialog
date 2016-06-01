@@ -508,21 +508,20 @@
                         sureTitle: "控制台打印结果",
                         onIsNull: function(posi, i) {
                             var id;
+                            
+                            console.log(posi.val());
 
                             if(i === 0) {
-                                id = LDialog.tips("请输入正确的值,",posi, {posi: 1, bg: "green"});
+                                id = LDialog.tips("请输入正确的值,",posi, {posi: 1, bg: "green", timeOut: 2000});
                             }
                             if(i === 1) {
-                                LDialog.removeTips(id);
-                                id = LDialog.tips("请输入正确的值,",posi, {posi: 2, bg: "gray", color: "#fff"});
+                                id = LDialog.tips("请输入正确的值,",posi, {posi: 2, bg: "gray", color: "#fff", timeOut: 2000});
                             }
                             if(i === 2) {
-                                LDialog.removeTips(id);
-                                id = LDialog.tips("请输入正确的值,",posi, {posi: 3, bg: "#fba44d", color: "#fff"});
+                                id = LDialog.tips("请输入正确的值,",posi, {posi: 3, bg: "#fba44d", color: "#fff", timeOut: 2000});
                             }
                             if(i === 3) {
-                                LDialog.removeTips(id);
-                                id = LDialog.tips("不能为空，请重新输入",posi, {posi: 4, bg: "#258ed7", color: "#fff"});
+                                id = LDialog.tips("不能为空，请重新输入",posi, {posi: 4, bg: "#258ed7", color: "#fff", timeOut: 2000});
                             }
                         }
                     };
@@ -571,12 +570,12 @@
             var con = {
                 input: [{
                     verCenter: true,
-                    value: "",
+                    value: "123123",
                     placeH: "input",
                     notNull: true,
                     type: "textarea"
                 }],
-                width: "360px",
+                width: "450px",
                 onIsNull: function(position, i) {
 //                    position.val("请输入正确的值在第：" + (i+1) + "个输入框");
                     LDialog.tips("请输入正确的值,",position, {posi: 2});
@@ -601,7 +600,12 @@
         });
 
         $('.c-14').on('click', function() {
-            LDialog.tip("数据添加失败！", {iconData: "", iconColor: "rgb(75,239,112)"});
+            //LDialog.tip("数据添加失败！", {iconData: "", iconColor: "rgb(75,239,112)"});
+            //LDialog.tip("数据添加失败！", {iconData: "", iconColor: "rgb(217, 83, 79)"});
+            alert(23);
+//            setTimeout(function() {
+                window.location.reload();
+//            }, 2300);
         });
     });
 </script>
