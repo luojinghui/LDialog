@@ -51,22 +51,22 @@
 </style>
 <body>
 <div class="container">
-    <div class="c-8">text input</div>
-    <div class="c-1">默认初始化效果</div>
-    <div class="c-2">关闭，确定，取消回调事件</div>
-    <div class="c-3">引入预定义按钮组，重写图标样式</div>
-    <div class="c-4">引入html语言</div>
-    <div class="c-5">倒计时关闭蒙版,重写副标题</div>
-    <div class="c-6">重写蒙版大小透明度</div>
-    <div class="c-7">隐藏footer和header</div>
-    <div class="c-aa aaaa">测试通过请求实例化输入组包含各种input类型</div>
-    <div class="c-10">经典拖拽</div>
-    <div class="c-11">黑框拖拽</div>
-    <div class="c-14">tips</div>
-    <div class="c-12">prompt1</div>
-    <div class="c-9">prompt2</div>
-    <div class="c-13">confirm</div>
-    <div class="c-15">alert</div>
+    <div class="c-8">8 text input</div>
+    <div class="c-1">1 默认初始化效果</div>
+    <div class="c-2">2 关闭，确定，取消回调事件</div>
+    <div class="c-3">3 引入预定义按钮组，重写图标样式</div>
+    <div class="c-4">4 引入html语言</div>
+    <div class="c-5">5 倒计时关闭蒙版,重写副标题</div>
+    <div class="c-6">6 重写蒙版大小透明度</div>
+    <div class="c-7">7 隐藏footer和header</div>
+    <div class="c-aa aaaa">aa 测试通过请求实例化输入组包含各种input类型</div>
+    <div class="c-10">10 经典拖拽</div>
+    <div class="c-11">11 黑框拖拽</div>
+    <div class="c-14">14 tips</div>
+    <div class="c-12">12 prompt1</div>
+    <div class="c-9">9 prompt2</div>
+    <div class="c-13">13 confirm</div>
+    <div class="c-15">15 alert</div>
     <br/>
     <p>如果通过请求重写蒙版内input group，建议采用已有的框架书写，即按钮<span class="c-aa aaaa">测试通过请求实例化输入组包含各种input类型</span>中的框架书写。</p>
     <p>按钮组样式预览</p>
@@ -462,10 +462,8 @@
                         iconColor: "green",
                         footer: true,
                         onSure: function(v) {
-                            console.log(v);
-                        },
-                        onSureBefore: function() {
-
+                            LDialog.closeAllTips();
+                            LDialog.tip("你输入了：" + v[0] + " " + v[1] + " " + v[2] + " " + v[3] + " " + v[4], {timeOut: 4000});
                         },
                         input: [
                             {
@@ -535,7 +533,7 @@
                     };
 
                     var value = "简单点说话的方式简单点,递进的情绪请省略,你又不是个演员,别设计那些情节,没意见我只想看看你怎么圆,该配合你演出的我演视而不见,在逼一个最爱你的人即兴表演,什么时候我们开始收起了底线,顺应时代的改变看那些拙劣的表演";
-                    var dia = new LDialog("", con, "input");
+                    var dia = new LDialog("<b>请仔细填写申请表：</b>", con, "input");
                     dia.init();
                 }
             });
@@ -577,12 +575,7 @@
         $('.c-12').on('click', function() {
             var con = {
                 input: [{
-                    verCenter: true,
-                    value: "",
-                    placeH: "input",
-                    notNull: true,
-                    type: "textarea",
-                    iconData: ""
+                    type: "textarea"
                 }],
                 width: "400px",
                 onIsNull: function(position, i) {
@@ -594,8 +587,9 @@
                     return true;
                 }
             };
-            LDialog.prompt("success", con ,function(v) {
+            LDialog.prompt("", con, function(v) {
                 if(v[0] !== "") {
+                    LDialog.closeAllTips();
                     var dia = new LDialog("你输入了：" + v[0], {header: false, footer: false, outline: true, radius: 0, width: "300px", verCenter: true, globalClose: true});
                     dia.init();
                 }
@@ -605,20 +599,21 @@
         $('.c-13').on('click', function() {
             var value = "确定要删除吗？";
 
-            LDialog.confirm(value, {}, function() {
+            LDialog.confirm(value, {iconData: ""}, function() {
                 LDialog.msg("删除成功！", {iconData: "", iconColor: "green", iconSize: "30px"});
             });
         });
 
         $('.c-14').on('click', function() {
-            LDialog.tip("点击触发全局关闭回调！", {iconData: "", iconColor: "rgb(75,239,112)", timeOut: 1000}, function() {
-                LDialog.tip("数据添加失败！", {iconData: "", iconColor: "rgb(217, 83, 79)", timeOut: 1000});
+            LDialog.tip("tip默认没有打开全局关闭设置！", {iconData: "", iconColor: "rgb(75,239,112)", timeOut: 2000}, function() {
+                console.log(123123);
+                LDialog.tip("打开了全局关闭设置，点击即可关闭！", {iconData: "", iconColor: "rgb(217, 83, 79)", timeOut: 2000, globalClose: true});
             });
         });
 
         $('.c-15').on('click', function() {
             LDialog.alert("123123123123123",function() {
-                console.log(123);
+
             });
         });
     });
