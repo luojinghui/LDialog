@@ -66,15 +66,17 @@
     <div class="c-12">prompt1</div>
     <div class="c-9">prompt2</div>
     <div class="c-13">confirm</div>
+    <div class="c-15">alert</div>
     <br/>
     <p>如果通过请求重写蒙版内input group，建议采用已有的框架书写，即按钮<span class="c-aa aaaa">测试通过请求实例化输入组包含各种input类型</span>中的框架书写。</p>
     <p>按钮组样式预览</p>
-    <div class="btn btn-default">btn-default</div>
-    <div class="btn btn-primary">btn-primary</div>
-    <div class="btn btn-error">btn-error</div>
-    <div class="btn btn-success">btn-success</div>
-    <div class="btn btn-info">btn-info</div>
-    <div class="btn btn-warning">btn-warning</div>
+    <div class="l-btn l-btn-default">l-btn-default</div>
+    <div class="l-btn l-btn-primary">l-btn-primary</div>
+    <div class="l-btn l-btn-error">l-btn-error</div>
+    <div class="l-btn l-btn-success">l-btn-success</div>
+    <div class="l-btn l-btn-info">l-btn-info</div>
+    <div class="l-btn l-btn-warning">l-btn-warning</div>
+    <div class="l-btn l-btn-bim">l-btn-bim</div>
 </div>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -370,18 +372,10 @@
         $('.c-2').on('click', function() {
             con = {
                 onSure: function(v) {
-                    var dia = new LDialog("content", {enterAni: "zoomIn", onSure: function() {
-                        console.log(v);
-                    }}, "success");
+                    var dia = new LDialog("content", {enterAni: "zoomIn"}, "success");
                     dia.init();
                 },
-//                onCancel: function() {
-//                    alert("退出了");
-//                },
-//                onClose: function() {
-//                    alert("关闭了");
-//                },
-                enterAni: "",
+                enterAni: "zoomIn",
                 moveType: 2
             };
 
@@ -405,7 +399,7 @@
         });
 
         $('.c-4').on('click', function() {
-            var value = "<img style='' src='../img/sea.jpg'>";
+            var value = '<img src="../img/sea.jpg" style="width: 100%"/>';
             var con = {
                 footer: false,
                 icon: false,
@@ -427,7 +421,7 @@
 
         $('.c-6').on('click', function() {
             var value = "重写蒙版大小透明度";
-            var con = {footer: false, width: "400px", minHeight: "200px", opacity: 0.2, verCenter: true};
+            var con = {footer: false, width: "400px", minHeight: "150px", opacity: 0.2, verCenter: true};
             var dialog6 = new LDialog(value, con);
             dialog6.init();
         });
@@ -436,8 +430,7 @@
             con = {
                 iconColor: "green",
                 iconSize: "30px",
-                width: "400",
-                enterAni: "slideInDown",
+                width: "250",
                 iconData: "",
                 radius: "0px",
                 opacity: 0.1,
@@ -508,21 +501,36 @@
                         sureTitle: "控制台打印结果",
                         onIsNull: function(posi, i) {
                             var id;
-                            
-                            console.log(posi.val());
 
                             if(i === 0) {
-                                id = LDialog.tips("请输入正确的值,",posi, {posi: 1, bg: "green", timeOut: 2000});
+                                if(posi.val() === "") {
+                                    posi.focus();
+                                    id = LDialog.tips("请输入正确的值,",posi, {posi: 1, bg: "green", timeOut: 2000});
+                                    return false;
+                                }
                             }
                             if(i === 1) {
-                                id = LDialog.tips("请输入正确的值,",posi, {posi: 2, bg: "gray", color: "#fff", timeOut: 2000});
+                                if(posi.val().length < 1) {
+                                    posi.focus();
+                                    id = LDialog.tips("长度不能小于等于1,",posi, {posi: 2, bg: "gray", color: "#fff", timeOut: 2000});
+                                    return false;
+                                }
                             }
                             if(i === 2) {
-                                id = LDialog.tips("请输入正确的值,",posi, {posi: 3, bg: "#fba44d", color: "#fff", timeOut: 2000});
+                                if(posi.val() === "") {
+                                    posi.focus();
+                                    id = LDialog.tips("请输入正确的值,",posi, {posi: 3, bg: "#fba44d", color: "#fff", timeOut: 2000});
+                                    return false;
+                                }
                             }
                             if(i === 3) {
-                                id = LDialog.tips("不能为空，请重新输入",posi, {posi: 4, bg: "#258ed7", color: "#fff", timeOut: 2000});
+                                if(posi.val() === "") {
+                                    posi.focus();
+                                    id = LDialog.tips("不能为空，请重新输入",posi, {posi: 4, bg: "#258ed7", color: "#fff", timeOut: 2000});
+                                    return false;
+                                }
                             }
+                            return true;
                         }
                     };
 
@@ -547,7 +555,7 @@
                     verCenter: true,
                     value: "",
                     placeH: "input",
-                    notNull: true,
+                    notNull: true
                 }],
                 width: "360"
             };
@@ -570,18 +578,23 @@
             var con = {
                 input: [{
                     verCenter: true,
-                    value: "123123",
+                    value: "",
                     placeH: "input",
                     notNull: true,
-                    type: "textarea"
+                    type: "textarea",
+                    iconData: ""
                 }],
-                width: "450px",
+                width: "400px",
                 onIsNull: function(position, i) {
-//                    position.val("请输入正确的值在第：" + (i+1) + "个输入框");
-                    LDialog.tips("请输入正确的值,",position, {posi: 2});
+                    if(position.val() === "") {
+                        position.focus();
+                        LDialog.tips("请输入正确的值,",position, {posi: 2});
+                        return false;
+                    }
+                    return true;
                 }
             };
-            LDialog.prompt(con, function(v) {
+            LDialog.prompt("success", con ,function(v) {
                 if(v[0] !== "") {
                     var dia = new LDialog("你输入了：" + v[0], {header: false, footer: false, outline: true, radius: 0, width: "300px", verCenter: true, globalClose: true});
                     dia.init();
@@ -593,19 +606,20 @@
             var value = "确定要删除吗？";
 
             LDialog.confirm(value, {}, function() {
-                LDialog.msg("删除成功！", {iconData: "", iconColor: "green"}, function() {
-                    LDialog.msg("我退出了。。。");
-                });
+                LDialog.msg("删除成功！", {iconData: "", iconColor: "green", iconSize: "30px"});
             });
         });
 
         $('.c-14').on('click', function() {
-            //LDialog.tip("数据添加失败！", {iconData: "", iconColor: "rgb(75,239,112)"});
-            //LDialog.tip("数据添加失败！", {iconData: "", iconColor: "rgb(217, 83, 79)"});
-            alert(23);
-//            setTimeout(function() {
-                window.location.reload();
-//            }, 2300);
+            LDialog.tip("点击触发全局关闭回调！", {iconData: "", iconColor: "rgb(75,239,112)", timeOut: 1000}, function() {
+                LDialog.tip("数据添加失败！", {iconData: "", iconColor: "rgb(217, 83, 79)", timeOut: 1000});
+            });
+        });
+
+        $('.c-15').on('click', function() {
+            LDialog.alert("123123123123123",function() {
+                console.log(123);
+            });
         });
     });
 </script>
