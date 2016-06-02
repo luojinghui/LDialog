@@ -125,16 +125,6 @@ Lp.popType  = function() {
 };
 
 LDialog.prompt = function(value, receive_config, fun) {
-    //type = $.isFunction(receive_type) ? "input" : receive_type;
-    //config.onSure = fun === undefined ? receive_type : fun;
-    //
-    //config = $.extend(true, {
-    //    width: "350px",
-    //}, config, receive_type);
-    //
-    //var dialog = new LDialog("", config, type);
-    //dialog.init();
-
     var config;
 
     if(receive_config === undefined || $.isFunction(receive_config)) config = {};
@@ -145,6 +135,14 @@ LDialog.prompt = function(value, receive_config, fun) {
     else config.onSure = $.noop;
 
     config = $.extend(true, {
+        input: [{
+            verCenter: true,
+            value: "",
+            placeH: "input",
+            notNull: true,
+            type: "text",
+            iconData: ""
+        }],
         width: "350px"
     }, config);
 
@@ -164,7 +162,6 @@ LDialog.alert = function(value, receive_config, fun) {
 
     config = $.extend(true, {
         width: "350px",
-        verCenter: true,
         btn: {cancel: ""}
     }, config);
 
@@ -183,8 +180,7 @@ LDialog.confirm = function(value, receive_config, fun) {
     else config.onSure = $.noop;
 
     config = $.extend(true, {
-        width: "350px",
-        verCenter: true
+        width: "350px"
     }, config);
 
     var dialog = new LDialog(value, config, "custom");
@@ -197,14 +193,13 @@ LDialog.msg = function(value, receive_config, fun) {
     if(receive_config === undefined || $.isFunction(receive_config)) config = {};
     else config = receive_config;
 
-    if($.isFunction(receive_config)) config.onGClose = receive_config;
-    else if($.isFunction(fun)) config.onGClose = fun;
-    else config.onGClose = $.noop;
+    if($.isFunction(receive_config)) config.onTimeOut = receive_config;
+    else if($.isFunction(fun)) config.onTimeOut = fun;
+    else config.onTimeOut = $.noop;
 
     config = $.extend(true, {
         width: "300px",
         verCenter: true,
-        globalClose: true,
         radius: 0,
         outline: true,
         header: false,
@@ -222,9 +217,9 @@ LDialog.tip = function(value, receive_config, fun) {
     if(receive_config === undefined || $.isFunction(receive_config)) config = {};
     else config = receive_config;
 
-    if($.isFunction(receive_config)) config.onGClose = receive_config;
-    else if($.isFunction(fun)) config.onGClose = fun;
-    else config.onGClose = $.noop;
+    if($.isFunction(receive_config)) config.onTimeOut = receive_config;
+    else if($.isFunction(fun)) config.onTimeOut = fun;
+    else config.onTimeOut = $.noop;
 
     config = $.extend(true, {
         iconSize: "30px",
@@ -235,9 +230,7 @@ LDialog.tip = function(value, receive_config, fun) {
         opacity: 0.1,
         footer: false,
         header: false,
-        globalClose: true,
         enterAni: "slideInDown",
-        verCenter: true,
         opacity: 0,
         shadow: "none",
         bg: "rgba(0,0,0,0.6)",
@@ -724,7 +717,7 @@ LDialog.tipsDC = function() {
         bg: "#000",
         color: "#fff",
         maxWidth: "150",
-        timeOut: 3000,
+        timeOut: 2000,
         tipsClose: $.noop
     }
 };
@@ -756,4 +749,8 @@ LDialog.timeOutTips = function(config, index) {
         }, 200)
 
     }, config.timeOut);
+};
+
+LDialog.closeAllTips = function() {
+    $('.l-tips').remove();
 };
