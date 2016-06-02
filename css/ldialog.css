@@ -40,7 +40,7 @@
     /*position: absolute;*/
     position: fixed;
     z-index: 19940424;
-    width: 550px;
+    width: 450px;
     margin-left: auto;
     margin-right: auto;
     /*margin-top: 40px;*/
@@ -50,7 +50,7 @@
     background-clip: padding-box;
     /*border: 1px solid #999;*/
     /*border: 1px solid rgba(0,0,0,.2);*/
-    border-radius: 5px;
+    border-radius: 2px;
     outline: 0;
     /*box-shadow: 0 3px 9px rgba(0,0,0,.5);*/
     box-shadow: 1px 1px 20px rgba(0,0,0,.3);
@@ -101,7 +101,7 @@
     border-bottom: 1px solid #e5e5e5;
     position: relative;
     background-color: #f3f3f3;
-    color: #111111;
+    color: #4E4E4E;
     font-size: 14px;
     /*background-color: #3498dc;*/
     /*color: #fff;*/
@@ -142,13 +142,14 @@
 .tc {
     text-align: center;
 }
-.btn {
+.l-btn {
     display: inline-block;
     zoom: 1;
     *display: inline;
+    min-height: 18px;
     padding: 6px 12px;
     margin-bottom: 0;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     line-height: 1.42857143;
     text-align: center;
@@ -165,76 +166,42 @@
     border: 1px solid transparent;
     border-radius: 3px;
     margin: 0 5px;
-}
-.btn-default {
-    color: #333;
-    background-color: #fff;
-    border-color: #ccc;
-}
-.btn-primary {
     color: #fff;
-    border-color: #4898d5;
+}
+.l-btn:hover {
+    opacity: 0.8;
+}
+.l-btn-default {
+    background-color: #C5C5C5;
+    /*border-color: #ccc;*/
+}
+.l-btn-primary {
     background-color: #2e8ded;
+    /*border-color: #4898d5;*/
 }
-.btn-error {
-    color: #fff;
+.l-btn-error {
     background-color: #d9534f;
-    border-color: #d43f3a;
+    /*border-color: #d43f3a;*/
 }
-.btn-success {
-    color: #fff;
+.l-btn-success {
     background-color: #56BD9D;
-    border-color: #4EA288;
+    /*border-color: #4EA288;*/
 }
-.btn-info {
-    color: #fff;
+.l-btn-info {
     background-color: #52B1CE;
-    border-color: #3898B5;
+    /*border-color: #3898B5;*/
 }
-.btn-warning {
-    color: #fff;
+.l-btn-warning {
     background-color: #f0ad4e;
-    border-color: #eea236;
+    /*border-color: #eea236;*/
 }
-.btn-bim {
+.l-btn-bim {
     background-color: #3498dc;
-    border-color: #2A7AB1;
-}
-.btn-bim:hover {
-    background: #2B7CB3;
-}
-.btn-error:hover {
-    color: #fff;
-    background-color: #c9302c;
-    border-color: #ac2925;
-}
-.btn-success:hover {
-    color: #fff;
-    background-color: #479C82;
-    border-color: #469079;
-}
-.btn-warning:hover {
-    color: #fff;
-    background-color: #ec971f;
-    border-color: #d58512;
-}
-.btn-default:hover {
-    color: #333;
-    background-color: #e6e6e6;
-    border-color: #adadad;
-}
-.btn-info:hover {
-    color: #fff;
-    background-color: #2491B1;
-    border-color: #20809C;
-}
-.btn-primary:hover {
-    color: #fff;
-    background-color: #246FBB;
-    border-color: #246FBB;
+    /*border-color: #2A7AB1;*/
 }
 .l-tip-info {
     /*min-height: 50px;*/
+    line-height: initial;
     text-align: center;
 }
 .l-tip-info-img {
@@ -242,6 +209,7 @@
     margin-right: 10px;
 }
 .l-tip-info-fonts {
+    color: #5F5E5E;
     text-align: left;
     display: inline-block;
     zoom: 1;
@@ -260,8 +228,8 @@
 }
 .form-line [type=text], .form-line [type=password], .form-line [type=date] , .form-line [type=tel], .form-line textarea {
     height: 30px;
-    width: -webkit-calc(100% - 115px);
-    width: calc(100% - 115px);
+    width: -webkit-calc(100% - 100px);
+    width: calc(100% - 100px);
     padding-left: 5px;
     font-size: 14px;
     vertical-align: middle;
@@ -306,8 +274,9 @@
     outline: none;
 }
 .l-center-input {
-    width: -webkit-calc(100% - 34px) !important;
-    width: calc(100% - 34px) !important;
+    width: -webkit-calc(100% - 10px) !important;
+    width: calc(100% - 10px) !important;
+    margin-left: 0px!important;
 }
 
 
@@ -316,7 +285,7 @@
     background: black;
     max-width: 150px;
     font-size: 12px;
-    padding: 10px 15px;
+    padding: 5px 10px;
     color: #fff;
     position: absolute;
     text-align: center;
@@ -346,7 +315,6 @@
     bottom: -6px;
 
     left: -webkit-calc(50% - 6px);
-    left: -moz-calc(50% - 6px);
     left: calc(50% - 6px);
 }
 .l-arrow-right {
@@ -354,7 +322,6 @@
     border-right-color: #000;
     left: -6px;
     top: -webkit-calc(50% - 6px);
-    top: -moz-calc(50% - 6px);
     top: calc(50% - 6px);
 }
 .l-arrow-left {
@@ -362,7 +329,6 @@
     border-left-color: #000;
 
     top: -webkit-calc(50% - 6px);
-    top: -moz-calc(50% - 6px);
     top: calc(50% - 6px);
     right: -6px;
 }
