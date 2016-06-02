@@ -8,7 +8,7 @@ var allType;
 function LDialog(appHtml ,config, type) {
     this.appHtml = appHtml || "";
     this.config = config || {};
-    this.type = type || {};
+    this.type = type || "custom";
     this.createId;
 }
 
@@ -22,6 +22,7 @@ Lp.init = function() {
 
     this.createHtml(initConfig);
     allType = initConfig;
+    console.log(allType);
 };
 
 Lp.dConfig = function() {
@@ -47,17 +48,18 @@ Lp.dConfig = function() {
         onCancel: $.noop,//点击取消的按钮回调
         onClose: $.noop,//弹窗关闭的回调,返回触发事件
         onGClose: $.noop, //全局关闭的回调事件
-        onIsNull: $.noop, //input为空时的回调函数
+        onIsNull: function() {return true}, //input为空时的回调函数
+        onTimeOut: $.noop, //倒计时之后的回调函数
         opacity: 0.3,   //蒙版透明度
         outline: false, //outline效果
-        radius: "0px",   //表示蒙版圆角
+        radius: "2px",   //表示蒙版圆角
         subtitle: "",   //副标题
         sureTitle: "确定",
         shadow: "",
         timeOut: -1,  //倒计时关闭
         title: "", //标题
-        verCenter: false, //是否垂直居中
-        width: "550px"
+        verCenter: true, //是否垂直居中
+        width: "450px"
     }
 };
 
@@ -66,16 +68,16 @@ Lp.popType  = function() {
         info: {
             title: "信息",
             btn: {
-                sure: "btn-info",
-                cancel: "btn-default"
+                sure: "l-btn-info",
+                cancel: "l-btn-default"
             },
             iconData: ""
         },
         success: {
             title: "成功",
             btn: {
-                sure: "btn-success",
-                cancel: "btn-default"
+                sure: "l-btn-success",
+                cancel: "l-btn-default"
             },
             iconData: "",
             iconColor: "#56BD9D"
@@ -83,8 +85,8 @@ Lp.popType  = function() {
         error: {
             title: "错误",
             btn: {
-                sure: "btn-error",
-                cancel: "btn-default"
+                sure: "l-btn-error",
+                cancel: "l-btn-default"
             },
             iconData: "",
             iconColor: "#c9302c"
@@ -92,8 +94,8 @@ Lp.popType  = function() {
         confirm: {
             title: "提示",
             btn: {
-                sure: "btn-warning",
-                cancel: "btn-default"
+                sure: "l-btn-warning",
+                cancel: "l-btn-default"
             },
             iconData: "",
             iconColor: "#F0AD4E"
@@ -101,34 +103,72 @@ Lp.popType  = function() {
         input: {
             title: "输入",
             btn: {
-                sure: "btn-primary",
-                cancel: "btn-default"
+                sure: "l-btn-primary",
+                cancel: "l-btn-default"
             }
         },
         bim: {
             title: "提示",
             btn: {
-                sure: "btn-bim",
-                cancel: "btn-default"
+                sure: "l-btn-bim",
+                cancel: "l-btn-default"
             }
         },
         custom: {
-            title: "弹窗",
-            btn: {}
+            title: "初始化标题",
+            btn: {
+                sure: "l-btn-primary",
+                cancel: "l-btn-default"
+            }
         }
     };
 };
 
-LDialog.prompt = function(config, receive_type, fun) {
-    type = $.isFunction(receive_type) ? "input" : receive_type;
-    config.onSure = fun === undefined ? receive_type : fun;
+LDialog.prompt = function(value, receive_config, fun) {
+    //type = $.isFunction(receive_type) ? "input" : receive_type;
+    //config.onSure = fun === undefined ? receive_type : fun;
+    //
+    //config = $.extend(true, {
+    //    width: "350px",
+    //}, config, receive_type);
+    //
+    //var dialog = new LDialog("", config, type);
+    //dialog.init();
+
+    var config;
+
+    if(receive_config === undefined || $.isFunction(receive_config)) config = {};
+    else config = receive_config;
+
+    if($.isFunction(receive_config)) config.onSure = receive_config;
+    else if($.isFunction(fun)) config.onSure = fun;
+    else config.onSure = $.noop;
+
+    config = $.extend(true, {
+        width: "350px"
+    }, config);
+
+    var dialog = new LDialog(value, config, "input");
+    dialog.init();
+};
+
+LDialog.alert = function(value, receive_config, fun) {
+    var config;
+
+    if(receive_config === undefined || $.isFunction(receive_config)) config = {};
+    else config = receive_config;
+
+    if($.isFunction(receive_config)) config.onSure = receive_config;
+    else if($.isFunction(fun)) config.onSure = fun;
+    else config.onSure = $.noop;
 
     config = $.extend(true, {
         width: "350px",
-        verCenter: true
+        verCenter: true,
+        btn: {cancel: ""}
     }, config);
 
-    var dialog = new LDialog("", config, type);
+    var dialog = new LDialog(value, config, "input");
     dialog.init();
 };
 
@@ -147,7 +187,7 @@ LDialog.confirm = function(value, receive_config, fun) {
         verCenter: true
     }, config);
 
-    var dialog = new LDialog(value, config, "confirm");
+    var dialog = new LDialog(value, config, "custom");
     dialog.init();
 };
 
@@ -214,16 +254,17 @@ LDialog.tip = function(value, receive_config, fun) {
 Lp.createHtml = function(config) {
     //创建icon和content元素
     var $txt = (config.iconData === "") ? $("<div>").addClass('l-tip-info-fonts').html(this.appHtml).css({
-        display: "block"
-    }) : $("<div>").addClass('l-tip-info-fonts').html(this.appHtml);
+        display: "block",
+        color: config.fontColor
+    }) : $("<div>").addClass('l-tip-info-fonts').html(this.appHtml).css({color: config.fontColor});
     var $icon = (config.iconData !== ""  && config.icon) ? $("<i>").addClass('l-tip-info-img').attr('data-icon', config.iconData).css({'color': config.iconColor, 'font-size': config.iconSize}) : "";
     //创建叉叉关闭和标题元素
     var $close = $('<span class="l-dialog-c">').html('×');
     var $title = $('<div class="l-dialog-title">').html(config.title);
     var $subtitle = config.subtitle !== "" ? $('<div class="l-dialog-subtitle">').html(config.subtitle) : "";
     //创建确定和取消按钮元素
-    var $sure = config.btn.sure ? $('<div>').addClass("btn").addClass(config.btn.sure).text(config.sureTitle) : $('<div>');
-    var $cancel = config.btn.cancel ? $('<div>').addClass("btn").addClass(config.btn.cancel).text(config.cancelTitle) : $('<div>');
+    var $sure = config.btn.sure ? $('<div>').addClass("l-btn").addClass(config.btn.sure).text(config.sureTitle).css({backgroundColor: config.btn.sure}) : "";
+    var $cancel = config.btn.cancel ? $('<div>').addClass("l-btn").addClass(config.btn.cancel).text(config.cancelTitle) : "";
     //创建footer元素，判断是否显示footer
     var $footer = config.footer ? $('<div class="l-dialog-footer">') : $('<div class="l-dialog-footer" style="display: none!important"></div>');
     //创建内容盒子元素
@@ -231,6 +272,7 @@ Lp.createHtml = function(config) {
     var $contentBoxIn = $('<div class="l-tip-info"></div>');
     var $headerBox = config.header ? $('<div class="l-dialog-title-box" data-move="'+ config.move +'">') : $('<div>').css('display', 'none');
     var $dialogBox = config.outline ? $('<div>').addClass("l-dialog-box animated " + config.enterAni + ' outline').css({'width': config.width, 'min-height': config.minHeight, 'border-radius': config.radius}) : $('<div>').addClass("l-dialog-box animated " + config.enterAni).css({'width': config.width, 'min-height': config.minHeight, 'border-radius': config.radius,background: config.bg, color: config.fontColor, 'box-shadow': config.shadow});
+    //var $dialogBox = $('<div>').addClass("l-dialog-box animated " + config.enterAni).css({'width': config.width, 'min-height': config.minHeight, 'border-radius': config.radius,background: config.bg, color: config.fontColor, 'box-shadow': config.shadow});
     var $dialog = config.opacity === 0.3 ? $('<div>').addClass("l-dialog animated fadeIn") : $('<div>').addClass("l-dialog animated fadeIn").css({"background-color": "rgba(0,0,0," + config.opacity + ")"});
 
     var sendObj = {
@@ -407,9 +449,9 @@ Lp.addListener = function(accObj, config) {
 
     accObj.close.on('click', dia_id, this.close);
 
-    accObj.cancel.on('click', dia_id, this.cancel);
+    (accObj.cancel !== "" || !typeof accObj.cancel) ? accObj.cancel.on('click', dia_id, this.cancel) : "";
 
-    accObj.sure.on('click', dia_id , this.sure);
+    (accObj.sure!== "" || !typeof accObj.sure) ? accObj.sure.on('click', dia_id , this.sure) : "";
 
     $(window).on('keydown', dia_id, this.enter);
 
@@ -506,6 +548,7 @@ Lp.timeOutClose = function(config, dia_id) {
 
         setTimeout(function() {
             $('#' + dia_id).remove();
+            config.onTimeOut();
         }, 200)
 
     }, config.timeOut);
@@ -541,7 +584,7 @@ Lp.sure = function(event) {
         var input = LDialog.getAllValue();
         var dia_id = event.data.id;
 
-        allType.onSureBefore();
+        allType.onSureBefore(input);
         LDialog.addOrRemoveClass(dia_id);
 
         setTimeout(function() {
@@ -601,20 +644,8 @@ LDialog.judge_null = function() {
 
     allInput.each(function(i, v) {
         if(allInput.eq(i).data('notnull')) {
-            if(allInput.eq(i).val() === "" || allInput.eq(i).val() === null) {
-                flag = false;
-                allInput.eq(i).focus();
-
-                allType.onIsNull(allInput.eq(i), i);
-                return false;
-            }
-            if(/[\/\\"<>\?\*]/gi.test(allInput.eq(i).val())) {
-                flag = false;
-                allInput.eq(i).focus();
-
-                allType.onIsNull(allInput.eq(i), i);
-                return false;
-            }
+            flag = allType.onIsNull(allInput.eq(i), i);
+            return flag;
         }
     });
 
