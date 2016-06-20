@@ -78,9 +78,9 @@
     <div class="l-btn l-btn-warning">l-btn-warning</div>
     <div class="l-btn l-btn-bim">l-btn-bim</div>
 </div>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<!--<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>-->
+<!--<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>-->
+<!--<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>-->
 
 <!--<div class="box" style="width: 200px; height: 200px; border: 1px solid gray;">-->
     <!--<div class="box-t" style="width: 100%; height: 30px;border-bottom: 1px solid gray">title</div>-->
@@ -609,13 +609,25 @@
                 console.log(123123);
                 LDialog.tip("打开了全局关闭设置，点击即可关闭！", {iconData: "", iconColor: "rgb(217, 83, 79)", timeOut: 2000, globalClose: true});
             });
+
+
+//            LDialog.tip("失败！", {iconData: "", iconColor: "rgb(217, 83, 79)"}, function() {
+//                refreshNow();
+//            })
+//
+//            LDialog.tip("成功", {iconData: "", iconColor: "rgb(75,239,112)"}, function() {
+//                location.href = "<?php echo site_url();?>operate/user";
+//            })
+
         });
 
         $('.c-15').on('click', function() {
-            LDialog.alert("123123123123123",function() {
-
-            });
+//            LDialog.alert("123123123123123",function() {
+//
+//            });
+            LDialog.alert("123123123123123");
         });
+
     });
 </script>
 </html>
