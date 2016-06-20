@@ -628,6 +628,23 @@
             LDialog.alert("123123123123123");
         });
 
+        var tid;
+        $('.l-btn-bim').hover(function() {
+            tid = LDialog.tips("你点击了bim按钮", ".l-btn-bim", {posi: 3, bg: "#ff0808", color: "#fff",  maxWidth: "300px", timeOut: -1});
+        }, function() {
+            LDialog.removeTips(tid);
+        });
+
+        $('.l-btn-warning').on('click', function() {
+            LDialog.tips("警告按钮被点击了。。。", ".l-btn-warning", {posi: 1, timeOut: -1});
+            LDialog.tips("警告按钮被点击了。。。", ".l-btn-warning", {posi: 2, timeOut: -1});
+            LDialog.tips("警告按钮被点击了。。。", ".l-btn-warning", {posi: 3, timeOut: -1});
+            LDialog.tips("警告按钮被点击了。。。", ".l-btn-warning", {posi: 4, timeOut: -1});
+        });
+
+        $('.l-btn-default').on('click', function() {
+            LDialog.closeAllTips();
+        })
     });
 </script>
 </html>
