@@ -1,7 +1,9 @@
 /**
  * Created by: Luojinghui/luojinghui424@gmail.com
+ * Url: https://github.com/luojinghui/LDialog
  * Date: 16/5/12
  * Time: 下午6:00
+ * Version: 1.0.5
  */
 var allType;
 
@@ -22,7 +24,6 @@ Lp.init = function() {
 
     this.createHtml(initConfig);
     allType = initConfig;
-    console.log(allType);
 };
 
 Lp.dConfig = function() {
@@ -115,7 +116,7 @@ Lp.popType  = function() {
             }
         },
         custom: {
-            title: "初始化标题",
+            title: "系统标题",
             btn: {
                 sure: "l-btn-primary",
                 cancel: "l-btn-default"
