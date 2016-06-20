@@ -747,6 +747,7 @@ LDialog.timeOutTips = function(config, index) {
 
         setTimeout(function() {
             $('#' + index).remove();
+            config.tipsClose();
         }, 200)
 
     }, config.timeOut);
