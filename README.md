@@ -251,7 +251,22 @@ example:
 
 和msg方法使用相同，但样式不同。
 
+*    **LDialog.tips(value, selector, con)**
 
+value：必填，显示的文字，可以为空。
+
+selector： 必填，显示tips出现的位置，可以为任意jquery的选择器。
+
+con： 选填，用来配置tips显示效果，具体参数如下：
+
+```
+   posi: 2,  //默认显示在选择器的右边位置，可定义分别对应的位置： 1：上， 2： 右， 3： 下， 4： 左
+   bg: "#000",  //定义tips背景色，默认为黑色
+   color: "#fff", //定义tips文字颜色，默认为白色
+   maxWidth: "150", //定义tips最大宽度，默认为150px
+   timeOut: 2000, //定义tips多少秒后消失。
+   tipsClose: $.noop //定义tips倒计时回调函数
+```     
 
 ### Live Demo 
 
