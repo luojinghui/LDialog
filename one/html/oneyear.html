@@ -91,6 +91,26 @@
             </div>
         </div>
     </div>
+    <div class="fixed">
+        <div class="close" id="close"></div>
+        <div class="left-logo">
+            <img class="logo" src="../img/logo.png" alt=""/>
+            <img class="logo-info" src="../img/logo2.png" alt=""/>
+        </div>
+        <div class="download">
+            <a href="">
+                <img src="../img/dl.png" alt=""/>
+            </a>
+        </div>
+    </div>
 </div>
 </body>
+<script>
+    window.onload=function(){
+        var btn = document.getElementById("close");
+        btn.onclick = function(){
+            document.getElementsByClassName('fixed').style.display="none";
+        }
+    }
+</script>
 </html>
