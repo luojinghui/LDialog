@@ -81,7 +81,30 @@
     float: right;
     position: relative;
     width: 50%;
-    min-height: 40px;
+    min-height: 90px;
+}
+.circle:after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    border-radius: 999px;
+    bottom: 0;
+    left: -4px;
+}
+.finished:after {
+    background-color: #00b0ff;
+}
+.delay:after {
+    background-color: rgb(255,0,0);
+    left: auto;
+    right: -4px;
+}
+.doing:after {
+    background-color: #fff;
+    width: 6px;
+    height: 6px;
+    border: 2px solid #00b0ff;
 }
 .r-m-l:before {
     content: "";
@@ -96,7 +119,7 @@
     float: left;
     position: relative;
     width: 50%;
-    min-height: 40px;
+    min-height: 90px;
 }
 .l-m-l:before {
     content: "";
@@ -110,6 +133,7 @@
 
 .message-box {
     padding-left: 12px;
+    margin-top: 30px;
     position: relative;
     display: -webkit-box;
     display: -webkit-flex;
