@@ -18,7 +18,7 @@
         </div>
         <p class="activity-name">十月学生会承办青歌赛</p>
         <p class="activity-content">
-            自定义指令学习有段时间了，学了些纸上谈兵的东西，还没有真正的写个指令出来呢,所以，随着学习的接近尾声，本篇除了介绍剩余的几个参数外，还将动手结合使用各参数，写个真正能用的指令出来玩玩。说属性名称吧，你是不是认为这个attributeName1就是父作用域中的某个变量名称？错！其实这个属性名称是指令自己的模板中要使用的一个名称，并不对应父作用域中的变量。好难懂啊。可能这么说太不负责任了，稍后的例子中我们来说明。再来看绑定策略。
+            自定义指令学习有段时间，学了些纸上谈兵的东西，还没有真正写个指令出来呢,所以，随着学习的接近尾声，本篇除了介绍剩余的几个参数外，还将动手结合使用各参数，写个真正能用的指令出来玩玩。说属性名称吧
         </p>
     </div>
     <div class="content">
@@ -29,7 +29,7 @@
             <div class="start-mission">
                 <span class="start-time">2016-6-6</span>
             </div>
-            <div class="right-mission r-m-l clearfix circle finished">
+            <div class="right-mission r-m-l clearfix circle finished-r">
                 <div class="message-box">
                     <div class="message">
                         <div class="task">完成前期宣传工作（微信平台，校园横幅，邀请函）达到最高关注</div>
@@ -44,7 +44,37 @@
                     </div>
                 </div>
             </div>
-            <div class="left-mission l-m-l clearfix circle delay">
+            <div class="left-mission l-m-l clearfix circle finished-l">
+                <div class="message-box message-box2">
+                    <div class="person-img">
+                        <img class="p-i" src="../img/ser-3.jpeg" alt=""/>
+                        <span class="status">已完成</span>
+                    </div>
+                    <div class="message message2">
+                        <div class="task">完成前期宣传工作,完成前期宣传工作,完成前期宣传工作,完成前期宣传工作,完成前期宣传工作,完成前期宣传工作,完成前期宣传工作</div>
+                        <div class="time">
+                            <span>2016-2-3</span>
+                            <span>100</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-mission r-m-l clearfix circle delay-r">
+                <div class="message-box">
+                    <div class="message">
+                        <div class="task">完成前期宣传工作（微信平台，校园横幅，邀请函）达到最高关注</div>
+                        <div class="time">
+                            <span>2016-2-3</span>
+                            <span>100</span>
+                        </div>
+                    </div>
+                    <div class="person-img">
+                        <img class="p-i" src="../img/ser-3.jpeg" alt=""/>
+                        <span class="status">延误</span>
+                    </div>
+                </div>
+            </div>
+            <div class="left-mission l-m-l clearfix circle delay-l">
                 <div class="message-box message-box2">
                     <div class="person-img">
                         <img class="p-i" src="../img/ser-3.jpeg" alt=""/>
@@ -59,7 +89,7 @@
                     </div>
                 </div>
             </div>
-            <div class="right-mission r-m-l clearfix circle doing">
+            <div class="right-mission r-m-l clearfix circle doing-r">
                 <div class="message-box">
                     <div class="message">
                         <div class="task">完成前期宣传工作（微信平台，校园横幅，邀请函）达到最高关注</div>
@@ -74,14 +104,14 @@
                     </div>
                 </div>
             </div>
-            <div class="left-mission l-m-l clearfix">
+            <div class="left-mission l-m-l clearfix circle doing-l">
                 <div class="message-box message-box2">
                     <div class="person-img">
-                        <img class="p-i" src="../img/ser-3.jpeg" alt=""/>
-                        <span class="status">已完成</span>
+                        <img class="p-i" src="../img/ser-2.jpeg" alt=""/>
+                        <span class="status">进行中</span>
                     </div>
                     <div class="message message2">
-                        <div class="task">完成前期宣传工作,完成前期宣传工作,完成前期宣传工作,完成前期宣传工作,完成前期宣传工作,完成前期宣传工作,完成前期宣传工作</div>
+                        <div class="task">完成前期宣传工作</div>
                         <div class="time">
                             <span>2016-2-3</span>
                             <span>100</span>
@@ -105,12 +135,12 @@
     </div>
 </div>
 </body>
+<script src="../js/jquery.min.js"></script>
 <script>
-    window.onload=function(){
-        var btn = document.getElementById("close");
-        btn.onclick = function(){
-            document.getElementsByClassName('fixed').style.display="none";
-        }
-    }
+    $(function() {
+        $('.close').on('click', function() {
+            $('.fixed').slideUp();
+        })
+    })
 </script>
 </html>

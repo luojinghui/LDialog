@@ -25,6 +25,7 @@
 
 .container {
     padding: 0 19px;
+    margin-bottom: 50px;
 }
 .title {
     text-align: center;
@@ -122,22 +123,37 @@
     position: absolute;
     border-radius: 999px;
     bottom: 0;
+}
+.finished-r:after {
+    background-color: #00b0ff;
     left: -4px;
 }
-.finished:after {
+.finished-l:after {
     background-color: #00b0ff;
-}
-.delay:after {
-    background-color: rgb(255,0,0);
-    left: auto;
     right: -4px;
 }
-.doing:after {
+.delay-l:after {
+    background-color: rgb(255,0,0);
+    right: -4px;
+}
+.delay-r:after {
+    background-color: rgb(255,0,0);
+    left: auto;
+    left: -4px;
+}
+.doing-r:after {
     background-color: #fff;
     width: 6px;
     height: 6px;
     border: 2px solid #00b0ff;
     left: -5px;
+}
+.doing-l:after {
+    background-color: #fff;
+    width: 6px;
+    height: 6px;
+    border: 2px solid #00b0ff;
+    right: -5px;
 }
 .r-m-l:before {
     content: "";
