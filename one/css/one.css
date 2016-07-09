@@ -41,12 +41,14 @@
     height: 56px;
 }
 .activity-name {
-    font-size: 14px;
+    font-size: 16px;
     color: #4c566c;
 }
 .activity-content {
-    font-size: 13px;
+    font-size: 14px;
     margin: 16px 0 20px 0;
     padding: 0 19px;
     text-align: justify;
+    line-height: 24px;
+    color: #999999;
 }
