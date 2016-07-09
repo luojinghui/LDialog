@@ -53,16 +53,39 @@
     color: #999999;
 }
 .content {
-    max-width: 875px;
+    max-width: 874px;
     margin: 0 auto;
-    background: url("../img/line.png") no-repeat center top;
-    background-size: contain;
     min-height: 300px;
+}
+.content-title {
+    text-align: center;
+    font-size: 14px;
+    color: #bbc3c6;
+    position: relative;
+}
+.content-title:before {
+    content: "";
+    width: 100%;
+    height: 1px;
+    display: block;
+    background-color: #ececec;
+    position: absolute;
+    bottom: 11px;
+    z-index: -1;
+}
+.content-title .line {
+    background-color: #fff;
+    z-index: 23;
+    display: inline-block;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 0px 10px;
 }
 
 
+
 .mission-box {
-    padding-top: 35px;
+    padding-top: 18px;
     position: relative;
 }
 .mission-box:before, .mission-box:after, .clearfix {
@@ -76,6 +99,15 @@
     background-color: #b3e1fc;
     border-radius: 999px;
     margin: 0 auto;
+    position: relative;
+}
+.start-mission .start-time {
+    position: absolute;
+    width: 125px;
+    font-size: 12px;
+    color: #c3c5db;
+    left: 16px;
+    top: -4px;
 }
 .right-mission {
     float: right;
@@ -101,12 +133,11 @@
     right: -4px;
 }
 .doing:after {
-    /*background-color: #fff;*/
-    /*width: 6px;*/
-    /*height: 6px;*/
-    /*border: 2px solid #00b0ff;*/
-    background: url("../img/ing.png") no-repeat center center;
-    background-size: 8px;
+    background-color: #fff;
+    width: 6px;
+    height: 6px;
+    border: 2px solid #00b0ff;
+    left: -5px;
 }
 .r-m-l:before {
     content: "";
