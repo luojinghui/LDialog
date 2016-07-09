@@ -24,7 +24,7 @@
 /*}*/
 
 .container {
-
+    padding: 0 19px;
 }
 .title {
     text-align: center;
@@ -47,13 +47,14 @@
 .activity-content {
     font-size: 14px;
     margin: 16px 0 20px 0;
-    padding: 0 19px;
     text-align: justify;
     line-height: 24px;
     color: #999999;
 }
 .content {
-    width: 875px;
+    max-width: 875px;
     margin: 0 auto;
     background: url("../img/line.png") no-repeat center top;
+    background-size: contain;
+    min-height: 300px;
 }
