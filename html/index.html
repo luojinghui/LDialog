@@ -2,6 +2,8 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <meta http-equiv="Page-Enter" content="revealTrans(duration=.5, transition=8)">
+    <meta http-equiv="Page-Exit" content="revealTrans(duration=.5, transition=8)">
     <title></title>
     <link rel="stylesheet" href="../css/ldialog.css"/>
 </head>
@@ -78,9 +80,9 @@
     <div class="l-btn l-btn-warning">l-btn-warning</div>
     <div class="l-btn l-btn-bim">l-btn-bim</div>
 </div>
-<!--<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>-->
-<!--<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>-->
-<!--<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>-->
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 <!--<div class="box" style="width: 200px; height: 200px; border: 1px solid gray;">-->
     <!--<div class="box-t" style="width: 100%; height: 30px;border-bottom: 1px solid gray">title</div>-->
@@ -225,6 +227,7 @@
                 url: "se.html",
                 data: "html",
                 success: function(msg){
+                    console.log(msg);
                     var dia = new LDialog(msg, {});
                     dia.init();
                 }
@@ -364,9 +367,11 @@
 //        config: 选填，对象数据格式，用来配置基本信息
 //        type: 选填，对象或字符串，用来配置title和按钮组
 
-        $('.c-1').on('click', function() {
-            var dialog = new LDialog("test2");
-            dialog.init();
+        var tipid;
+        $('.c-1').hover(function() {
+            tipid = LDialog.tips("点击了c-1", ".c-1" ,{posi: 3,bg: "red"})
+        }, function(){
+            LDialog.closeAllTips();
         });
 
         $('.c-2').on('click', function() {

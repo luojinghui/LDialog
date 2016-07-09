@@ -4,6 +4,7 @@ module.exports = function(grunt) {
       grunt.log.ok('Running test: ' + url);
     });
 
+  // 项目配置
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*!\n' +
@@ -131,6 +132,7 @@ module.exports = function(grunt) {
     }
   });
 
+  // 加载Grunt插件
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks("grunt-contrib-jshint");
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -141,6 +143,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-csscomb');
   grunt.loadNpmTasks('grunt-contrib-qunit');
 
+  // 注册grunt默认任务
   grunt.registerTask('check', ['jshint']);
   grunt.registerTask('default', 'My "default" task description.', function() {
     //   grunt.task.run('uglify', 'jshint', 'less');
