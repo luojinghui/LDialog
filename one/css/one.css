@@ -52,3 +52,8 @@
     line-height: 24px;
     color: #999999;
 }
+.content {
+    width: 875px;
+    margin: 0 auto;
+    background: url("../img/line.png") no-repeat center top;
+}
