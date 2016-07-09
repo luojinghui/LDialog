@@ -101,10 +101,12 @@
     right: -4px;
 }
 .doing:after {
-    background-color: #fff;
-    width: 6px;
-    height: 6px;
-    border: 2px solid #00b0ff;
+    /*background-color: #fff;*/
+    /*width: 6px;*/
+    /*height: 6px;*/
+    /*border: 2px solid #00b0ff;*/
+    background: url("../img/ing.png") no-repeat center center;
+    background-size: 8px;
 }
 .r-m-l:before {
     content: "";
