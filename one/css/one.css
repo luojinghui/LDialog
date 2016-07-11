@@ -123,7 +123,8 @@
     height: 8px;
     position: absolute;
     border-radius: 999px;
-    bottom: 0;
+    /*bottom: 15px;*/
+    bottom: 0px;
 }
 .finished-r:after {
     background-color: #00b0ff;
@@ -163,7 +164,7 @@
     top: 0;
     height: 100%;
     width: 2px;
-    background-color: #b3e1fc;
+    background-color: #c3c5db;
 }
 .left-mission {
     float: left;
@@ -180,10 +181,14 @@
     width: 2px;
     background-color: #c3c5db;
 }
+.today:before {
+    background-color: #b3e1fc;
+}
 
 .message-box {
     padding-left: 12px;
-    margin-top: 30px;
+    margin-top: 40px;
+    margin-bottom: -15px;
     position: relative;
     display: -webkit-box;
     display: -webkit-flex;
@@ -255,7 +260,7 @@
     right: 3px;
     top: 0;
     background: url("../img/apple.png") no-repeat center center;
-    background-size: 24px;
+    background-size: 21px;
     color: #fff;
     width: 25px;
     height: 30px;
