@@ -133,6 +133,9 @@
             </a>
         </div>
     </div>
+    <div class="dialog">
+        <img class="finger" src="../img/finger.png" alt=""/>
+    </div>
 </div>
 </body>
 <script src="../js/jquery.min.js"></script>
@@ -140,7 +143,33 @@
     $(function() {
         $('.close').on('click', function() {
             $('.fixed').slideUp();
-        })
+        });
+
+        $('.dialog').on('click', function() {
+            $(this).fadeOut();
+        });
+
+        var id = 1;
+        
+        console.log(getUrlParam('id'));
+
+        $.ajax({
+            type: 'GET',
+            url: 'http://oytest.somejiang.com/ares/plan/share?plan_id=' + id,
+            success: function(data) {
+                //在这里写页面数据....
+            },
+            dataType: 'json',
+            error: function() {
+                alert('异常，请稍后重试！');
+            }
+        });
     })
+
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]); return null; //返回参数值
+    }
 </script>
 </html>
