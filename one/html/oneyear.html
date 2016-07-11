@@ -141,6 +141,12 @@
 <script src="../js/jquery.min.js"></script>
 <script>
     $(function() {
+        var width = $('.content').width();
+        console.log(width);
+        if(width % 2 !== 0) {
+            $('.content').css('width', width -1);
+        }
+
         $('.close').on('click', function() {
             $('.fixed').slideUp();
         });
@@ -152,7 +158,9 @@
         var id = 1;
         
         console.log(getUrlParam('id'));
+    });
 
+    function getData() {
         $.ajax({
             type: 'GET',
             url: 'http://oytest.somejiang.com/ares/plan/share?plan_id=' + id,
@@ -164,7 +172,7 @@
 //                alert('异常，请稍后重试！');
             }
         });
-    })
+    }
 
     function getUrlParam(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
