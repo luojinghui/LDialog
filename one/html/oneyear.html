@@ -146,7 +146,7 @@
         });
 
         $('.dialog').on('click', function() {
-            $(this).fadeOut();
+            $(this).hide();
         });
 
         var id = 1;
@@ -161,7 +161,7 @@
             },
             dataType: 'json',
             error: function() {
-                alert('异常，请稍后重试！');
+//                alert('异常，请稍后重试！');
             }
         });
     })
