@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="format-detection" content="telephone=no">
-    <title>one-year</title>
+    <title>OneYear</title>
     <link rel="stylesheet" href="../css/one-reset.css"/>
     <link rel="stylesheet" href="../css/one.css"/>
 </head>
@@ -14,51 +14,71 @@
 <div class="container">
     <div class="title">
         <div class="head-img">
+            <!--活动头像，重写src的值-->
             <img src="../img/ser-1.jpeg" alt=""/>
         </div>
+        <!--活动名称，重写里面的内容-->
         <p class="activity-name">十月学生会承办青歌赛</p>
+        <!--活动内容，重写活动内容-->
         <p class="activity-content">
             自定义指令学习有段时间，学了些纸上谈兵的东西，还没有真正写个指令出来呢,所以，随着学习的接近尾声，本篇除了介绍剩余的几个参数外，还将动手结合使用各参数，写个真正能用的指令出来玩玩。说属性名称吧
         </p>
     </div>
     <div class="content">
         <div class="content-title">
-            <span class="line">任务流</span>
+            <span class="line">
+                <span class="white">任务流</span>
+            </span>
         </div>
         <div class="mission-box">
+            <!--开始任务流框架，写入开始时间-->
             <div class="start-mission">
                 <span class="start-time">2016-6-6</span>
             </div>
+            <!--结束-->
+            <!--以下的每一组外围div都是一组时间节点，其中class：today代表今天的时间线样式，即蓝色背景线-->
+            <!--这组是右边已完成框架，里面注释相同，只写一组-->
             <div class="right-mission r-m-l clearfix circle finished-r today">
                 <div class="message-box">
                     <div class="message">
+                        <!--任务内容-->
                         <div class="task">完成前期宣传工作（微信平台，校园横幅，邀请函）达到最高关注</div>
+                        <!--任务时间-->
                         <div class="time">
-                            <span>2016-2-3</span>
+                            <span>12-38</span>
+                            <!--未知数字-->
                             <span class="apple">100</span>
                         </div>
                     </div>
                     <div class="person-img">
-                        <img class="p-i" src="../img/ser-2.jpeg" alt=""/>
+                        <!--任务头像-->
+                        <a href="">
+                            <img class="p-i" src="../img/ser-2.jpeg" alt=""/>
+                        </a>
+                        <!--任务状态-->
                         <span class="status">已完成</span>
                     </div>
                 </div>
             </div>
-            <div class="left-mission l-m-l clearfix circle finished-l">
+            <!--结束-->
+            <!--这组是左边已完成框架-->
+            <div class="left-mission l-m-l clearfix circle finished-l today">
                 <div class="message-box message-box2">
+                    <div class="message message2">
+                        <div class="task task-left">完成前期宣传工作,完成前期宣传工作,完成前期宣传工作,完成前期宣传工作,完成前期宣传工作,完成前期宣传工作,完成前期宣传工作</div>
+                        <div class="time tl">
+                            <span>2-31</span>
+                            <span class="apple pl">100</span>
+                        </div>
+                    </div>
                     <div class="person-img">
                         <img class="p-i" src="../img/ser-3.jpeg" alt=""/>
                         <span class="status">已完成</span>
                     </div>
-                    <div class="message message2">
-                        <div class="task">完成前期宣传工作,完成前期宣传工作,完成前期宣传工作,完成前期宣传工作,完成前期宣传工作,完成前期宣传工作,完成前期宣传工作</div>
-                        <div class="time">
-                            <span>2016-2-3</span>
-                            <span class="apple">100</span>
-                        </div>
-                    </div>
                 </div>
             </div>
+            <!--结束-->
+            <!--这组是时间线右边延误框架-->
             <div class="right-mission r-m-l clearfix circle delay-r">
                 <div class="message-box">
                     <div class="message">
@@ -74,21 +94,25 @@
                     </div>
                 </div>
             </div>
+            <!--结束-->
+            <!--这组是时间线左边延误框架-->
             <div class="left-mission l-m-l clearfix circle delay-l">
                 <div class="message-box message-box2">
+                    <div class="message message2">
+                        <div class="task task-left">完成前期宣传工作</div>
+                        <div class="time tl">
+                            <span>2016-2-3</span>
+                            <span class="apple pl">59</span>
+                        </div>
+                    </div>
                     <div class="person-img">
                         <img class="p-i" src="../img/ser-3.jpeg" alt=""/>
                         <span class="status">延误</span>
                     </div>
-                    <div class="message message2">
-                        <div class="task">完成前期宣传工作</div>
-                        <div class="time">
-                            <span>2016-2-3</span>
-                            <span class="apple">59</span>
-                        </div>
-                    </div>
                 </div>
             </div>
+            <!--结束-->
+            <!--这组是时间线右边进行中框架-->
             <div class="right-mission r-m-l clearfix circle doing-r">
                 <div class="message-box">
                     <div class="message">
@@ -104,33 +128,38 @@
                     </div>
                 </div>
             </div>
+            <!--结束-->
+            <!--这组是时间线左边延误框架-->
             <div class="left-mission l-m-l clearfix circle doing-l">
                 <div class="message-box message-box2">
+                    <div class="message message2">
+                        <div class="task task-left">完成前期宣传工作</div>
+                        <div class="time tl">
+                            <span>2016-2-3</span>
+                            <span class="apple pl">10</span>
+                        </div>
+                    </div>
                     <div class="person-img">
                         <img class="p-i" src="../img/ser-2.jpeg" alt=""/>
                         <span class="status">进行中</span>
                     </div>
-                    <div class="message message2">
-                        <div class="task">完成前期宣传工作</div>
-                        <div class="time">
-                            <span>2016-2-3</span>
-                            <span class="apple">10</span>
-                        </div>
-                    </div>
                 </div>
+            </div>
+            <!--结束-->
+            <div class="end-mission clearfix circle">
+                <span class="end-time">2016-6-6</span>
             </div>
         </div>
     </div>
     <div class="fixed">
-        <div class="close" id="close"></div>
         <div class="left-logo">
             <img class="logo" src="../img/logo.png" alt=""/>
             <img class="logo-info" src="../img/logo2.png" alt=""/>
         </div>
         <div class="download">
-            <a href="">
+            <!--<a href="">-->
                 <img src="../img/dl.png" alt=""/>
-            </a>
+            <!--</a>-->
         </div>
     </div>
     <!--<div class="dialog">-->
@@ -142,42 +171,25 @@
 <script>
     $(function() {
         var width = $('.content').width();
-        console.log(width);
         if(width % 2 !== 0) {
             $('.content').css('width', width -1);
         }
-
-        $('.close').on('click', function() {
-            $('.fixed').slideUp();
-        });
 
         $('.dialog').on('click', function() {
             $(this).hide();
         });
 
-        var id = 1;
-        
-        console.log(getUrlParam('id'));
+        $('.download img, .person-img img').on('click', function() {
+            isInstalled();
+        })
+
     });
 
-    function getData() {
-        $.ajax({
-            type: 'GET',
-            url: 'http://oytest.somejiang.com/ares/plan/share?plan_id=' + id,
-            success: function(data) {
-                //在这里写页面数据....
-            },
-            dataType: 'json',
-            error: function() {
-//                alert('异常，请稍后重试！');
-            }
-        });
-    }
-
-    function getUrlParam(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-        if (r != null) return unescape(r[2]); return null; //返回参数值
+    function isInstalled(){
+        window.location = "OneYearScheme://";
+        setTimeout(function(){
+            window.location= "https://itunes.apple.com/cn/app/oneyear-zi-wo-ti-sheng-li-qi/id1035112348?mt=8";//如果超时就跳转到app下载页
+        },500);
     }
 </script>
 </html>
