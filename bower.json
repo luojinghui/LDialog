@@ -1,0 +1,25 @@
+{
+  "name": "ldialog",
+  "description": "dialog plugin basic jquery",
+  "main": "app.js",
+  "authors": [
+    "jinghuiLuo"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "dialog",
+    "mask",
+    "comfirm",
+    "prompt",
+    "alert"
+  ],
+  "homepage": "https://github.com/luojinghui/LDialog",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
