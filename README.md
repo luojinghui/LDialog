@@ -4,6 +4,16 @@
 
 此插件基于jquery开发，能够适用于所有的弹出对话，弹出，确认，tip，msg提示框等。支持主流浏览器。
 
+###How to install
+
+*   npm
+
+    ```npm install --save-dev ldialog```
+    
+*   bower
+    
+    ```bower install --save-dev ldialog```
+
 ###How to use
 *   在头部引入```ldialog.css```或者压缩过的```ldialog.min.css```文件,**同时将fonts字体图标文件放置在css同级目录中。** 
 	
