@@ -8,40 +8,11 @@
     <link rel="stylesheet" href="../css/ldialog.css"/>
 </head>
 <style>
-    * {
-        font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
-    }
+    * {  font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;  }
     h1,h2,h3,h4,h5,h6 {margin: 0; padding: 0;}
-
-    [class^=c-] {
-        height: 30px;
-        width: auto;
-        padding: 2px 10px;
-        margin-right: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #fff;
-        background: #049cdb;
-        display: inline-block;
-        border-radius: 6px;
-        text-align: center;
-        color: #fff;
-        line-height: 27px;
-        font-size: 14px;
-        cursor: default;
-    }
-    .box {
-        position: absolute;
-        display: block;
-        top: 50px;
-        left: 50px;
-        background: #fff;
-    }
-    .box .box-t {
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
+    [class^=c-] {  height: 30px;  width: auto;  padding: 2px 10px;  margin-right: 10px;  margin-bottom: 10px;  border: 1px solid #fff;  background: #049cdb;  display: inline-block;  border-radius: 6px;  text-align: center;  color: #fff;  line-height: 27px;  font-size: 14px;  cursor: default;  }
+    .box {  position: absolute;  display: block;  top: 50px;  left: 50px;  background: #fff;  }
+    .box .box-t {  -webkit-user-select: none;  -moz-user-select: none;  -ms-user-select: none;  user-select: none;  }
     ::-webkit-scrollbar{width: 8px; height: 8px;}
     ::-webkit-scrollbar-button:vertical{display:none;}
     ::-webkit-scrollbar-track:vertical{background-color:black;}
@@ -72,111 +43,16 @@
     <br/>
     <p>如果通过请求重写蒙版内input group，建议采用已有的框架书写，即按钮<span class="c-aa aaaa">测试通过请求实例化输入组包含各种input类型</span>中的框架书写。</p>
     <p>按钮组样式预览</p>
-    <div class="l-btn l-btn-default">l-btn-default</div>
+    <div class="l-btn l-btn-default">l-btn-default | 清除所有tips</div>
     <div class="l-btn l-btn-primary">l-btn-primary</div>
     <div class="l-btn l-btn-error">l-btn-error</div>
     <div class="l-btn l-btn-success">l-btn-success</div>
     <div class="l-btn l-btn-info">l-btn-info</div>
-    <div class="l-btn l-btn-warning">l-btn-warning</div>
+    <div class="l-btn l-btn-warning">l-btn-warning | 点击出现tips</div>
     <div class="l-btn l-btn-bim">l-btn-bim</div>
 </div>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-
-
-<!--<div class="l-dialog animated fadeIn" style="display: none;">-->
-    <!--<div class="l-dialog-box animated bounceInDown" style="top: 50px; left: 400px;width: 400px">-->
-        <!--<div class="l-dialog-title-box">-->
-            <!--&lt;!&ndash;<h4 class="l-dialog-t">这是title</h4>&ndash;&gt;-->
-            <!--<div class="l-dialog-title">输入框组</div>-->
-            <!--<em class="l-dialog-c">×</em>-->
-        <!--</div>-->
-        <!--<div class="l-dialog-content tc">-->
-            <!--<div class="l-tip-info" style="display: block;">-->
-                <!--<div class="l-tip-info-fonts" style="display:block;">-->
-                    <!--<div class="l-form-box">-->
-                        <!--<div class="form-line">-->
-                            <!--<span class="left-form-info">用户名</span>-->
-                            <!--<input type="text" placeholder="23423" value=""/>-->
-                        <!--</div>-->
-
-                        <!--<div class="form-line">-->
-                            <!--<span class="left-form-info">密码</span>-->
-                            <!--<input type="password" placeholder="密码" value=""/>-->
-                        <!--</div>-->
-
-                        <!--<div class="form-line">-->
-                            <!--<span class="left-form-info">输入什么</span>-->
-                            <!--<textarea ></textarea>-->
-                        <!--</div>-->
-
-                        <!--<div class="form-line">-->
-                            <!--<span class="left-form-info">请选择</span>-->
-                            <!--<div class="l-radio-box">-->
-                                <!--<label>-->
-                                    <!--<input type="radio" name="bb"/>-->
-                                    <!--<span>羽毛球</span>-->
-                                <!--</label>-->
-                                <!--<label>-->
-                                    <!--<input type="radio" name="bb"/>-->
-                                    <!--<span>篮球</span>-->
-                                <!--</label>-->
-                                <!--<label>-->
-                                    <!--<input type="radio" name="bb"/>-->
-                                    <!--<span>台球</span>-->
-                                <!--</label>-->
-                            <!--</div>-->
-                        <!--</div>-->
-
-                        <!--<div class="form-line">-->
-                            <!--<span class="left-form-info">请选择</span>-->
-                            <!--<div class="l-radio-box">-->
-                                <!--<label>-->
-                                    <!--<input type="checkbox" name="aa"/>-->
-                                    <!--<span>台球</span>-->
-                                <!--</label>-->
-                                <!--<label>-->
-                                    <!--<input type="checkbox" name="aa"/>-->
-                                    <!--<span>篮球</span>-->
-                                <!--</label>-->
-                            <!--</div>-->
-                        <!--</div>-->
-
-                        <!--<div class="form-line">-->
-                            <!--<span class="left-form-info">下拉框</span>-->
-                            <!--<select>-->
-                                <!--<option value="">123</option>-->
-                                <!--<option value="">234</option>-->
-                                <!--<option value="">345</option>-->
-                            <!--</select>-->
-
-                            <!--<select>-->
-                                <!--<option value="">123</option>-->
-                                <!--<option value="">234</option>-->
-                                <!--<option value="">345</option>-->
-                            <!--</select>-->
-
-                            <!--<select>-->
-                                <!--<option value="">123</option>-->
-                                <!--<option value="">234</option>-->
-                                <!--<option value="">345</option>-->
-                            <!--</select>-->
-                        <!--</div>-->
-
-                        <!--<div class="form-line">-->
-                            <!--<input type="text" class="l-center-input" placeholder="输入值"/>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="l-dialog-footer" style="display: block;">-->
-            <!--<div class="btn btn-default l-dialog-close">取消</div>-->
-            <!--<div class="btn btn-success sure">确定</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
 </body>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/ldialog.js"></script>

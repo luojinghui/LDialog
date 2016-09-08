@@ -4,7 +4,6 @@
  * Time: 下午5:51
  */
 $(function() {
-
     $('.aaaa').on('click', function() {
         $.ajax({
             type: "GET",
@@ -17,10 +16,6 @@ $(function() {
             }
         });
     });
-
-
-
-
 
     var isMove = false;
     var boxX, boxY;
@@ -75,62 +70,9 @@ $(function() {
     });
 
 
-
-//        var clipboard = new Clipboard('.copy-btn');
-//
-//        $(document).ready(function() {
-//            $('a.copy-btn').click(function() {
-//                if(identify() == 'Safari') {
-//                    $('.copy-tip-message').text('Press ⌘-C to copy');
-//                }
-//                else {
-//                    $('.copy-tip-container').css( {
-//                        'width': '56px',
-//                        'margin-left': '27px'
-//                    });
-//                    $('.copy-tip').css('margin-left', '-7px');
-//                    $('.copy-tip-message').text('Copied!');
-//                }
-//                $(this).next().show();
-//            }).mouseout(function() {
-//                $(this).next().hide();
-//            });
-//
-//            $('a.copy-btn').mouseover(function(e) {
-//                $('a.copy-btn').style('color', '#015ba7');
-//            });
-//        });
-
-
-//
-//        $('.box-t').mousemove(function() {
-//            console.log("鼠标在移动");
-//        });
-//
-//        $('.box-t').mouseup(function() {
-//            console.log("鼠标松开了");
-//        });
-
-
-//        $('.l-dialog').click(function() {
-//            $('.l-dialog').removeClass('fadeIn').addClass('fadeOut');
-//            $('.l-dialog-box').removeClass('fadeInDown').addClass('fadeOutUp');
-//        });
-
     $('.l-dialog-c').click(function() {
         $('.l-dialog').remove();
     });
-
-//        $('.l-dialog-box').on('click' ,function(event) {
-//            event.stopPropagation();
-//        });
-
-
-//        $('.l-dialog-close').click(function() {
-//            $('.l-dialog').removeClass('fadeIn').addClass('fadeOut');
-//            $('.l-dialog-box').removeClass('fadeInDown').addClass('bounceOutDown');
-//        });
-
 
     $('.right-grad-edit').on('click', function() {
         if($('.select-alter-p-i').hasClass('on')) {
@@ -153,9 +95,11 @@ $(function() {
 
     var tipid;
     $('.c-1').hover(function() {
-        tipid = LDialog.tips("点击了c-1", ".c-1" ,{posi: 3,bg: "red"})
+        tipid = LDialog.tips("悬浮在按钮上", ".c-1" ,{posi: 3,bg: "red"})
     }, function(){
         LDialog.closeAllTips();
+    }).on('click', function() {
+        (new LDialog('点击了按钮,出现了默认的弹出框~')).init();
     });
 
     $('.c-2').on('click', function() {
@@ -399,21 +343,9 @@ $(function() {
             LDialog.tip("打开了全局关闭设置，点击即可关闭！", {iconData: "", iconColor: "rgb(217, 83, 79)", timeOut: 2000, globalClose: true});
         });
 
-
-//            LDialog.tip("失败！", {iconData: "", iconColor: "rgb(217, 83, 79)"}, function() {
-//                refreshNow();
-//            })
-//
-//            LDialog.tip("成功", {iconData: "", iconColor: "rgb(75,239,112)"}, function() {
-//                location.href = "<?php echo site_url();?>operate/user";
-//            })
-
     });
 
     $('.c-15').on('click', function() {
-//            LDialog.alert("123123123123123",function() {
-//
-//            });
         LDialog.alert("123123123123123");
     });
 
