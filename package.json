@@ -1,6 +1,6 @@
 {
   "name": "ldialog",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "dialog plugin basic jquery",
   "main": "app.js",
   "scripts": {
