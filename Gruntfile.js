@@ -49,6 +49,19 @@ module.exports = function(grunt) {
         },
         ignores: {jshintignore: '.jshintignore'}
     },
+    babel: {
+      options: {
+          sourceMap: false,
+          //presets: ['es2015'],
+          babelrc: true
+      },
+      dist: {
+          files: {
+              'js/demo2.js': 'js/demo.js'
+          },
+          extends: '.babelrc'
+      }
+    },
     watch: {
         // files: ['public/*.js'],
         // tasks: ['jshint'],
@@ -65,6 +78,10 @@ module.exports = function(grunt) {
         jshint: {
             files: 'public/*.js',
             tasks: ['jshint']
+        },
+        babel: {
+            files: 'js/demo.js',
+            tasks: ['babel']
         }
     },
     concat:{
@@ -142,6 +159,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-csscomb');
   grunt.loadNpmTasks('grunt-contrib-qunit');
+  grunt.loadNpmTasks('grunt-babel');
+
 
   // 注册grunt默认任务
   grunt.registerTask('check', ['jshint']);

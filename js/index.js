@@ -4,7 +4,10 @@
  * Time: 下午5:51
  */
 $(function() {
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
     $('.aaaa').on('click', function() {
         $.ajax({
             type: "GET",
@@ -18,10 +21,13 @@ $(function() {
         });
     });
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> master
     var isMove = false;
     var boxX, boxY;
     var cloneL, cloneT;
@@ -75,6 +81,7 @@ $(function() {
     });
 
 
+<<<<<<< HEAD
 
 //        var clipboard = new Clipboard('.copy-btn');
 //
@@ -117,10 +124,13 @@ $(function() {
 //            $('.l-dialog-box').removeClass('fadeInDown').addClass('fadeOutUp');
 //        });
 
+=======
+>>>>>>> master
     $('.l-dialog-c').click(function() {
         $('.l-dialog').remove();
     });
 
+<<<<<<< HEAD
 //        $('.l-dialog-box').on('click' ,function(event) {
 //            event.stopPropagation();
 //        });
@@ -132,6 +142,8 @@ $(function() {
 //        });
 
 
+=======
+>>>>>>> master
     $('.right-grad-edit').on('click', function() {
         if($('.select-alter-p-i').hasClass('on')) {
             $('.select-alter-p-i').removeClass('on');
@@ -153,9 +165,17 @@ $(function() {
 
     var tipid;
     $('.c-1').hover(function() {
+<<<<<<< HEAD
         tipid = LDialog.tips("点击了c-1", ".c-1" ,{posi: 3,bg: "red"})
     }, function(){
         LDialog.closeAllTips();
+=======
+        tipid = LDialog.tips("悬浮在按钮上", ".c-1" ,{posi: 3,bg: "red"})
+    }, function(){
+        LDialog.closeAllTips();
+    }).on('click', function() {
+        (new LDialog('点击了按钮,出现了默认的弹出框~')).init();
+>>>>>>> master
     });
 
     $('.c-2').on('click', function() {
@@ -399,6 +419,7 @@ $(function() {
             LDialog.tip("打开了全局关闭设置，点击即可关闭！", {iconData: "", iconColor: "rgb(217, 83, 79)", timeOut: 2000, globalClose: true});
         });
 
+<<<<<<< HEAD
 
 //            LDialog.tip("失败！", {iconData: "", iconColor: "rgb(217, 83, 79)"}, function() {
 //                refreshNow();
@@ -414,6 +435,11 @@ $(function() {
 //            LDialog.alert("123123123123123",function() {
 //
 //            });
+=======
+    });
+
+    $('.c-15').on('click', function() {
+>>>>>>> master
         LDialog.alert("123123123123123");
     });
 
