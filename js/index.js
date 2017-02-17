@@ -69,7 +69,10 @@ $(function() {
         isMove = false;
     });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> gh-pages
     $('.l-dialog-c').click(function() {
         $('.l-dialog').remove();
     });
@@ -95,6 +98,12 @@ $(function() {
 
     var tipid;
     $('.c-1').hover(function() {
+<<<<<<< HEAD
+=======
+        tipid = LDialog.tips("点击了c-1", ".c-1" ,{posi: 3,bg: "red"})
+    }, function(){
+        LDialog.closeAllTips();
+>>>>>>> gh-pages
         tipid = LDialog.tips("悬浮在按钮上", ".c-1" ,{posi: 3,bg: "red"})
     }, function(){
         LDialog.closeAllTips();
@@ -342,7 +351,10 @@ $(function() {
             console.log(123123);
             LDialog.tip("打开了全局关闭设置，点击即可关闭！", {iconData: "", iconColor: "rgb(217, 83, 79)", timeOut: 2000, globalClose: true});
         });
+<<<<<<< HEAD
 
+=======
+>>>>>>> gh-pages
     });
 
     $('.c-15').on('click', function() {
