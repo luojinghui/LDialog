@@ -17,7 +17,7 @@ bower install --save-dev ldialog
 ```
 
 ### How to use
-* 在头部引入`ldialog.min.css`文件**
+* 在头部引入`ldialog.min.css`文件
 ```
 <link rel="stylesheet" href="ldialog.min.css"/>
 ```
