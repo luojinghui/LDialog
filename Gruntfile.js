@@ -31,19 +31,19 @@ module.exports = function(grunt) {
         },
         sea: {
             files: {
-                src: ['js/seajs-version/ldialog.js'],
-                dest: 'js/seajs-version/ldialog.min.js',
+                src: ['src/seajs-version/ldialog.src'],
+                dest: 'dist/seajs-version/ldialog.min.src',
                 sourceMap: true
             }
         },
         bulid2: {
-            src: ['js/ldialog.js'],
-            dest: 'js/ldialog.min.js',
+            src: ['src/ldialog.src'],
+            dest: 'dist/ldialog.min.src',
             sourceMap: true
         }
     },
     jshint: {
-        files: ['Grungfile.js', 'public/*.js'],
+        files: ['Grungfile.src', 'public/*.src'],
         options: {
             jshintrc: '.jshintrc'
         },
@@ -57,13 +57,13 @@ module.exports = function(grunt) {
       },
       dist: {
           files: {
-              'js/demo2.js': 'js/demo.js'
+              'js/demo2.js': 'src/demo.src'
           },
           extends: '.babelrc'
       }
     },
     watch: {
-        // files: ['public/*.js'],
+        // files: ['public/*.src'],
         // tasks: ['jshint'],
         options: {
            livereload: true
@@ -76,11 +76,11 @@ module.exports = function(grunt) {
            }
         },
         jshint: {
-            files: 'public/*.js',
+            files: 'public/*.src',
             tasks: ['jshint']
         },
         babel: {
-            files: 'js/demo.js',
+            files: 'src/demo.src',
             tasks: ['babel']
         }
     },
@@ -93,8 +93,8 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
-          src: ['public/question.js','public/Answer.js'],
-          dest: 'build/concat.js'
+          src: ['public/question.src','public/Answer.src'],
+          dest: 'build/concat.src'
       }
     },
     less: {

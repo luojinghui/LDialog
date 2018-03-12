@@ -1,38 +1,45 @@
-#LDialog Plugin
+# LDialog Plugin
 
-###LDialog Plugin 介绍
+### LDialog Plugin 介绍
 
 此插件基于jquery开发，能够适用于所有的弹出对话，弹出，确认，tip，msg提示框等。支持主流浏览器。
 
-###How to install
+### How to install
 
-*   npm
-
-    ```npm install --save-dev ldialog```
+* npm
+```
+npm install --save-dev ldialog
+```
     
-*   bower
-    
-    ```bower install --save-dev ldialog```
-
-###How to use
-*   在头部引入```ldialog.css```或者压缩过的```ldialog.min.css```文件,**同时将fonts字体图标文件放置在css同级目录中。** 
-	
+* bower
 ```
-	<link rel="stylesheet" href="../css/ldialog.css"/>
+bower install --save-dev ldialog
 ```
 
-*  引入jquery以及ldialog.js文件：
-
+### How to use
+* 在头部引入`ldialog.min.css`文件**
 ```
-	<script src="../js/jquery.min.js"></script>
-	<script src="../js/ldialog.js"></script>
+<link rel="stylesheet" href="ldialog.min.css"/>
 ```
 
-当在监听事件中需要弹出对话框或蒙版时，实例化一个蒙版，并初始化,例如：
-
+* 引入jquery以及ldialog.js文件：
+```html
+<script src="../js/jquery.min.js"></script>
+<script src="../js/ldialog.min.js"></script>
 ```
-    var dialog = new LDialog("test2", {footer: false}, {btn: {sure: "btn-info"}});
-    dialog.init();
+
+### 调用蒙版的两种方式
+1. 实例化一个蒙版，并初始化,例如：
+
+```js
+var dialog = new LDialog("test2", {footer: false}, {btn: {sure: "btn-info"}});
+dialog.init();
+```
+2. 直接调用具体的方法：
+```js
+LDialog.msg("删除成功！", {iconData: "ld-roundcheck", iconColor: "green", iconSize: "30px"});
+
+LDialog.alert("123123123123123");
 ```
 
 ### LDialog参数说明
@@ -96,9 +103,7 @@
 
 说明：
 
-*   内容左边引用的是字体图标，属性是iconData，插件默认引用了52个常用的字体图标，下面有预览入口，用法如图：
-
-	进入查看图片：[传送门](http://luojinghui.github.io/LDialog/img/123.jpg)
+*   图标预览[地址](http://iconfont.cn/manage/index?spm=a313x.7781069.1998910419.11&manage_type=myprojects&projectId=587668)
 
 #### arg3(对象、字符串)
 
@@ -111,71 +116,70 @@
 具体形式如下：
 
 ```
-    var popType = {
-        info: {
+    {
+          info: {
             title: "信息",
             btn: {
-                sure: "l-btn-info",
-                cancel: "l-btn-default"
+              sure: "l-btn-info",
+              cancel: "l-btn-default"
             },
-            iconData: ""
-        },
-        success: {
+            iconData: "ld-info"
+          },
+          success: {
             title: "成功",
             btn: {
-                sure: "l-btn-success",
-                cancel: "l-btn-default"
+              sure: "l-btn-success",
+              cancel: "l-btn-default"
             },
-            iconData: "",
+            iconData: "ld-roundcheck",
             iconColor: "#56BD9D"
-        },
-        error: {
+          },
+          error: {
             title: "错误",
             btn: {
-                sure: "l-btn-error",
-                cancel: "l-btn-default"
+              sure: "l-btn-error",
+              cancel: "l-btn-default"
             },
-            iconData: "",
+            iconData: "ld-roundclose",
             iconColor: "#c9302c"
-        },
-        confirm: {
+          },
+          confirm: {
             title: "提示",
             btn: {
-                sure: "l-btn-warning",
-                cancel: "l-btn-default"
+              sure: "l-btn-warning",
+              cancel: "l-btn-default"
             },
-            iconData: "",
+            iconData: "ld-question",
             iconColor: "#F0AD4E"
-        },
-        input: {
+          },
+          input: {
             title: "输入",
             btn: {
-                sure: "l-btn-primary",
-                cancel: "l-btn-default"
+              sure: "l-btn-primary",
+              cancel: "l-btn-default"
             }
-        },
-        bim: {
+          },
+          bim: {
             title: "提示",
             btn: {
-                sure: "l-btn-bim",
-                cancel: "l-btn-default"
+              sure: "l-btn-bim",
+              cancel: "l-btn-default"
             }
-        },
-        custom: {
-            title: "初始化标题",
+          },
+          custom: {
+            title: "系统标题",
             btn: {
-                sure: "l-btn-primary",
-                cancel: "l-btn-default"
+              sure: "l-btn-primary",
+              cancel: "l-btn-default"
             }
-        }
-    };    
+          }
+        };
 ```
 
 按钮组预定了6组：
 
 **l-btn-default 、 l-btn-primary 、 l-btn-error 、 l-btn-success 、 l-btn-info、 l-btn-warning**
 
-样式可在底部demo页面中查看
 
 ### 方法介绍（最常使用）
 
@@ -261,7 +265,7 @@ example:
 
 和msg方法使用相同，但样式不同。
 
-*    **LDialog.tips(value, selector, con)**
+*  **LDialog.tips(value, selector, con)**
 
 value：必填，显示的文字，可以为空。
 
@@ -278,13 +282,13 @@ con： 选填，用来配置tips显示效果，具体参数如下：
    tipsClose: $.noop //定义tips倒计时回调函数
 ```     
 
-### Live Demo 
+### Demo
 
-插件demo：[传送门](http://luojinghui.github.io/LDialog/html/index.html)
+[DEMO](http://luojinghui.github.io/LDialog/html/index.html)
 
-字体图标： [传送门](http://luojinghui.github.io/LDialog/font-demo/demo.html)
+[字体图标库](http://iconfont.cn/manage/index?spm=a313x.7781069.1998910419.11&manage_type=myprojects&projectId=587668)
 
-###版本
+### 版本
 
 *   Version 1.0.0 ：完成蒙版基础功能。
 *   Version 1.0.1 ：增加蒙版居中、全局关闭、自定义进入动画、outline功能。
@@ -292,4 +296,5 @@ con： 选填，用来配置tips显示效果，具体参数如下：
 *   Version 1.0.3 ：增加蒙版实时居中，增加蒙版多种拖拽方式的功能。
 *   Version 1.0.4 ：增加了tip，confirm，msg，prompt，的插件方法，能够快速创建蒙版，并执行回调。
 *   Version 1.0.5 ：修改了一些bug，增加tips指示框方法，能够快速定位到想要出现的位置。
+*   Version 1.0.6 ：移除grunt，使用webpack进行构建。移除字体文件，使用iconfont图标。
 

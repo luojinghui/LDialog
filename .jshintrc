@@ -10,6 +10,6 @@
   "sub": true,      // true: Tolerate using `[]` notation when it can still be expressed in dot notation
   "undef": true,    // true: Require all non-global variables to be declared (prevents global leaks)
   "unused": true,
-  "node": true,     // Node.js
+  "node": true,     // Node.src
   "-W117": true     // true: Ignore `not defined` errors as an example of using a rule (W117) by code.
 }

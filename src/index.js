@@ -7,10 +7,9 @@ $(function() {
     $('.aaaa').on('click', function() {
         $.ajax({
             type: "GET",
-            url: "se.html",
+            url: "test.html",
             data: "html",
             success: function(msg){
-                console.log(msg);
                 var dia = new LDialog(msg, {});
                 dia.init();
             }
@@ -44,7 +43,6 @@ $(function() {
 
     $(document).mousemove(function(e) {
         if(isMove) {
-//                var e = e || window.event;
             var oX = e.clientX - boxX;
             var oY = e.clientY - boxY;
 
@@ -133,7 +131,7 @@ $(function() {
     });
 
     $('.c-4').on('click', function() {
-        var value = '<img src="../img/sea.jpg" style="width: 100%"/>';
+        var value = '<img src="../img/test.jpg" style="width: 100%"/>';
         var con = {
             footer: false,
             icon: false,
@@ -165,7 +163,6 @@ $(function() {
             iconColor: "green",
             iconSize: "30px",
             width: "250",
-            iconData: "",
             radius: "0px",
             opacity: 0.1,
             footer: false,
@@ -174,7 +171,6 @@ $(function() {
             enterAni: "slideInDown",
             outline: true,
             verCenter: true
-//                timeOut: 8000
         };
 
         var dialog3 = new LDialog("数据添加成功", con, "success");
@@ -184,14 +180,13 @@ $(function() {
     $('.c-8').on('click', function() {
         $.ajax({
             type: "GET",
-            url: "./se.html",
+            url: "./test.html",
             data: "html",
             success: function(msg){
                 con = {
                     globalClose: true,
                     width: "400px",
                     radius: 0,
-//                        iconData: "",
                     iconSize: "40px",
                     iconColor: "green",
                     footer: true,
@@ -333,15 +328,14 @@ $(function() {
     $('.c-13').on('click', function() {
         var value = "确定要删除吗？";
 
-        LDialog.confirm(value, {iconData: ""}, function() {
-            LDialog.msg("删除成功！", {iconData: "", iconColor: "green", iconSize: "30px"});
+        LDialog.confirm(value, {iconData: "ld-question", iconSize: "50px"}, function() {
+            LDialog.msg("删除成功！", {iconData: "ld-roundcheck", iconColor: "green", iconSize: "30px"});
         });
     });
 
     $('.c-14').on('click', function() {
-        LDialog.tip("tip默认没有打开全局关闭设置！", {iconData: "", iconColor: "rgb(75,239,112)", timeOut: 2000}, function() {
-            console.log(123123);
-            LDialog.tip("打开了全局关闭设置，点击即可关闭！", {iconData: "", iconColor: "rgb(217, 83, 79)", timeOut: 2000, globalClose: true});
+        LDialog.tip("tip默认没有打开全局关闭设置！", {iconData: "ld-info", iconColor: "rgb(75,239,112)", timeOut: 2000}, function() {
+            LDialog.tip("打开了全局关闭设置，点击即可关闭！", {iconData: "ld-roundcheck", iconColor: "rgb(217, 83, 79)", timeOut: 2000, globalClose: true});
         });
     });
 
