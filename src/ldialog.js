@@ -638,7 +638,7 @@
     var getAllValue = [];
 
     [].forEach.call(allForm, function (v, i) {
-      if ($(allForm[i]).find('input').size() === 1) {
+      if ($(allForm[i]).find('input').length === 1) {
         getAllValue.push($(allForm[i]).find('input').val());
       } else {
         getAllValue.push($(allForm[i]).find('textarea').val());
